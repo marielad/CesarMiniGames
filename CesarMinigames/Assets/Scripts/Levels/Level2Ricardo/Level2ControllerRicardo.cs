@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Level2Controller : MonoBehaviour
+public class Level2ControllerRicardo : MonoBehaviour
 {
 
     Rigidbody rg;
-
+    public float jumpForce = 5f;
     void Awake()
     {
         rg = GetComponent<Rigidbody>();
@@ -17,7 +17,7 @@ public class Level2Controller : MonoBehaviour
     {
         if (callback.performed)
         {
-            rg.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            rg.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
         }
     }

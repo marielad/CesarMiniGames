@@ -8,6 +8,8 @@ public class GameplayHUD : MonoBehaviour
     public static GameplayHUD instance;
     public Slider timeSlider;
     public TextMeshProUGUI timeText;
+    public GameObject heartsContainer;
+    public GameObject lifeIconPrefab;
 
     void Awake()
     {
@@ -27,5 +29,32 @@ public class GameplayHUD : MonoBehaviour
     {
         timeSlider.value = remaingTime;
         timeText.text = ((int)remaingTime + 1).ToString();
+    }
+
+    public void RemoveAllHearts()
+    {
+        while (heartsContainer.transform.childCount != 0)
+        {
+            Destroy(heartsContainer.transform.GetChild(0));
+        }
+    }
+
+    public void RemoveOneHeart()
+    {
+        if (heartsContainer.transform.childCount != 0)
+        {
+            heartsContainer.transform.GetChild(0).gameObject.SetActive(false);
+            Destroy(heartsContainer.transform.GetChild(0).gameObject);
+        }
+    }
+
+    public void InstantiateHearts(int amount)
+    {
+        for(int heartsCreated = 0; heartsCreated < amount; heartsCreated++)
+        { 
+            GameObject.Instantiate(lifeIconPrefab, heartsContainer.transform);
+        }
+
+
     }
 }

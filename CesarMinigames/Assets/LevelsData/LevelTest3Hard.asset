@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
-  m_Name: Level2Ricardo
+  m_Name: LevelTest3Hard
   m_EditorClassIdentifier: 
-  LevelChallange: Salta!
-  duration: 5
-  SceneName: Level2Ricardo
+  LevelChallange: Probando 123
+  duration: 2
+  SceneName: Level1
