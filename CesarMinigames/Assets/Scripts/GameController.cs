@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
         {
             instance = this;
             currentLifes = avaliableLifes;
+            
             gameState = GameStates.introGame;
             DontDestroyOnLoad(this.gameObject);
         }
@@ -48,6 +49,11 @@ public class GameController : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    private void Start()
+    {
+        GameplayHUD.instance.InstantiateHearts(currentLifes);
     }
     public IEnumerator MiniGameSuceeded()
     {
@@ -89,7 +95,9 @@ public class GameController : MonoBehaviour
             {
                 //Dead
                 currentLifes--;
-                if (currentLifes >= 0)
+                GameplayHUD.instance.RemoveOneHeart();
+
+                if (currentLifes > 0)
                 {
                     LoadMiniGame();
                 }
@@ -97,6 +105,7 @@ public class GameController : MonoBehaviour
                 {
                     gameState = GameStates.introGame;
                     currentLifes = avaliableLifes;
+                    GameplayHUD.instance.InstantiateHearts(currentLifes);
                     currentLevel = 0;
                     IntroGame.instance.AnimateScreen();
                 }
