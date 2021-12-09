@@ -44,6 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 reverse = true;
                 isMoving = false;
+                enemigos[enemyIndex].transform.Rotate(180, 0, 180);
                 Debug.Log("Enemigo >" + enemyIndex + " va hacia atras");
             }
         }
@@ -57,6 +58,8 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 reverse = false;
                 Debug.Log("Enemigo >" + enemyIndex + " se para");
+                enemigos[enemyIndex].transform.Rotate(0, 0, 0);
+                enemigos[enemyIndex].transform.Rotate(180, 0, 180);
             }
         }
         else
@@ -72,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
         originPosition = enemigos[enemyIndex].transform.position.x;
         targetDirection = originPosition < 0 ? 1 : -1;
         isMoving = true;
-
+        //enemigos[enemyIndex].transform.Rotate(180, 0, 180);
         Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");
     }
 }
