@@ -6,12 +6,24 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    public float remainingTimeInLevel = 5f;
-    private int currentLifes = 3;
-    public int avaliableLifes = 3;
-    
 
+    [Tooltip("Tiempo restante para finalizar el nivel.")]
+
+    public float remainingTimeInLevel = 5f;
+    [Tooltip("Vidas restantes para el jugador")]
+    public int currentLifes = 3;
+    [Tooltip("Vidas disponibles al iniciar la partida")]
+    public int avaliableLifes = 3;
+    [Tooltip("Minijuegos en modo fácil, antes de cargar la lista dificil")]
+    public int nEasyLevels = 10;
+    private int currentLevel = 0;
+
+    [Tooltip("Minijuegos modo fácil. Se cargan durante las primeras  nEasyLevels  partidas")]
     public MiniGameInfo[] miniGamesList;
+    [Tooltip("Minijuegos modo difícil.")]
+
+    public MiniGameInfo[] miniGamesListHard;
+
     private MiniGameInfo actualMiniGame;
     public enum GameStates
     { 
@@ -29,6 +41,7 @@ public class GameController : MonoBehaviour
         {
             instance = this;
             currentLifes = avaliableLifes;
+            
             gameState = GameStates.introGame;
             DontDestroyOnLoad(this.gameObject);
         }
@@ -37,15 +50,28 @@ public class GameController : MonoBehaviour
             Destroy(this);
         }
     }
+
+    private void Start()
+    {
+        GameplayHUD.instance.InstantiateHearts(currentLifes);
+    }
     public IEnumerator MiniGameSuceeded()
     {
         gameState = GameStates.pauseGame;
+        currentLevel++;
         yield return new WaitForSeconds(2);
         LoadMiniGame();
     }
     public void LoadMiniGame()
     {
-        actualMiniGame = miniGamesList[Random.Range(0, miniGamesList.Length)];
+        if (currentLevel < nEasyLevels)
+        {
+            actualMiniGame = miniGamesList[Random.Range(0, miniGamesList.Length)];
+        }
+        else
+        {
+            actualMiniGame = miniGamesListHard[Random.Range(0, miniGamesListHard.Length)];
+        }
         gameState = GameStates.introLevel;
         SceneManager.LoadScene(actualMiniGame.SceneName);
         IntroLevel.instance.AnimateScreen(actualMiniGame.LevelChallange);
@@ -69,7 +95,9 @@ public class GameController : MonoBehaviour
             {
                 //Dead
                 currentLifes--;
-                if (currentLifes >= 0)
+                GameplayHUD.instance.RemoveOneHeart();
+
+                if (currentLifes > 0)
                 {
                     LoadMiniGame();
                 }
@@ -77,6 +105,8 @@ public class GameController : MonoBehaviour
                 {
                     gameState = GameStates.introGame;
                     currentLifes = avaliableLifes;
+                    GameplayHUD.instance.InstantiateHearts(currentLifes);
+                    currentLevel = 0;
                     IntroGame.instance.AnimateScreen();
                 }
             }

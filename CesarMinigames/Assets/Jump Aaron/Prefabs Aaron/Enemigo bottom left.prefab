@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1574522688661161538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1574522688661161537}
+  - component: {fileID: 1574522688661161542}
+  - component: {fileID: 1574522688661161543}
+  - component: {fileID: 1574522688661161536}
+  - component: {fileID: 3631498229703739037}
+  m_Layer: 5
+  m_Name: Enemigo bottom left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1574522688661161537
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574522688661161538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -400, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1574522688661161542
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574522688661161538}
+  m_CullTransparentMesh: 1
+--- !u!114 &1574522688661161543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574522688661161538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!114 &1574522688661161536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574522688661161538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f68efddc7ca7fd47a9426ea2ee0187b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 2800000, guid: 6159121e670c2e444997ce81ebd8ef80, type: 3}
+  - {fileID: 2800000, guid: 73d0d048f2f26134d94162e4321554a7, type: 3}
+  - {fileID: 2800000, guid: 2f0aa138288cf88418d3cebc8586a56a, type: 3}
+  - {fileID: 2800000, guid: 981be4a1b7bbd314fa057a9a7dd6b0cb, type: 3}
+  - {fileID: 2800000, guid: 00c594ec360026b4cbe41c514a817e4f, type: 3}
+  - {fileID: 2800000, guid: 800d77a83c72a4940b9f812439df413f, type: 3}
+  - {fileID: 2800000, guid: 29b30546bc53f7c49af8b2741e47a907, type: 3}
+  - {fileID: 2800000, guid: 9652287650785f045abe273ac58e8555, type: 3}
+  - {fileID: 2800000, guid: c04559fc783ddf045a0522bfd2c83fd6, type: 3}
+  - {fileID: 2800000, guid: 53780d5b09b1caa46a8763596ff1c899, type: 3}
+  - {fileID: 2800000, guid: 64e5a29217e77a4409a36ed1e8507ab8, type: 3}
+  - {fileID: 2800000, guid: b4403cf37d92ead468dea1bf65eabf4c, type: 3}
+  - {fileID: 2800000, guid: bff31399c25b15045a9aaab5f1c8302f, type: 3}
+  - {fileID: 2800000, guid: 179a08c1c789ba445af7d5ba684c49d4, type: 3}
+  - {fileID: 2800000, guid: 336c73065243dd24da4dd86348fdbde9, type: 3}
+  - {fileID: 2800000, guid: 8696816b75acc1c44981c963f2a3ba51, type: 3}
+  fps: 30
+--- !u!114 &3631498229703739037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574522688661161538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b1efa4641a14544aebaf6ae443fb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemigos:
+  - {fileID: 1574522688661161538}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
