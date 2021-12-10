@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
-//[RequireComponent(typeof(Rigidbody))]
+
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -9,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 2.0f;
 
     public bool isGrounded;
-    Rigidbody rb;
+    public Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,11 +25,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+       /* if (Input.GetKeyDown("Jump"))
         {
-
+            Debug.Log("El personaje debería saltar");
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
-        }
+        }*/
+    }
+
+    public void PlayerJump(InputAction.CallbackContext callback)
+    {
+            Debug.Log("·asd");
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
     }
 }
