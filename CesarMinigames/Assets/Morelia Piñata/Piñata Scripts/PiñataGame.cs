@@ -10,6 +10,7 @@ public class PiñataGame : MonoBehaviour
     public float timer;
     public bool startTimer = false;
     public float stopTime;
+    public float timerpaEmpezar = 5f;
     public int numPiñata;
     public int numPiñataDestruida;
     public int numPulsaciones;
@@ -18,6 +19,7 @@ public class PiñataGame : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI pinatasDestroyedText;
     public TextMeshProUGUI pinatasLeftText;
+    public TextMeshProUGUI cuentaPaEmpezar;
 
     public Sprite burro, burroRoto, estrella, estrellaRota, pinata, pinataRota;
     public Sprite[] pinataList;
@@ -25,8 +27,8 @@ public class PiñataGame : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject winnerWindow; 
     public GameObject loserWindow;
+    public GameObject paEmpezar;
 
-    public Animator paloAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class PiñataGame : MonoBehaviour
         pinataImage.sprite = pinataList[Random.Range(0, 2)];
 
         numPulsacionesNecesarias = Random.Range(10, 20);
-        numPiñata = 5;
+
 
         pinatasLeftText.text = numPiñata.ToString();
         pinatasDestroyedText.text = numPiñataDestruida.ToString();
@@ -45,11 +47,12 @@ public class PiñataGame : MonoBehaviour
 
     void Update()
     {
-        
+        timerpaEmpezar -= Time.deltaTime; 
+        cuentaPaEmpezar.text = "Empezamos en " + timerpaEmpezar.ToString("f0");
         if (startTimer == true)
         {
             timer += Time.deltaTime;
-            timerText.text = timer.ToString();
+            timerText.text = timer.ToString("f0") + " s";
         }
 
         if (timer >= stopTime)
@@ -87,7 +90,7 @@ public class PiñataGame : MonoBehaviour
     }
     public void OnButton(InputValue input)
     {
-        paloAnimator.SetTrigger("dale");
+        AnimationController.instance.PaloAnimation();
         numPulsaciones++;
         if (numPulsaciones >= numPulsacionesNecesarias)
         {
@@ -95,27 +98,25 @@ public class PiñataGame : MonoBehaviour
             RomperPiñata();
             numPulsaciones = 0;
             numPiñataDestruida++;
-            pinatasDestroyedText.text = numPiñataDestruida.ToString();
+            pinatasDestroyedText.text = numPiñataDestruida.ToString() + " /";
             StartCoroutine(ChangePiñata());
         }
     }
 
     public IEnumerator ChangePiñata()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         pinataImage.sprite = pinataList[Random.Range(0, 2)];
 
     }
 
     public IEnumerator StartTimer()
     {
+       
         yield return new WaitForSeconds(5f);
         startTimer = true;
-
+        cuentaPaEmpezar.text = " ";
+        paEmpezar.SetActive(false);
     }
 
-    public void TimerDone()
-    {
-
-    }
 }
