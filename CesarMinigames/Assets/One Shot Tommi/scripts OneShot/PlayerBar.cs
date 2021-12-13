@@ -36,13 +36,13 @@ public class PlayerBar : MonoBehaviour
         }
         if (transform.position.x >= 645f)
         {
-            switc = false;
-            spriteRenderer.flipX = true;
+            //switc = false;
+            //spriteRenderer.flipX = true;
         }
         if (transform.position.x <= 275f)
         {
-            switc = true;
-            spriteRenderer.flipX = true;
+            //switc = true;
+            //spriteRenderer.flipX = true;
         }
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -80,5 +80,20 @@ public class PlayerBar : MonoBehaviour
         missRightBar.SetActive(true);
         makeBar.SetActive(true);
         speed = 0;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BorderLeft"))
+        {
+            switc = true;
+            spriteRenderer.flipX = true;
+        }
+        if (collision.gameObject.CompareTag("BorderRight"))
+        {
+            switc = false;
+            spriteRenderer.flipX = true;
+            Debug.Log("rightborder");
+        }
     }
 }
