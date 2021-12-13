@@ -10,21 +10,12 @@ public class SofiaPlayer : MonoBehaviour
 
     public float jump = 5.0f;
 
-    // Sistema de vidas 
+    public int vidas = 3;
 
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        
     }
-
-    /*void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            rb2D.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
-        }
-    }*/
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
@@ -39,6 +30,8 @@ public class SofiaPlayer : MonoBehaviour
         if(collision.gameObject.CompareTag("Obstaculo"))
         {
             Debug.Log("Choqué con un obstáculo");
+            vidas -= 1;
+            //Pos Inicial del personaje y del escenario 
         }
 
         if(collision.gameObject.CompareTag("Moneda"))
@@ -46,4 +39,13 @@ public class SofiaPlayer : MonoBehaviour
             Debug.Log("Gané");
         }
     }
+
+    /*public void Update()
+    {
+        if (vidas == 0)
+        {
+            Debug.Log("Morí :'c");
+            //GameOver
+        }
+    }*/
 }
