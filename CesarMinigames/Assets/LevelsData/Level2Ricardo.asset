@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level2Ricardo
   m_EditorClassIdentifier: 
   LevelChallange: Salta!
-  duration: 5
+  duration: 10
   SceneName: Level2Ricardo

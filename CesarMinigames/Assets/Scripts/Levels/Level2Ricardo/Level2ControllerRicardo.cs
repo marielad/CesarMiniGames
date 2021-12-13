@@ -17,8 +17,9 @@ public class Level2ControllerRicardo : MonoBehaviour
     {
         if (callback.performed)
         {
-            rg.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
+            //rg.transform.rotation(180f, 0f, 0f);
+            rg.AddForce(Vector3.right * jumpForce, ForceMode.Impulse);
+            //transform(transform.rotation, 180, 0, 0, Time.deltaTime);
         }
     }
 
