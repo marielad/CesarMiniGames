@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GimnasioEspacio
   m_EditorClassIdentifier: 
   LevelChallange: "\xA1Dale duro!"
-  duration: 10
+  duration: 8
   SceneName: GimnasioEspacio

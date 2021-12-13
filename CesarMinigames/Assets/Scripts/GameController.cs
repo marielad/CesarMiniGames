@@ -15,8 +15,8 @@ public class GameController : MonoBehaviour
     [Tooltip("Vidas disponibles al iniciar la partida")]
     public int avaliableLifes = 3;
     [Tooltip("Minijuegos en modo fácil, antes de cargar la lista dificil")]
-    public int nEasyLevels = 10;
-    private int currentLevel = 0;
+    public int nEasyLevels = 15;
+    private int currentLevel = 1;
 
     [Tooltip("Minijuegos modo fácil. Se cargan durante las primeras  nEasyLevels  partidas")]
     public MiniGameInfo[] miniGamesList;
@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour
     public MiniGameInfo[] miniGamesListHard;
 
     private MiniGameInfo actualMiniGame;
+
+    public bool win = false;
     public enum GameStates
     { 
         introGame,
@@ -57,10 +59,15 @@ public class GameController : MonoBehaviour
     }
     public IEnumerator MiniGameSuceeded()
     {
-        gameState = GameStates.pauseGame;
-        currentLevel++;
-        yield return new WaitForSeconds(2);
-        LoadMiniGame();
+        if (gameState == GameStates.inGame)
+        {
+            gameState = GameStates.pauseGame;
+            currentLevel++;
+            IntroLevel.instance.UpdateLevelText(currentLevel);
+            yield return new WaitForSeconds(2);
+            LoadMiniGame();
+        }
+
     }
     public void LoadMiniGame()
     {
@@ -74,7 +81,7 @@ public class GameController : MonoBehaviour
         }
         gameState = GameStates.introLevel;
         SceneManager.LoadScene(actualMiniGame.SceneName);
-        IntroLevel.instance.AnimateScreen(actualMiniGame.LevelChallange);
+        StartCoroutine(IntroLevel.instance.AnimateScreen(actualMiniGame.LevelChallange, currentLevel));
     }
 
     public void StartMiniGame()
@@ -113,6 +120,11 @@ public class GameController : MonoBehaviour
             else
             {
                 GameplayHUD.instance.UpdateRemaningTime(remainingTimeInLevel);
+            }
+
+            if (win) {
+                win = false;
+                StartCoroutine(MiniGameSuceeded());
             }
         }
     }
