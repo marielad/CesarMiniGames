@@ -59,11 +59,15 @@ public class GameController : MonoBehaviour
     }
     public IEnumerator MiniGameSuceeded()
     {
-        gameState = GameStates.pauseGame;
-        currentLevel++;
-        IntroLevel.instance.UpdateLevelText(currentLevel);
-        yield return new WaitForSeconds(2);
-        LoadMiniGame();
+        if (gameState == GameStates.inGame)
+        {
+            gameState = GameStates.pauseGame;
+            currentLevel++;
+            IntroLevel.instance.UpdateLevelText(currentLevel);
+            yield return new WaitForSeconds(2);
+            LoadMiniGame();
+        }
+
     }
     public void LoadMiniGame()
     {
