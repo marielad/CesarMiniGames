@@ -7,7 +7,6 @@ public class JumpPlayerControl : MonoBehaviour
     Rigidbody2D rb;
     float jumpforce = 2f;
     float delay;
-    float timer;
 
     public Sprite spriteReposo;
     public Sprite spriteSalto;
@@ -15,6 +14,7 @@ public class JumpPlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.sortingLayerID = 1;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -37,7 +37,6 @@ public class JumpPlayerControl : MonoBehaviour
 
     IEnumerator CambiarASalto()
     {
-        timer = 0;
         spriteRenderer.sprite = spriteSalto;
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.sprite = spriteReposo;
