@@ -12,12 +12,11 @@ public class AnimationController : MonoBehaviour
     {
         instance = this;
         anim = GetComponent<Animator>();
-
     }
 
    // Update is called once per frame
     public void PaloAnimation()
     {
-        anim.Play("palo");
+        anim.SetTrigger("dale");
     }
 }
