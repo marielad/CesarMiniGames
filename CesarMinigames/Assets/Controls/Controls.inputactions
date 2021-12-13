@@ -6,12 +6,13 @@
             "id": "594a9d87-eff7-4f67-926b-480d518db042",
             "actions": [
                 {
-                    "name": "Button",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "5cbdb14c-25d5-4089-9a88-196a9800418e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -22,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Button",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
