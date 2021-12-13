@@ -7,6 +7,11 @@ public class JumpPlayerControl : MonoBehaviour
     Rigidbody2D rb;
     float jumpforce = 2f;
     float delay;
+    float timer;
+
+    public Sprite spriteReposo;
+    public Sprite spriteSalto;
+    public SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +31,15 @@ public class JumpPlayerControl : MonoBehaviour
         {
             rb.AddForce(jump * jumpforce, ForceMode2D.Impulse);
             delay = 0;
+            StartCoroutine("CambiarASalto");
         }
+    }
+
+    IEnumerator CambiarASalto()
+    {
+        timer = 0;
+        spriteRenderer.sprite = spriteSalto;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.sprite = spriteReposo;
     }
 }
