@@ -32,6 +32,7 @@ public class SofiaPlayer : MonoBehaviour
             Debug.Log("Choqué con un obstáculo");
             vidas -= 1;
             //Pos Inicial del personaje y del escenario 
+            GameOver();
         }
 
         if(collision.gameObject.CompareTag("Moneda"))
@@ -40,12 +41,12 @@ public class SofiaPlayer : MonoBehaviour
         }
     }
 
-    /*public void Update()
+    public void GameOver()
     {
         if (vidas == 0)
         {
             Debug.Log("Morí :'c");
             //GameOver
         }
-    }*/
+    }
 }
