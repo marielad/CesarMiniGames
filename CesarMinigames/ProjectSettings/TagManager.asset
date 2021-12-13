@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemigos
   - Obstaculo
+  - Suelo
   layers:
   - Default
   - TransparentFX
