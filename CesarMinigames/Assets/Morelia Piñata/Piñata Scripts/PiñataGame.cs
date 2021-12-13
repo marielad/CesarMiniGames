@@ -9,6 +9,7 @@ public class PiñataGame : MonoBehaviour
 {
     public float timer;
     public bool startTimer = false;
+    public bool isPlaying = false;
     public float stopTime;
     public float timerpaEmpezar = 5f;
     public int numPiñata;
@@ -43,6 +44,8 @@ public class PiñataGame : MonoBehaviour
         pinatasDestroyedText.text = numPiñataDestruida.ToString();
 
         StartCoroutine(StartTimer());
+
+        AudioController.instance.PlayBackgroundMusic();
     }
 
     void Update()
@@ -51,6 +54,8 @@ public class PiñataGame : MonoBehaviour
         cuentaPaEmpezar.text = "Empezamos en " + timerpaEmpezar.ToString("f0");
         if (startTimer == true)
         {
+            AudioController.instance.PlayWhistle();
+            isPlaying = true;
             timer += Time.deltaTime;
             timerText.text = timer.ToString("f0") + " s";
         }
@@ -58,15 +63,20 @@ public class PiñataGame : MonoBehaviour
         if (timer >= stopTime)
         {
             startTimer = false;
+            isPlaying = false;
             gameOverScreen.SetActive(true);
             loserWindow.SetActive(true);
+            AudioController.instance.LostSound();
         }
 
         else if (numPiñataDestruida >= numPiñata)
         {
             startTimer = false;
+            isPlaying = false;
             gameOverScreen.SetActive(true);
             winnerWindow.SetActive(true);
+            AudioController.instance.WinSound();
+
         }
 
     }
@@ -90,17 +100,22 @@ public class PiñataGame : MonoBehaviour
     }
     public void OnButton(InputValue input)
     {
-        AnimationController.instance.PaloAnimation();
-        numPulsaciones++;
-        if (numPulsaciones >= numPulsacionesNecesarias)
+        if (isPlaying == true) 
         {
-            numPulsacionesNecesarias = Random.Range(10, 20);
-            RomperPiñata();
-            numPulsaciones = 0;
-            numPiñataDestruida++;
-            pinatasDestroyedText.text = numPiñataDestruida.ToString() + " /";
-            StartCoroutine(ChangePiñata());
+            AudioController.instance.SwooshSound();
+            AnimationController.instance.PaloAnimation();
+            numPulsaciones++;
+            if (numPulsaciones >= numPulsacionesNecesarias)
+            {
+                numPulsacionesNecesarias = Random.Range(10, 20);
+                RomperPiñata();
+                numPulsaciones = 0;
+                numPiñataDestruida++;
+                pinatasDestroyedText.text = numPiñataDestruida.ToString() + " /";
+                StartCoroutine(ChangePiñata());
+            }
         }
+        
     }
 
     public IEnumerator ChangePiñata()
