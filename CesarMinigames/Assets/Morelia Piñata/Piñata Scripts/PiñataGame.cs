@@ -45,7 +45,7 @@ public class PiñataGame : MonoBehaviour
 
         StartCoroutine(StartTimer());
 
-        AudioController.instance.PlayBackgroundMusic();
+       // AudioController.instance.PlayBackgroundMusic();
     }
 
     void Update()
@@ -53,37 +53,40 @@ public class PiñataGame : MonoBehaviour
         timerpaEmpezar -= Time.deltaTime; 
         cuentaPaEmpezar.text = "Empezamos en " + timerpaEmpezar.ToString("f0");
         if (startTimer == true)
-        {
-            AudioController.instance.PlayWhistle();
+        {       
             isPlaying = true;
             timer += Time.deltaTime;
             timerText.text = timer.ToString("f0") + " s";
+            if (timer >= stopTime)
+            {
+              Loser();
+            }
+            else if (numPiñataDestruida >= numPiñata)
+            {
+                Winner();
+            }
         }
+    }
 
-        if (timer >= stopTime)
-        {
-            startTimer = false;
-            isPlaying = false;
-            gameOverScreen.SetActive(true);
-            loserWindow.SetActive(true);
-            AudioController.instance.LostSound();
-        }
+    public void Loser()
+    {
+        startTimer = false;
+        isPlaying = false;
+        gameOverScreen.SetActive(true);
+        loserWindow.SetActive(true);
+        AudioController.instance.LostSound();
+    }
 
-        else if (numPiñataDestruida >= numPiñata)
-        {
-            startTimer = false;
-            isPlaying = false;
-            gameOverScreen.SetActive(true);
-            winnerWindow.SetActive(true);
-            AudioController.instance.WinSound();
-
-        }
-
+    public void Winner()
+    {
+        startTimer = false;
+        isPlaying = false;
+        gameOverScreen.SetActive(true);
+        winnerWindow.SetActive(true);
+        AudioController.instance.WinSound();
     }
     public void RomperPiñata()
     {
-
-
         if (pinataImage.sprite == burro)
         {
             pinataImage.sprite = burroRoto;
@@ -99,7 +102,7 @@ public class PiñataGame : MonoBehaviour
         }
     }
     public void OnButton(InputValue input)
-    {
+    { 
         if (isPlaying == true) 
         {
             AudioController.instance.SwooshSound();
@@ -129,6 +132,7 @@ public class PiñataGame : MonoBehaviour
     {
        
         yield return new WaitForSeconds(5f);
+        AudioController.instance.PlayWhistle();
         startTimer = true;
         cuentaPaEmpezar.text = " ";
         paEmpezar.SetActive(false);
