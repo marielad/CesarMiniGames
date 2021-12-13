@@ -6,12 +6,10 @@ using TMPro;
 public class IntroLevel : MonoBehaviour
 {
     public static IntroLevel instance;
-    public GameObject leftGameObject, rightGameObject, textGameObject;
+    public GameObject leftGameObject, rightGameObject, textGameObject, currentLvelGameObject;
     private Animator anim;
     public float timeAnimation = 3.0f;
-    private Vector2 leftInitialPos = new Vector2(-480f, 0f);
-    private Vector2 rightInitialPos = new Vector2(480f, 0f);
-
+    public TextMeshProUGUI levelText;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,8 +19,7 @@ public class IntroLevel : MonoBehaviour
             instance = this;
             anim = GetComponent<Animator>();
             DontDestroyOnLoad(this.gameObject);
-          //  leftInitialPos = leftGameObject.transform.position;
-          //  rightInitialPos = rightGameObject.transform.position;
+
 
             gameObject.SetActive(false);
         }
@@ -32,20 +29,36 @@ public class IntroLevel : MonoBehaviour
         }
     }
 
-    public void AnimateScreen(string title)
+
+    public IEnumerator AnimateScreen(string title, int level)
     {
-        gameObject.SetActive(true);
-        anim.SetTrigger("OpenStage");
         textGameObject.GetComponent<TextMeshProUGUI>().text = title;
+
+        gameObject.SetActive(true);
+        LeanTween.scale(currentLvelGameObject, new Vector3(1.5f, 1.5f, 1.5f), 0.75f);
+        yield return new WaitForSeconds(0.5f);
+        UpdateLevelText(level);
+
+        anim.SetTrigger("OpenStage");
+        
     }
+    public void UpdateLevelText(int level)
+    {
+        levelText.text = level.ToString();
+        LeanTween.scale(currentLvelGameObject, Vector3.one, 1f);
+    }
+
+
     public void AnimateScreen()
     {
         gameObject.SetActive(true);
         anim.SetTrigger("OpenStage");
+
     }
 
     public void AnimationFinished()
     {
+        Debug.Log("Finish animation");
         gameObject.SetActive(false);
         GameController.instance.StartMiniGame();
 
