@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2Hard.unity
     guid: 444a147605a21154786ab10484e6c89e
+  - enabled: 1
+    path: Assets/Scenes/OneShot Level1 (Tommi).unity
+    guid: 68db2fc658473ee4c85a93983dfc98ce
   m_configObjects: {}

@@ -26,24 +26,25 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SelectEnemy();
+        SelectEnemy(); //Inicia el movimiento de los enemigos
         //enemigos = GameObject.FindGameObjectsWithTag("Enemigos");
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeInLevel += Time.deltaTime;
+        timeInLevel += Time.deltaTime; //Contador de tiempo, posibilidad de basar la dificultad en base al tiempo que haya pasado en la partida
 
         if (isMoving)
         {
             Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
             rb.MovePosition(rb.position + new Vector2(targetDirection, 0) * speed * Time.fixedDeltaTime);
-            if ((enemigos[enemyIndex].transform.position.x >= 0 && targetDirection == 1) ||
+            if ((enemigos[enemyIndex].transform.position.x >= 0 && targetDirection == 1) || //Determina hacia que dirección se mueven los enemigos en función de su posición inicial.
                 (enemigos[enemyIndex].transform.position.x <= 0 && targetDirection == -1))
             {
                 reverse = true;
                 isMoving = false;
+                enemigos[enemyIndex].transform.Rotate(180, 0, 180);
                 Debug.Log("Enemigo >" + enemyIndex + " va hacia atras");
             }
         }
@@ -57,6 +58,8 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 reverse = false;
                 Debug.Log("Enemigo >" + enemyIndex + " se para");
+                enemigos[enemyIndex].transform.Rotate(0, 0, 0);
+                enemigos[enemyIndex].transform.Rotate(180, 0, 180);
             }
         }
         else
@@ -72,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
         originPosition = enemigos[enemyIndex].transform.position.x;
         targetDirection = originPosition < 0 ? 1 : -1;
         isMoving = true;
-
+        //enemigos[enemyIndex].transform.Rotate(180, 0, 180);
         Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");
     }
 }
