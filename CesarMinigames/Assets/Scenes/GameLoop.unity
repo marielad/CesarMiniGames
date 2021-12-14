@@ -729,10 +729,7 @@ MonoBehaviour:
   currentLifes: 3
   avaliableLifes: 3
   nEasyLevels: 3
-  miniGamesList:
-  - {fileID: 11400000, guid: 5be22e39aa067264f83393f3c88f0baf, type: 2}
-  - {fileID: 11400000, guid: 5be22e39aa067264f83393f3c88f0baf, type: 2}
-  - {fileID: 11400000, guid: 5be22e39aa067264f83393f3c88f0baf, type: 2}
+  miniGamesList: []
   miniGamesListHard:
   - {fileID: 11400000, guid: e96195f458a552b4b939caf40b3cb975, type: 2}
   - {fileID: 11400000, guid: 02f99a1f975911049bb24ad85ce3659c, type: 2}
