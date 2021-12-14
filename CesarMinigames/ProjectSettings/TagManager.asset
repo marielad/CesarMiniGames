@@ -7,6 +7,8 @@ TagManager:
   - Enemigos
   - Obstaculo
   - Suelo
+  - Target1PosCamMilk
+  - Target2PosCamMilk
   layers:
   - Default
   - TransparentFX

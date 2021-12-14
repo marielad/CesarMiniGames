@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 using TMPro;
 
 public class MilkController : MonoBehaviour
@@ -19,6 +21,8 @@ public class MilkController : MonoBehaviour
     public GameObject limitLine;
 
     public Image temperatureImage; //Para hacer crecer la temperatura "temperatureImage.fillAmount"
+
+    public CameraMilkController scriptCameraMilk;
 
     void Start()
     {
@@ -58,6 +62,11 @@ public class MilkController : MonoBehaviour
         QuieroLeche();
 
         StopLeche();
+
+        if (temperatureImage.fillAmount == 1f)
+        {
+            Sobrecalentamiento();
+        }
         /*if (Input.GetKeyUp(KeyCode.Space))
         {
             particleLiquid.Stop();
@@ -76,6 +85,19 @@ public class MilkController : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+    public void PressButton(InputAction.CallbackContext callback)
+    {
+        if (callback.started)
+        {
+            QuieroLeche();
+        }
+        else if(callback.performed)
+        {
+            StopLeche();
+        }
+    
+    }
+
 
     public void QuieroLeche()
     {
@@ -86,17 +108,22 @@ public class MilkController : MonoBehaviour
             points += Time.deltaTime;
             milkImage.fillAmount = points * 0.15f;
 
-            temperatureImage.fillAmount *= 0.01f;
+            temperatureImage.fillAmount += 0.25f * Time.deltaTime;
         }
+
+        scriptCameraMilk.IrLejos();
     }
 
     public void StopLeche()
     {
+        scriptCameraMilk.IrCerca();
         particleLiquid.Stop();
+        temperatureImage.fillAmount -= 0.5f * Time.deltaTime;
     }
-    /* IEnumerator Recharge()
+    
+    IEnumerator Sobrecalentamiento()
      {
          particleLiquid.Stop();
          yield return new WaitForSeconds(1);
-     }*/
+     }
 }
