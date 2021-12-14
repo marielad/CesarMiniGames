@@ -31,6 +31,7 @@ public class PiñataGame : MonoBehaviour
     public GameObject paEmpezar;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,10 +51,13 @@ public class PiñataGame : MonoBehaviour
 
     void Update()
     {
-        timerpaEmpezar -= Time.deltaTime; 
-        cuentaPaEmpezar.text = "Empezamos en " + timerpaEmpezar.ToString("f0");
+        timerpaEmpezar -= Time.deltaTime;
+        UIAnimation.instance.Open();
+        cuentaPaEmpezar.text = "We start in " + timerpaEmpezar.ToString("f0");
+        
         if (startTimer == true)
-        {       
+        {
+            timerpaEmpezar = 0;    
             isPlaying = true;
             timer += Time.deltaTime;
             timerText.text = timer.ToString("f0") + " s";
@@ -72,6 +76,7 @@ public class PiñataGame : MonoBehaviour
     {
         startTimer = false;
         isPlaying = false;
+        UIAnimation.instance.Open();
         gameOverScreen.SetActive(true);
         loserWindow.SetActive(true);
         AudioController.instance.LostSound();
@@ -81,6 +86,7 @@ public class PiñataGame : MonoBehaviour
     {
         startTimer = false;
         isPlaying = false;
+        UIAnimation.instance.Open();
         gameOverScreen.SetActive(true);
         winnerWindow.SetActive(true);
         AudioController.instance.WinSound();
@@ -101,8 +107,8 @@ public class PiñataGame : MonoBehaviour
             pinataImage.sprite = pinataRota;
         }
     }
-    public void OnButton(InputValue input)
-    { 
+    public void OnJump(InputValue input)
+    {
         if (isPlaying == true) 
         {
             AudioController.instance.SwooshSound();
@@ -134,8 +140,9 @@ public class PiñataGame : MonoBehaviour
         yield return new WaitForSeconds(5f);
         AudioController.instance.PlayWhistle();
         startTimer = true;
-        cuentaPaEmpezar.text = " ";
-        paEmpezar.SetActive(false);
+        cuentaPaEmpezar.text = "0 ";
+        UIAnimation.instance.Close();
+         paEmpezar.SetActive(false);
     }
 
 }
