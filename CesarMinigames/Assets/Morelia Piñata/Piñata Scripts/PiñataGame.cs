@@ -109,7 +109,6 @@ public class PiñataGame : MonoBehaviour
     }
     public void OnJump(InputValue input)
     {
-        Debug.Log("HAGO LA¿¿ALGO");
         if (isPlaying == true) 
         {
             AudioController.instance.SwooshSound();

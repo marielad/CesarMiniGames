@@ -17,6 +17,6 @@ public class AnimationController : MonoBehaviour
    // Update is called once per frame
     public void PaloAnimation()
     {
-        anim.SetTrigger("dale");
+        anim.Play("palo");
     }
 }
