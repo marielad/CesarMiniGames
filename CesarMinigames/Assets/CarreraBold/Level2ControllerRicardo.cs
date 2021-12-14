@@ -29,7 +29,7 @@ public class Level2ControllerRicardo : MonoBehaviour
         if (other.gameObject.name.Equals("FinishLine"))
         {
             StartCoroutine(GameController.instance.MiniGameSuceeded());
-
+            
 
         }
     }
