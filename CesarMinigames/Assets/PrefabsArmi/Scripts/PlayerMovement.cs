@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
             
         }
+        if (collision.gameObject.CompareTag("Fuego"))
+        {
+            GameController.instance.FailMiniGame();
+        }
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
