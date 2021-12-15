@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+    [Tooltip("Minijuegos modo fácil. Se cargan durante las primeras  nEasyLevels  partidas")]
+    public AudioClip defaultMusic;
+
     [Tooltip("Tiempo restante para finalizar el nivel.")]
 
     public float remainingTimeInLevel = 5f;
@@ -97,6 +100,7 @@ public class GameController : MonoBehaviour
 
     public void LoadMiniGame()
     {
+        //Choose easy or hard level
         if (currentLevel < nEasyLevels)
         {
             actualMiniGame = miniGamesList[Random.Range(0, miniGamesList.Length)];
@@ -106,7 +110,18 @@ public class GameController : MonoBehaviour
             actualMiniGame = miniGamesListHard[Random.Range(0, miniGamesListHard.Length)];
         }
         gameState = GameStates.introLevel;
+       //Loads scene
         SceneManager.LoadScene(actualMiniGame.SceneName);
+        //Change music
+        if (actualMiniGame.levelSong == null)
+        {
+            MusicMixer.instance.ChangeSong(defaultMusic);
+        }
+        else
+        {
+            MusicMixer.instance.ChangeSong(actualMiniGame.levelSong);
+        }
+
         StartCoroutine(IntroLevel.instance.AnimateScreen(actualMiniGame.LevelChallange, currentLevel));
     }
 
