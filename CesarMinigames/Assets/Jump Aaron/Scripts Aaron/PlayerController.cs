@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-
+using TMPro;
 
 //[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -13,23 +13,41 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public Rigidbody2D rb;
 
+    public TextMeshProUGUI timer;
+    public float timeValue = 0f;
+    public GameObject pajarito;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         jump = new Vector2(0.0f, 2.0f);
         isGrounded = true;
+
+        timeValue = 15f;
     }
 
     void Update()
     {
+        
+        timeValue -= Time.deltaTime;
+        timer.text = "" + timeValue.ToString("F0");
 
+
+        if (timeValue <= 0f)
+        {
+            timeValue = 0;
+            Debug.Log("Game Ended"); //Quitar del update
+            //Añadir función de ganar
+        }
+        
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Suelo"))
+        if (collision.gameObject.CompareTag("Enemigos"))
         {
-            isGrounded = true;
+            Debug.Log("Choque con un enemigo");
+            //Añadir función de derrota
         }
     }
 
