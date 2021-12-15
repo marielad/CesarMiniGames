@@ -6,6 +6,7 @@ using TMPro;
 //[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    public GameController gameController;
 
     public Vector2 jump;
     public float jumpForce = 2.0f;
@@ -15,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI timer;
     public float timeValue = 0f;
-    public GameObject pajarito;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         jump = new Vector2(0.0f, 2.0f);
         isGrounded = true;
 
-        timeValue = 15f;
+        timeValue = 15f; //Hacer un isPlaying para que el Update se haga una sola vez
     }
 
     void Update()
@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
         if (timeValue <= 0f)
         {
             timeValue = 0;
-            Debug.Log("Game Ended"); //Quitar del update
-            //Añadir función de ganar
         }
         
     }
@@ -47,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemigos"))
         {
             Debug.Log("Choque con un enemigo");
-            //Añadir función de derrota
+            StartCoroutine(GameController.instance.FailMiniGame()); //Función de derrota
         }
     }
 

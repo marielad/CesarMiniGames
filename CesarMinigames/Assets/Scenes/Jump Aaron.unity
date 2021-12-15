@@ -1415,13 +1415,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca188b2f84e56e45a38eb5b5f2b517c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   jump: {x: 0, y: 0}
   jumpForce: 2
   isGrounded: 0
   rb: {fileID: 958934124}
   timer: {fileID: 0}
   timeValue: 0
-  pajarito: {fileID: 0}
 --- !u!114 &958934123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,13 +2170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca188b2f84e56e45a38eb5b5f2b517c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   jump: {x: 0, y: 0}
   jumpForce: 145.67
   isGrounded: 0
   rb: {fileID: 1474236209}
   timer: {fileID: 0}
   timeValue: 0
-  pajarito: {fileID: 0}
 --- !u!54 &1474236209
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3479,13 +3479,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca188b2f84e56e45a38eb5b5f2b517c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   jump: {x: 0, y: 0}
   jumpForce: 35
   isGrounded: 0
   rb: {fileID: 0}
   timer: {fileID: 298732169}
   timeValue: 0
-  pajarito: {fileID: 0}
 --- !u!212 &1803267595
 SpriteRenderer:
   m_ObjectHideFlags: 0
