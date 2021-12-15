@@ -45,6 +45,9 @@ public class SimonGameController : MonoBehaviour
     private int m_PreviousColor;
     private int m_IndexRandomColor;
 
+    [Header("Sounds")]
+    public SimonSoundsController m_SoundController;
+
 
     public void Start()
     {
@@ -92,6 +95,8 @@ public class SimonGameController : MonoBehaviour
             SelectRandomBulb();
             m_LightBulbs[m_RandomBulb].color = RandomColor();
             m_LightBulbs[m_RandomBulb].intensity = m_LightIntensity;
+
+            m_SoundController.PlayChangeBulb();
 
             yield return new WaitForSeconds(m_TimeToReact);
 
@@ -163,6 +168,8 @@ public class SimonGameController : MonoBehaviour
 
         m_PrincipalLight.intensity = m_LightIntensity;
 
+        m_SoundController.PlayBackground();
+
         TurnOffExternalLights();
 
         yield return new WaitForSeconds(m_TimeToStart + 0.5f);
@@ -201,6 +208,8 @@ public class SimonGameController : MonoBehaviour
         m_LightBulbs[m_RandomBulb].color = Color.white;
         m_LightBulbs[m_RandomBulb].intensity = m_LightIntensity * 5f;
 
+        m_SoundController.PlayRandomExplosion(Random.Range(-3, 4));
+
         yield return new WaitForSeconds(m_BrokenFlashTime);
 
         m_LightBulbs[m_RandomBulb].intensity = 0f;
@@ -220,6 +229,9 @@ public class SimonGameController : MonoBehaviour
 
         m_PrincipalLight.color = Color.white;
         m_PrincipalLight.intensity = m_LightIntensity * 5f;
+
+        m_SoundController.PlayRandomExplosion(Random.Range(-3, 4));
+        m_SoundController.PlayGameOver();
 
         yield return new WaitForSeconds(m_BrokenFlashTime);
 
@@ -245,7 +257,7 @@ public class SimonGameController : MonoBehaviour
         TurnOnExternalLights();
 
 
-        yield return new WaitForSeconds(m_TimeToGameOver / 2);
+        yield return new WaitForSeconds(m_TimeToGameOver);
 
         //SceneManager.LoadScene(0);   Cuando pierdes partida
 
@@ -295,4 +307,5 @@ public class SimonGameController : MonoBehaviour
             light.SetActive(true);
         }
     }
+
 }
