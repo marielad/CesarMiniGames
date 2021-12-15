@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 using TMPro;
 
 public class MilkController : MonoBehaviour
 {
-    public float points;
-    public float timer;
+    public float pointsMilk;
+    public float timerMilk;
 
     public ParticleSystem particleLiquid;
 
@@ -20,17 +22,30 @@ public class MilkController : MonoBehaviour
 
     public Image temperatureImage; //Para hacer crecer la temperatura "temperatureImage.fillAmount"
 
+    public CameraMilkController scriptCameraMilk;
+
+    public bool MilkOn;
+    public bool SobrecalentamientoOFF;
+
+    public Transform cameraMilk;
+
+    public Transform[] spawnsLimitMilkLine;
+
     void Start()
     {
-        if (particleLiquid.isPlaying)
+        MilkOn = false;
+        SobrecalentamientoOFF = true;
+        /*if (particleLiquid.isPlaying)
         {
-            //  particleLiquid.Stop();
-        }
+            particleLiquid.Stop();
+        }*/
+        particleLiquid.Stop();
 
-        points = 0f;
-        timer = 10f;
+        pointsMilk = 0f;
+        timerMilk = 15f;
 
         limitPoints = Random.Range(25, 95);
+        limitLine.transform.position = spawnsLimitMilkLine[Random.Range(0, spawnsLimitMilkLine.Length)].position;
 
         milkImage.fillAmount = 0.01f;
         temperatureImage.fillAmount = 0.01f;
@@ -42,61 +57,96 @@ public class MilkController : MonoBehaviour
     {
         Timer();
 
-        /*if (Input.GetKey(KeyCode.Space))
+        if (MilkOn == true) //Esto antes estaba en QuieroLeche()
         {
-            //particleLiquid.GetComponent<ParticleSystem>();
-            //particleLiquid
-            particleLiquid.Play();
+            scriptCameraMilk.IrLejos();
+            pointsMilk += Time.deltaTime;
+            milkImage.fillAmount = pointsMilk * 0.15f;
 
-            if (particleLiquid.isPlaying)
+            temperatureImage.fillAmount += 0.25f * Time.deltaTime;
+        }
+        else
+        {
+            if(SobrecalentamientoOFF == true)
             {
-                points += Time.deltaTime;
-                sliderLiquid.value = points * 0.15f;
+                temperatureImage.fillAmount -= 0.1f * Time.deltaTime;
             }
-        }*/
 
-        QuieroLeche();
+            scriptCameraMilk.IrCerca();
+        }
 
-        StopLeche();
-        /*if (Input.GetKeyUp(KeyCode.Space))
+        if (temperatureImage.fillAmount >= 1f)
         {
-            particleLiquid.Stop();
-
-            //Recharge();
-        }*/
+            StartCoroutine(Sobrecalentamiento());
+        }
     }
 
     public void Timer()
     {
-        timer -= Time.deltaTime;
+        timerMilk -= Time.deltaTime;
 
-        if (timer <= 0f)
+        if (timerMilk <= 0f)
         {
             Debug.Log("Se acabó");
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
+    }
+    public void PressButton(InputAction.CallbackContext callback)
+    {
+        /*if (callback.started)
+        {
+            QuieroLeche();
+            scriptCameraMilk.IrLejos();
+        }
+        else if(callback.performed)
+        {
+            StopLeche();
+        }*/
+
+        if(callback.performed)
+        {
+            if(MilkOn == false && SobrecalentamientoOFF == true)
+            { 
+                QuieroLeche();
+            }
+            else if (MilkOn == true)
+            {
+                StopLeche();
+            }
+        }
+    
     }
 
     public void QuieroLeche()
     {
-        particleLiquid.Play();
+        MilkOn = true;
+        particleLiquid.Play(); //Si las particulas funcionan, ocurre el Update() y este codigo
 
-        if (particleLiquid.isPlaying)
-        {
-            points += Time.deltaTime;
-            milkImage.fillAmount = points * 0.15f;
-
-            temperatureImage.fillAmount *= 0.01f;
-        }
+        //scriptCameraMilk.IrLejos();
     }
 
     public void StopLeche()
     {
-        particleLiquid.Stop();
+        MilkOn = false;
+        /*if(thermometerMOVE == true)
+        {
+            scriptCameraMilk.IrCerca();
+        }*/
+        particleLiquid.Stop(); //Si las particulas no funcionan, el Update() dejaria de tener utilidad y funciona este codigo
     }
-    /* IEnumerator Recharge()
+    
+    IEnumerator Sobrecalentamiento()
      {
-         particleLiquid.Stop();
-         yield return new WaitForSeconds(1);
-     }*/
+        StopLeche();
+        SobrecalentamientoOFF = false;
+        cameraMilk.position = scriptCameraMilk.target1.position;
+        /*while(cameraMilk.position != scriptCameraMilk.target1.position)
+        {
+            yield return null;
+        }*/
+        scriptCameraMilk.speed = 0f;
+        yield return new WaitForSeconds(3);
+        SobrecalentamientoOFF = true;
+        scriptCameraMilk.speed = scriptCameraMilk.saveSpeed;
+     }
 }
