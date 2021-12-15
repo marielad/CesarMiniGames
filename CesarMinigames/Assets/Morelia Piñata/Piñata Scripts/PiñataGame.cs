@@ -31,6 +31,7 @@ public class PiñataGame : MonoBehaviour
     public GameObject paEmpezar;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,45 +46,53 @@ public class PiñataGame : MonoBehaviour
 
         StartCoroutine(StartTimer());
 
-        AudioController.instance.PlayBackgroundMusic();
+       // AudioController.instance.PlayBackgroundMusic();
     }
 
     void Update()
     {
-        timerpaEmpezar -= Time.deltaTime; 
-        cuentaPaEmpezar.text = "Empezamos en " + timerpaEmpezar.ToString("f0");
+        timerpaEmpezar -= Time.deltaTime;
+        UIAnimation.instance.Open();
+        cuentaPaEmpezar.text = "We start in " + timerpaEmpezar.ToString("f0");
+        
         if (startTimer == true)
         {
-            AudioController.instance.PlayWhistle();
+            timerpaEmpezar = 0;    
             isPlaying = true;
             timer += Time.deltaTime;
             timerText.text = timer.ToString("f0") + " s";
+            if (timer >= stopTime)
+            {
+              Loser();
+            }
+            else if (numPiñataDestruida >= numPiñata)
+            {
+                Winner();
+            }
         }
+    }
 
-        if (timer >= stopTime)
-        {
-            startTimer = false;
-            isPlaying = false;
-            gameOverScreen.SetActive(true);
-            loserWindow.SetActive(true);
-            AudioController.instance.LostSound();
-        }
+    public void Loser()
+    {
+        startTimer = false;
+        isPlaying = false;
+        UIAnimation.instance.Open();
+        gameOverScreen.SetActive(true);
+        loserWindow.SetActive(true);
+        AudioController.instance.LostSound();
+    }
 
-        else if (numPiñataDestruida >= numPiñata)
-        {
-            startTimer = false;
-            isPlaying = false;
-            gameOverScreen.SetActive(true);
-            winnerWindow.SetActive(true);
-            AudioController.instance.WinSound();
-
-        }
-
+    public void Winner()
+    {
+        startTimer = false;
+        isPlaying = false;
+        UIAnimation.instance.Open();
+        gameOverScreen.SetActive(true);
+        winnerWindow.SetActive(true);
+        AudioController.instance.WinSound();
     }
     public void RomperPiñata()
     {
-
-
         if (pinataImage.sprite == burro)
         {
             pinataImage.sprite = burroRoto;
@@ -98,7 +107,7 @@ public class PiñataGame : MonoBehaviour
             pinataImage.sprite = pinataRota;
         }
     }
-    public void OnButton(InputValue input)
+    public void OnJump(InputValue input)
     {
         if (isPlaying == true) 
         {
@@ -129,9 +138,11 @@ public class PiñataGame : MonoBehaviour
     {
        
         yield return new WaitForSeconds(5f);
+        AudioController.instance.PlayWhistle();
         startTimer = true;
-        cuentaPaEmpezar.text = " ";
-        paEmpezar.SetActive(false);
+        cuentaPaEmpezar.text = "0 ";
+        UIAnimation.instance.Close();
+         paEmpezar.SetActive(false);
     }
 
 }

@@ -7,19 +7,18 @@ using TMPro;
 public class MilkController : MonoBehaviour
 {
     public float points;
-    public TextMeshProUGUI textPoints;
     public float timer;
-    public TextMeshProUGUI textTimer;
 
     public ParticleSystem particleLiquid;
 
     public GameObject cubeCollision;
 
-    public Slider sliderLiquid;
+    //public Slider sliderLiquid;
+    public Image milkImage;
     public float limitPoints;
     public GameObject limitLine;
 
-    public Image temperatureImage; //Para hacer crecer la temperatura "temperatureImage.fillAmount.value...."
+    public Image temperatureImage; //Para hacer crecer la temperatura "temperatureImage.fillAmount"
 
     void Start()
     {
@@ -32,6 +31,9 @@ public class MilkController : MonoBehaviour
         timer = 10f;
 
         limitPoints = Random.Range(25, 95);
+
+        milkImage.fillAmount = 0.01f;
+        temperatureImage.fillAmount = 0.01f;
         //limitLine.transform.localPosition.y = new Vector3(0, limitPoints, 0);
     }
 
@@ -40,7 +42,7 @@ public class MilkController : MonoBehaviour
     {
         Timer();
 
-        if (Input.GetKey(KeyCode.Space))
+        /*if (Input.GetKey(KeyCode.Space))
         {
             //particleLiquid.GetComponent<ParticleSystem>();
             //particleLiquid
@@ -51,18 +53,17 @@ public class MilkController : MonoBehaviour
                 points += Time.deltaTime;
                 sliderLiquid.value = points * 0.15f;
             }
-        }
+        }*/
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        QuieroLeche();
+
+        StopLeche();
+        /*if (Input.GetKeyUp(KeyCode.Space))
         {
             particleLiquid.Stop();
 
             //Recharge();
-        }
-
-        textPoints.text = points.ToString("0000");
-        textTimer.text = timer.ToString("00");
-
+        }*/
     }
 
     public void Timer()
@@ -74,6 +75,24 @@ public class MilkController : MonoBehaviour
             Debug.Log("Se acabó");
             Time.timeScale = 0;
         }
+    }
+
+    public void QuieroLeche()
+    {
+        particleLiquid.Play();
+
+        if (particleLiquid.isPlaying)
+        {
+            points += Time.deltaTime;
+            milkImage.fillAmount = points * 0.15f;
+
+            temperatureImage.fillAmount *= 0.01f;
+        }
+    }
+
+    public void StopLeche()
+    {
+        particleLiquid.Stop();
     }
     /* IEnumerator Recharge()
      {

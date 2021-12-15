@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemigos
+  - Obstaculo
   - Suelo
-  - Jugador
   layers:
   - Default
   - TransparentFX
@@ -41,9 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 872727185
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Saltando
-    uniqueID: 1357299669
+  - name: Foreground
+    uniqueID: 240762305
+    locked: 0
+  - name: top
+    uniqueID: 2746333437
     locked: 0
