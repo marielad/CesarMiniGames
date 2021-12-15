@@ -8,6 +8,12 @@ public class CameraMilkController : MonoBehaviour
     public Transform target1;
     public Transform target2;
 
+    public float saveSpeed;
+
+    private void Start()
+    {
+        saveSpeed = speed;
+    }
     public void IrLejos()
     {
         float step = speed * Time.deltaTime;
