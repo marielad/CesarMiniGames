@@ -96,7 +96,7 @@ public class MiniGameController : MonoBehaviour
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
-        if (callback.performed && GameController.instance.isPlaying)
+        if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             currentBarraCantidad = currentBarraCantidad + espacioCantidad;
             barra.value = currentBarraCantidad;
