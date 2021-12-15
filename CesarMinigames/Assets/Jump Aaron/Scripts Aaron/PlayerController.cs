@@ -6,7 +6,7 @@ using TMPro;
 //[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    public GameController gameController;
+    //public GameController gameController;
 
     public Vector2 jump;
     public float jumpForce = 2.0f;
