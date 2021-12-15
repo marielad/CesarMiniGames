@@ -8,34 +8,75 @@ public class PlayerMovement : MonoBehaviour
 {
     public float jumpForce;
     private new Rigidbody2D rigidbody;
-    private bool isGrounded = true;
-    // Start is called before the first frame update
+    public bool isGrounded = true;
+    private Vector3 jumpDirection;
+    public bool jumping;
+    public float timeJumping;
+    public float timeJumpingLimit;
+  
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        jumpDirection = new Vector3(1, 1, 0);
+        jumping = false;
+        timeJumping = 0f;
+        timeJumpingLimit = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetButtonDown("Jump"))
+        
+        if (jumping)
         {
-            
-        }*/
+            timeJumping += Time.deltaTime;
+            Jump();
+           
+        }
+        if (timeJumping >= timeJumpingLimit)
+        {
+            jumping = false;
+            timeJumping = 0f;
+        }
+
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
         {
-            isGrounded = true;
+                isGrounded = true;
+            
         }
     }
-    public void Jump(InputAction.CallbackContext context) 
+    public void OnCollisionExit2D(Collision2D collision)
     {
-        if (isGrounded == true)
+        if (collision.gameObject.CompareTag("Suelo"))
         {
-            rigidbody.AddForce(Vector3.up * jumpForce);
             isGrounded = false;
+
+        }
+    }
+
+    public void Jump() 
+    {
+            
+            Debug.Log("Jumping....");
+            rigidbody.AddForce(Vector3.up * jumpForce);
+            rigidbody.AddForce(Vector3.right * jumpForce/4);
+            //isGrounded = false;
+
+    }
+    public void CheckJumpInput(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded)
+        {
+            jumping = true;
+            
+        }
+        else if (context.canceled)
+        {
+            jumping = false;
+            timeJumping = 0f;
         }
     }
    

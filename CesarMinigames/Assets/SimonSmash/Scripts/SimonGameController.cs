@@ -22,8 +22,20 @@ public class SimonGameController : MonoBehaviour
     public GameObject m_PrincipalBulbObj;
     public GameObject m_PrincipalBulbBrokenObj;
 
+    [Header("OtherLights")]
+
+    public Light m_GameOverLight;
+    public float m_GameOverLightIntensity = 12f;
+
+    public GameObject[] m_AmbientLights;
+
     [Header("Times")]
     public float m_TimeToReact = 1f;
+
+    public float m_TimeToStart = 1.5f;
+    public float m_TimeToGameOver = 3f;
+
+    public float m_BrokenFlashTime = 0.02f;
 
     private bool m_GameLoop;
     private bool m_GameOver;
@@ -49,14 +61,19 @@ public class SimonGameController : MonoBehaviour
         StartCoroutine(StartGame());
     }
 
-    /*void Update()
+    void Update()
     {
-
+        /*
         if (Input.GetKeyDown(KeyCode.Space) && m_GameLoop == true)
         {
             CheckHit();
+        }*/
+
+        if(m_GameOver == true)
+        {
+            m_GameOverLight.intensity = Random.Range(500f, 10000f) * Time.deltaTime;
         }
-    }*/
+    }
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
@@ -81,7 +98,7 @@ public class SimonGameController : MonoBehaviour
             if (m_LightBulbs[m_RandomBulb] != null && m_GameOver != true) //Si la luz que deberia ocupar ese puesto en la lista "existe" (no ha sido destruida ya por el GoodHit), y si tampoco es el final de partida
             {
                 m_LightBulbs[m_RandomBulb].intensity = 0;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
             }
 
         }
@@ -140,13 +157,15 @@ public class SimonGameController : MonoBehaviour
     {
         m_PrincipalLight.intensity = 0f;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(m_TimeToStart);
 
         m_PrincipalLight.color = RandomColor();
 
         m_PrincipalLight.intensity = m_LightIntensity;
 
-        yield return new WaitForSeconds(2f);
+        TurnOffExternalLights();
+
+        yield return new WaitForSeconds(m_TimeToStart + 0.5f);
 
         m_GameLoop = true;
 
@@ -159,7 +178,7 @@ public class SimonGameController : MonoBehaviour
 
         if (m_PrincipalLight.color == m_LightBulbs[m_RandomBulb].color)
         {
-            GoodHit();
+            StartCoroutine(GoodHit());
         }
         else
         {
@@ -169,13 +188,9 @@ public class SimonGameController : MonoBehaviour
 
 
 
-    public void GoodHit()
+    public IEnumerator GoodHit()
     {
         m_GameLoop = false;
-
-        m_LightBulbs[m_RandomBulb].intensity = 0f;
-        m_LightBulbs[m_RandomBulb].gameObject.SetActive(false);
-        m_LightBulbs.RemoveAt(m_RandomBulb);
 
         m_BulbsObj[m_RandomBulb].SetActive(false);
         m_BulbsObj.RemoveAt(m_RandomBulb);
@@ -183,6 +198,14 @@ public class SimonGameController : MonoBehaviour
         m_BulbsBrokenObj[m_RandomBulb].SetActive(true);
         m_BulbsBrokenObj.RemoveAt(m_RandomBulb);
 
+        m_LightBulbs[m_RandomBulb].color = Color.white;
+        m_LightBulbs[m_RandomBulb].intensity = m_LightIntensity * 5f;
+
+        yield return new WaitForSeconds(m_BrokenFlashTime);
+
+        m_LightBulbs[m_RandomBulb].intensity = 0f;
+        m_LightBulbs[m_RandomBulb].gameObject.SetActive(false);
+        m_LightBulbs.RemoveAt(m_RandomBulb);
 
 
         StartCoroutine(CheckVictory());
@@ -195,20 +218,36 @@ public class SimonGameController : MonoBehaviour
         m_GameLoop = false;
         m_GameOver = true;
 
-        m_PrincipalLight.intensity = 0f;
+        m_PrincipalLight.color = Color.white;
+        m_PrincipalLight.intensity = m_LightIntensity * 5f;
+
+        yield return new WaitForSeconds(m_BrokenFlashTime);
 
         m_PrincipalBulbObj.SetActive(false);
         m_PrincipalBulbBrokenObj.SetActive(true);
 
+        m_PrincipalLight.intensity = 0f;
+
+        //Por si en el loopLights ya se ha apagado esa bombilla, que a veces pasa
+        if(m_LightBulbs[m_RandomBulb].intensity == 0f)
+        {
+            m_LightBulbs[m_RandomBulb].intensity = m_LightIntensity;
+        }
+
+
         Debug.Log("GameOver");
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(m_TimeToGameOver);
 
         m_LightBulbs[m_RandomBulb].intensity = 0f;
 
-        yield return new WaitForSeconds(1f);
 
-        //SceneManager.LoadScene(0);
+        TurnOnExternalLights();
+
+
+        yield return new WaitForSeconds(m_TimeToGameOver / 2);
+
+        //SceneManager.LoadScene(0);   Cuando pierdes partida
 
     }
 
@@ -218,9 +257,11 @@ public class SimonGameController : MonoBehaviour
         {
             Debug.Log("You Win");
 
-            yield return new WaitForSeconds(3f);
+            TurnOnExternalLights();
 
-            StartCoroutine(GameController.instance.MiniGameSuceeded());
+            yield return new WaitForSeconds(m_TimeToGameOver);
+
+            //StartCoroutine(GameController.instance.MiniGameSuceeded()); Cuando ganes partida
         }
         else
         {
@@ -235,6 +276,23 @@ public class SimonGameController : MonoBehaviour
 
             m_GameLoop = true;
             StartCoroutine(LoopOfLights());
+        }
+    }
+
+
+    public void TurnOffExternalLights()
+    {
+        foreach (GameObject light in m_AmbientLights)
+        {
+            light.SetActive(false);
+        }
+    }
+
+    public void TurnOnExternalLights()
+    {
+        foreach (GameObject light in m_AmbientLights)
+        {
+            light.SetActive(true);
         }
     }
 }

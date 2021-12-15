@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerJump()//(InputAction.CallbackContext callback)
     {
-        if(isGrounded)
+        //if(isGrounded)
         {
             Debug.Log("Salto");
             rb.AddForce(Vector2.up * jumpForce);

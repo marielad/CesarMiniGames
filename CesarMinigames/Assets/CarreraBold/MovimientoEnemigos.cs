@@ -30,8 +30,8 @@ public class MovimientoEnemigos : MonoBehaviour
         if (other.gameObject.name.Equals("FinishLine"))
         {
 
-            StartCoroutine(GameController.instance.MiniGameSuceeded());
-
+            //StartCoroutine(GameController.instance.MiniGameSuceeded());
+            GameplayHUD.instance.RemoveOneHeart();
 
         }
     }
