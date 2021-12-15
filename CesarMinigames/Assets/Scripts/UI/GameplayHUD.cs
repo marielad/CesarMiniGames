@@ -10,12 +10,14 @@ public class GameplayHUD : MonoBehaviour
     public TextMeshProUGUI timeText;
     public GameObject heartsContainer;
     public GameObject lifeIconPrefab;
+    public GameObject failedScreen;
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            failedScreen.SetActive(false);
             DontDestroyOnLoad(this.gameObject);
         }
         else
@@ -43,8 +45,8 @@ public class GameplayHUD : MonoBehaviour
     {
         if (heartsContainer.transform.childCount != 0)
         {
-            heartsContainer.transform.GetChild(0).gameObject.SetActive(false);
-            Destroy(heartsContainer.transform.GetChild(0).gameObject);
+            LeanTween.scale(heartsContainer.transform.GetChild(heartsContainer.transform.childCount-1).gameObject, Vector3.zero, 0.5f);
+            Destroy(heartsContainer.transform.GetChild(heartsContainer.transform.childCount - 1).gameObject, 0.5f);
         }
     }
 
@@ -54,6 +56,12 @@ public class GameplayHUD : MonoBehaviour
         { 
             GameObject.Instantiate(lifeIconPrefab, heartsContainer.transform);
         }
+    }
+
+    public void ShowFailedScreen()
+    {
+        failedScreen.SetActive(true);
+        RemoveOneHeart();
 
 
     }
