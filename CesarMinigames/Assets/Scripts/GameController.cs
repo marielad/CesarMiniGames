@@ -76,6 +76,7 @@ public class GameController : MonoBehaviour
     public IEnumerator FailMiniGame()
     {
         //Dead
+        gameState = GameStates.introLevel;
         currentLifes--;
         GameplayHUD.instance.ShowFailedScreen();
         GameplayHUD.instance.RemoveOneHeart();
