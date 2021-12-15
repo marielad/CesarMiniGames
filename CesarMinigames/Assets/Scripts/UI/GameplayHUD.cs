@@ -45,6 +45,7 @@ public class GameplayHUD : MonoBehaviour
     {
         if (heartsContainer.transform.childCount != 0)
         {
+            heartsContainer.transform.GetChild(heartsContainer.transform.childCount - 1).GetComponent<ShakeScript>().ShakeObject();
             LeanTween.scale(heartsContainer.transform.GetChild(heartsContainer.transform.childCount-1).gameObject, Vector3.zero, 0.5f);
             Destroy(heartsContainer.transform.GetChild(heartsContainer.transform.childCount - 1).gameObject, 0.5f);
         }
