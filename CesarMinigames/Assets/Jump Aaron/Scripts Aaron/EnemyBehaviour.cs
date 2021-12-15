@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isMoving;
 
     //Dificultad
-    public float speed = 2f;
+    public float speed;
     public float levelFactor = 1f;
     public float timeInLevel = 0;
 
@@ -78,6 +78,11 @@ public class EnemyBehaviour : MonoBehaviour
         //enemigos[enemyIndex].transform.Rotate(180, 0, 180);
         //Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");    xxxxxxxxx
         //CheckPosition();
+        /*if(enemigos[enemyIndex] = 6 || 7)
+        {
+            Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
+            rb.MovePosition(rb.position + new Vector2(targetDirection, 0) * (speed *2) * Time.fixedDeltaTime);
+        }*/
     }
 
     /*public void CheckPosition()
