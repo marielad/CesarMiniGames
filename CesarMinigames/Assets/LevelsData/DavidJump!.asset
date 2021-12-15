@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
-  m_Name: Level1David
+  m_Name: DavidJump!
   m_EditorClassIdentifier: 
-  LevelChallange: "\xA1SALTA!"
-  duration: 10
-  SceneName: Jump!Level1
+  LevelChallange: No te caigas
+  duration: 5
+  SceneName: Level1
