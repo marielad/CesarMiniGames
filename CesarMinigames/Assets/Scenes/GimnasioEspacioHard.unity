@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc5bc7ec283eb64aba5a56c558d9ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  espacioCantidad: 0.4
+  espacioCantidad: 0.8
   currentBarraCantidad: 0
   maxBarraCapacidad: 40
   mus1: {fileID: 21300000, guid: 8efe6ce24f0bb204e93a881cd0c4becc, type: 3}
