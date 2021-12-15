@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
-  m_Name: LevelTest2
+  m_Name: AaronJumpEasy
   m_EditorClassIdentifier: 
-  LevelChallange: Para el tren
-  duration: 20
-  SceneName: Level1
-  levelSong: {fileID: 8300000, guid: 14361621a18d0974a8a096af824851d2, type: 3}
+  LevelChallange: "\xA1Sobrevive!"
+  duration: 15
+  SceneName: Jump Aaron

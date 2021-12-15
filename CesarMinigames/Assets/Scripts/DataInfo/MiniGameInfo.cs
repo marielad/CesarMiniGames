@@ -10,4 +10,5 @@ public class MiniGameInfo : ScriptableObject
     public string LevelChallange = "No te caigas";
     public int duration = 5;
     public string SceneName = "Level1";
+    public AudioClip levelSong;
 }

@@ -42,7 +42,7 @@ public class PiñataGame : MonoBehaviour
 
 
         pinatasLeftText.text = numPiñata.ToString();
-        pinatasDestroyedText.text = numPiñataDestruida.ToString();
+        pinatasDestroyedText.text = numPiñataDestruida.ToString() + " /";
 
         StartCoroutine(StartTimer());
 
@@ -80,6 +80,7 @@ public class PiñataGame : MonoBehaviour
         gameOverScreen.SetActive(true);
         loserWindow.SetActive(true);
         AudioController.instance.LostSound();
+       // GameController.instance.StartCoroutine(FailMiniGame());
     }
 
     public void Winner()
@@ -113,7 +114,7 @@ public class PiñataGame : MonoBehaviour
         {
             AudioController.instance.SwooshSound();
             AnimationController.instance.PaloAnimation();
-            numPulsaciones++;
+            numPulsaciones = numPulsaciones + 1;
             if (numPulsaciones >= numPulsacionesNecesarias)
             {
                 numPulsacionesNecesarias = Random.Range(10, 20);

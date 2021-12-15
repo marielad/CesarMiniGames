@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+    [Tooltip("Minijuegos modo fácil. Se cargan durante las primeras  nEasyLevels  partidas")]
+    public AudioClip defaultMusic;
+
     [Tooltip("Tiempo restante para finalizar el nivel.")]
 
     public float remainingTimeInLevel = 5f;
@@ -27,6 +30,8 @@ public class GameController : MonoBehaviour
     private MiniGameInfo actualMiniGame;
 
     public bool win = false;
+    public bool fail = false;
+    public bool isPlaying { get { return gameState == GameStates.inGame; } }
     public enum GameStates
     { 
         introGame,
@@ -57,6 +62,7 @@ public class GameController : MonoBehaviour
     {
         GameplayHUD.instance.InstantiateHearts(currentLifes);
     }
+
     public IEnumerator MiniGameSuceeded()
     {
         if (gameState == GameStates.inGame)
@@ -69,8 +75,32 @@ public class GameController : MonoBehaviour
         }
 
     }
+
+    public IEnumerator FailMiniGame()
+    {
+        //Dead
+        gameState = GameStates.introLevel;
+        currentLifes--;
+        GameplayHUD.instance.ShowFailedScreen();
+        GameplayHUD.instance.RemoveOneHeart();
+        yield return new WaitForSeconds(1);
+        if (currentLifes > 0)
+        {
+            LoadMiniGame();
+        }
+        else
+        {
+            gameState = GameStates.introGame;
+            currentLifes = avaliableLifes;
+            GameplayHUD.instance.InstantiateHearts(currentLifes);
+            currentLevel = 0;
+            IntroGame.instance.AnimateScreen();
+        }
+    }
+
     public void LoadMiniGame()
     {
+        //Choose easy or hard level
         if (currentLevel < nEasyLevels)
         {
             actualMiniGame = miniGamesList[Random.Range(0, miniGamesList.Length)];
@@ -80,7 +110,18 @@ public class GameController : MonoBehaviour
             actualMiniGame = miniGamesListHard[Random.Range(0, miniGamesListHard.Length)];
         }
         gameState = GameStates.introLevel;
+       //Loads scene
         SceneManager.LoadScene(actualMiniGame.SceneName);
+        //Change music
+        if (actualMiniGame.levelSong == null)
+        {
+            MusicMixer.instance.ChangeSong(defaultMusic);
+        }
+        else
+        {
+            MusicMixer.instance.ChangeSong(actualMiniGame.levelSong);
+        }
+
         StartCoroutine(IntroLevel.instance.AnimateScreen(actualMiniGame.LevelChallange, currentLevel));
     }
 
@@ -100,22 +141,7 @@ public class GameController : MonoBehaviour
             remainingTimeInLevel -= Time.deltaTime;
             if (remainingTimeInLevel <= 0.0f)
             {
-                //Dead
-                currentLifes--;
-                GameplayHUD.instance.RemoveOneHeart();
-
-                if (currentLifes > 0)
-                {
-                    LoadMiniGame();
-                }
-                else
-                {
-                    gameState = GameStates.introGame;
-                    currentLifes = avaliableLifes;
-                    GameplayHUD.instance.InstantiateHearts(currentLifes);
-                    currentLevel = 0;
-                    IntroGame.instance.AnimateScreen();
-                }
+               StartCoroutine(FailMiniGame());
             }
             else
             {
@@ -125,6 +151,12 @@ public class GameController : MonoBehaviour
             if (win) {
                 win = false;
                 StartCoroutine(MiniGameSuceeded());
+            }
+            if (fail)
+            {
+                fail = false;
+                StartCoroutine(FailMiniGame());
+
             }
         }
     }

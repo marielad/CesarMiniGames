@@ -58,10 +58,7 @@ public class IntroLevel : MonoBehaviour
 
     public void AnimationFinished()
     {
-        Debug.Log("Finish animation");
         gameObject.SetActive(false);
         GameController.instance.StartMiniGame();
-
-
     }
 }
