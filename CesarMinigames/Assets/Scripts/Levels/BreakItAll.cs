@@ -10,7 +10,7 @@ public class BreakItAll : MonoBehaviour
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
-        if (callback.performed)
+        if (callback.performed && GameController.instance.isPlaying)
         {
             cube.SetActive(false);
             cube1.SetActive(true);
