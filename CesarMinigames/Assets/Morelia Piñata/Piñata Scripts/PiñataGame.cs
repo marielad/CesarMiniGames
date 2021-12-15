@@ -42,7 +42,7 @@ public class PiñataGame : MonoBehaviour
 
 
         pinatasLeftText.text = numPiñata.ToString();
-        pinatasDestroyedText.text = numPiñataDestruida.ToString();
+        pinatasDestroyedText.text = numPiñataDestruida.ToString() + " /";
 
         StartCoroutine(StartTimer());
 
