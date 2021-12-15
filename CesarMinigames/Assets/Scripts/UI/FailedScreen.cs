@@ -35,7 +35,6 @@ public class FailedScreen : MonoBehaviour
 
     void EndShake()
     {
-       // LeanTween.move(crossIcon, _initialPos, 0.00f);
         LeanTween.scale(crossIcon, _initialScale, 0.01f);
     }
 
