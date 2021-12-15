@@ -2449,6 +2449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IntroLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 5361674359197042641, guid: a67490cb8ded0e14da66f0e41e5b0e3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5361674359197042645, guid: a67490cb8ded0e14da66f0e41e5b0e3b,
         type: 3}
       propertyPath: m_Pivot.x
