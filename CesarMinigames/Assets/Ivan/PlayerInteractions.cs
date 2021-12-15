@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
+    public GameController general;
+
+    public GameObject player;
+
+    public Vector3 height; 
+
+    public float jumpForce = 2f;
 
     public int cantidadVidas;
 
@@ -13,13 +20,20 @@ public class PlayerInteractions : MonoBehaviour
     public void Start()
     {
         vidas.text = cantidadVidas.ToString();
+
+        height = new Vector3(0.0f, jumpForce, 0.0f);
+    }
+
+    public void Jump()
+    {   
+      
     }
 
     public void Update()
     {
         if (cantidadVidas <= 0)
         {
-            CodigoDePerder();
+            StartCoroutine(general.FailMiniGame());
         }
     }
 
