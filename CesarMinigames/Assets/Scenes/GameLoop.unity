@@ -731,8 +731,10 @@ MonoBehaviour:
   nEasyLevels: 3
   miniGamesList:
   - {fileID: 11400000, guid: 111c32f70e44bec49a1f8ef3bdc56ac8, type: 2}
+  - {fileID: 11400000, guid: 48ae8c42a612ffb44858a1016fe18552, type: 2}
   miniGamesListHard:
   - {fileID: 11400000, guid: 111c32f70e44bec49a1f8ef3bdc56ac8, type: 2}
+  - {fileID: 11400000, guid: 76490e49326920847be2df2501f8233f, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771
@@ -1756,7 +1758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.53333336}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.84313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
