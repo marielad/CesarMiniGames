@@ -80,7 +80,7 @@ public class PiñataGame : MonoBehaviour
         gameOverScreen.SetActive(true);
         loserWindow.SetActive(true);
         AudioController.instance.LostSound();
-       // GameController.instance.StartCoroutine(FailMiniGame());
+        StartCoroutine(GameController.instance.FailMiniGame());
     }
 
     public void Winner()
