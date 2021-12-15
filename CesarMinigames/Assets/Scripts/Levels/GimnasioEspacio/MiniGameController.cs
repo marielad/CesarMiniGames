@@ -23,8 +23,8 @@ public class MiniGameController : MonoBehaviour
     public GameObject boton;
     private Image bot;
 
-    public float tempo1 = 1f;
-    public float tempo2 = 1f;
+    public float tempo1 = 0.5f;
+    public float tempo2 = 0.5f;
 
     public bool sec1 = false;
     public bool sec2 = false;
@@ -75,7 +75,7 @@ public class MiniGameController : MonoBehaviour
         if(tempo1 <= 0f)
         {
             sec1 = false;
-            tempo1 = 1f;
+            tempo1 = 0.5f;
             bot.sprite = presion;
             sec2 = true;
         }
@@ -88,7 +88,7 @@ public class MiniGameController : MonoBehaviour
         if (tempo2 <= 0f)
         {
             sec2 = false;
-            tempo2 = 1f;
+            tempo2 = 0.5f;
             bot.sprite = nopres;
             sec1 = true;
         }
@@ -96,7 +96,7 @@ public class MiniGameController : MonoBehaviour
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
-        if (callback.performed)
+        if (callback.performed && GameController.instance.isPlaying)
         {
             currentBarraCantidad = currentBarraCantidad + espacioCantidad;
             barra.value = currentBarraCantidad;
