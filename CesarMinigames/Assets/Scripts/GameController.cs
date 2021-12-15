@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
     private MiniGameInfo actualMiniGame;
 
     public bool win = false;
+    public bool fail = false;
+    public bool isPlaying { get { return gameState == GameStates.inGame; } }
     public enum GameStates
     { 
         introGame,
@@ -57,6 +59,7 @@ public class GameController : MonoBehaviour
     {
         GameplayHUD.instance.InstantiateHearts(currentLifes);
     }
+
     public IEnumerator MiniGameSuceeded()
     {
         if (gameState == GameStates.inGame)
@@ -69,6 +72,29 @@ public class GameController : MonoBehaviour
         }
 
     }
+
+    public IEnumerator FailMiniGame()
+    {
+        //Dead
+        gameState = GameStates.introLevel;
+        currentLifes--;
+        GameplayHUD.instance.ShowFailedScreen();
+        GameplayHUD.instance.RemoveOneHeart();
+        yield return new WaitForSeconds(1);
+        if (currentLifes > 0)
+        {
+            LoadMiniGame();
+        }
+        else
+        {
+            gameState = GameStates.introGame;
+            currentLifes = avaliableLifes;
+            GameplayHUD.instance.InstantiateHearts(currentLifes);
+            currentLevel = 0;
+            IntroGame.instance.AnimateScreen();
+        }
+    }
+
     public void LoadMiniGame()
     {
         if (currentLevel < nEasyLevels)
@@ -100,22 +126,7 @@ public class GameController : MonoBehaviour
             remainingTimeInLevel -= Time.deltaTime;
             if (remainingTimeInLevel <= 0.0f)
             {
-                //Dead
-                currentLifes--;
-                GameplayHUD.instance.RemoveOneHeart();
-
-                if (currentLifes > 0)
-                {
-                    LoadMiniGame();
-                }
-                else
-                {
-                    gameState = GameStates.introGame;
-                    currentLifes = avaliableLifes;
-                    GameplayHUD.instance.InstantiateHearts(currentLifes);
-                    currentLevel = 0;
-                    IntroGame.instance.AnimateScreen();
-                }
+               StartCoroutine(FailMiniGame());
             }
             else
             {
@@ -125,6 +136,12 @@ public class GameController : MonoBehaviour
             if (win) {
                 win = false;
                 StartCoroutine(MiniGameSuceeded());
+            }
+            if (fail)
+            {
+                fail = false;
+                StartCoroutine(FailMiniGame());
+
             }
         }
     }
