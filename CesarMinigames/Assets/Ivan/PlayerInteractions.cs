@@ -25,13 +25,13 @@ public class PlayerInteractions : MonoBehaviour
     }
 
     public void Jump()
-    {   
-      
+    {
+        player.GetComponent<Rigidbody>().AddForce(height * jumpForce, ForceMode.Impulse);
     }
 
     public void Update()
     {
-        if (cantidadVidas <= 0)
+        if (cantidadVidas <= -1)
         {
             StartCoroutine(general.FailMiniGame());
         }
