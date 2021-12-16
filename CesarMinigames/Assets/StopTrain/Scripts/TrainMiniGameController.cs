@@ -18,7 +18,7 @@ public class TrainMiniGameController : MonoBehaviour
     {
         currentTrainSpeed = trainInitialSpeed;
         heroExit = hero.transform.position;
-        LeanTween.move(hero.gameObject, heroStart, 1.5f);
+        LeanTween.move(hero.gameObject, heroStart, 1.0054f);
         GameController.onTimesUp += HeroDeadEffects;
     }
 
@@ -32,7 +32,8 @@ public class TrainMiniGameController : MonoBehaviour
             {
                 HeroDeadEffects();
             }
-        }       
+        }
+  
     }
 
     public void PressedButton(InputAction.CallbackContext callback)
