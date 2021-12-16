@@ -47,10 +47,7 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
             
         }
-        if (collision.gameObject.CompareTag("Fuego"))
-        {
-            GameController.instance.FailMiniGame();
-        }
+        
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
@@ -58,6 +55,17 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
 
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fuego"))
+        {
+            StartCoroutine(GameController.instance.FailMiniGame());
+        }
+        if (collision.gameObject.CompareTag("Meta"))
+        {
+            StartCoroutine(GameController.instance.MiniGameSuceeded());
         }
     }
 

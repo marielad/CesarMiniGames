@@ -13,6 +13,7 @@ TagManager:
   - SpawnMilk
   - MilkLimitError
   - MilkLimitEnough
+  - Meta
   layers:
   - Default
   - TransparentFX
