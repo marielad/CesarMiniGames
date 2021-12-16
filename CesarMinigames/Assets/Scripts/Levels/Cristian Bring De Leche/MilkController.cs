@@ -9,7 +9,13 @@ using TMPro;
 public class MilkController : MonoBehaviour
 {
     public float pointsMilk;
+    public TextMeshProUGUI pointsMilkText;
     public float timerMilk;
+    //public TextMeshProUGUI timerMilkText;
+    //private float timerMilkoriginal;
+    public float milkSpeedIncrease = 0.15f;
+    public float thermometerSpeedIncrease = 0.07f;
+    public float totalMilkPoints;
 
     public ParticleSystem particleLiquid;
 
@@ -31,6 +37,12 @@ public class MilkController : MonoBehaviour
 
     public Transform[] spawnsLimitMilkLine;
 
+    public GameObject milkErrorDetector;
+    public Transform targetMaxMilk;
+
+    public GameObject luzMilkOn;
+    public GameObject luzSobrecalentamiento;
+
     void Start()
     {
         MilkOn = false;
@@ -44,7 +56,7 @@ public class MilkController : MonoBehaviour
         pointsMilk = 0f;
         timerMilk = 15f;
 
-        limitPoints = Random.Range(25, 95);
+        //limitPoints = Random.Range(25, 95);
         limitLine.transform.position = spawnsLimitMilkLine[Random.Range(0, spawnsLimitMilkLine.Length)].position;
 
         milkImage.fillAmount = 0.01f;
@@ -57,13 +69,17 @@ public class MilkController : MonoBehaviour
     {
         Timer();
 
+        pointsMilkText.text = totalMilkPoints.ToString("0000");
+
         if (MilkOn == true) //Esto antes estaba en QuieroLeche()
         {
             scriptCameraMilk.IrLejos();
             pointsMilk += Time.deltaTime;
             milkImage.fillAmount = pointsMilk * 0.15f;
+            luzMilkOn.SetActive(true);
 
-            temperatureImage.fillAmount += 0.25f * Time.deltaTime;
+            temperatureImage.fillAmount += thermometerSpeedIncrease * Time.deltaTime;
+            MaxMilk();
         }
         else
         {
@@ -72,6 +88,7 @@ public class MilkController : MonoBehaviour
                 temperatureImage.fillAmount -= 0.1f * Time.deltaTime;
             }
 
+            luzMilkOn.SetActive(false);
             scriptCameraMilk.IrCerca();
         }
 
@@ -84,11 +101,11 @@ public class MilkController : MonoBehaviour
     public void Timer()
     {
         timerMilk -= Time.deltaTime;
+        //timerMilkText.text = timerMilk.ToString("00");
 
         if (timerMilk <= 0f)
         {
             Debug.Log("Se acabó");
-            //Time.timeScale = 0;
         }
     }
     public void PressButton(InputAction.CallbackContext callback)
@@ -103,7 +120,7 @@ public class MilkController : MonoBehaviour
             StopLeche();
         }*/
 
-        if(callback.performed)
+        if(callback.performed && callback.duration > 0.1)
         {
             if(MilkOn == false && SobrecalentamientoOFF == true)
             { 
@@ -113,21 +130,23 @@ public class MilkController : MonoBehaviour
             {
                 StopLeche();
             }
+
+            Debug.Log("Tiempo presionado " + callback.duration);
         }
-    
+
     }
 
     public void QuieroLeche()
     {
         MilkOn = true;
         particleLiquid.Play(); //Si las particulas funcionan, ocurre el Update() y este codigo
-
         //scriptCameraMilk.IrLejos();
     }
 
     public void StopLeche()
     {
         MilkOn = false;
+
         /*if(thermometerMOVE == true)
         {
             scriptCameraMilk.IrCerca();
@@ -140,6 +159,7 @@ public class MilkController : MonoBehaviour
         StopLeche();
         SobrecalentamientoOFF = false;
         cameraMilk.position = scriptCameraMilk.target1.position;
+        luzSobrecalentamiento.SetActive(true);
         /*while(cameraMilk.position != scriptCameraMilk.target1.position)
         {
             yield return null;
@@ -148,5 +168,16 @@ public class MilkController : MonoBehaviour
         yield return new WaitForSeconds(3);
         SobrecalentamientoOFF = true;
         scriptCameraMilk.speed = scriptCameraMilk.saveSpeed;
+
+        yield return new WaitForSeconds(2);
+        luzSobrecalentamiento.SetActive(false);
      }
+
+    public void MaxMilk()
+    {
+        float speed = 5f * Time.deltaTime;
+        float step = speed * Time.deltaTime;
+        milkErrorDetector.transform.position = Vector3.MoveTowards(milkErrorDetector.transform.position, targetMaxMilk.position, step);
+        Debug.Log("¡La leche esta subiendo!");
+    }
 }

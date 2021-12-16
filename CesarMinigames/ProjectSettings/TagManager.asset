@@ -8,6 +8,11 @@ TagManager:
   - Obstaculo
   - Suelo
   - Fuego
+  - Target2PosCamMilk
+  - Target1PosCamMilk
+  - SpawnMilk
+  - MilkLimitError
+  - MilkLimitEnough
   layers:
   - Default
   - TransparentFX

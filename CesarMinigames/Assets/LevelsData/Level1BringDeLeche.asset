@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
   m_Name: Level1BringDeLeche
   m_EditorClassIdentifier: 
-  LevelChallange: "\xA1Falta la leche!"
-  duration: 5
+  LevelChallange: "\xA1No derroches la leche!"
+  duration: 15
   SceneName: Level1BringDeLeche
+  levelSong: {fileID: 0}
