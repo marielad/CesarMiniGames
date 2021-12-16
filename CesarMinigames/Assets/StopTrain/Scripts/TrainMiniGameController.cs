@@ -71,9 +71,13 @@ public class TrainMiniGameController : MonoBehaviour
     void HeroDeadEffects()
     {
         GameController.onTimesUp -= HeroDeadEffects;
-        hero.constraints = RigidbodyConstraints2D.None;
-        hero.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
-        LeanTween.scale(hero.gameObject, Vector3.zero, 1.5f);
+        if (hero != null)
+        {
+            hero.constraints = RigidbodyConstraints2D.None;
+            hero.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
+            LeanTween.scale(hero.gameObject, Vector3.zero, 1.5f);
+        }
+
     }
 
     void HeroWins()

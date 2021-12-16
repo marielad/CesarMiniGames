@@ -731,9 +731,9 @@ MonoBehaviour:
   avaliableLifes: 3
   nEasyLevels: 3
   miniGamesList:
-  - {fileID: 11400000, guid: 29da09112f4b5c24690fd6e4200e3258, type: 2}
+  - {fileID: 11400000, guid: c41182bf95ad32a4f8a3ae85cf570236, type: 2}
   miniGamesListHard:
-  - {fileID: 11400000, guid: 29da09112f4b5c24690fd6e4200e3258, type: 2}
+  - {fileID: 11400000, guid: 025094580b04d674bb8219a33a28b6d1, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771
@@ -2464,11 +2464,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IntroLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5361674359197042641, guid: a67490cb8ded0e14da66f0e41e5b0e3b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5361674359197042645, guid: a67490cb8ded0e14da66f0e41e5b0e3b,
         type: 3}
