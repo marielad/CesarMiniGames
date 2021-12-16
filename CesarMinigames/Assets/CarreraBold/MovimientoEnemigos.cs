@@ -35,13 +35,13 @@ public class MovimientoEnemigos : MonoBehaviour
             {
                 
                 transform.position = transform.position + new Vector3(empuje * speed * Time.deltaTime, 0, 0);
-                rg.gameObject.transform.Rotate(0, 180, 0);
+                transform.Rotate(0, 180, 0);
                 //transform.position = transform.position.x * speed * Time.deltaTime;
                 timer = temporizador;
             }
             else
             {
-                rg.gameObject.transform.Rotate(0, 0, 0);
+                transform.Rotate(0, 0, 0);
 
 
             }
