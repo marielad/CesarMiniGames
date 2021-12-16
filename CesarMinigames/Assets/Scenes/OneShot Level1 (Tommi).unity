@@ -1085,6 +1085,7 @@ MonoBehaviour:
   missRightBar: {fileID: 457123911}
   makeBar: {fileID: 1707855854}
   startgame: 0
+  shootingscript: {fileID: 187360172}
 --- !u!114 &187360172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,6 +1108,8 @@ MonoBehaviour:
   stopClock: 0
   rim: {fileID: 1613655338}
   rimAnim: {fileID: 1981925251}
+  lives: 2
+  secondchance: 0
 --- !u!212 &187360173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5108,7 +5111,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: '20
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ae1fb60f2414446489fea02e5bcf69ff, type: 2}
   m_sharedMaterial: {fileID: 4299283491201702561, guid: ae1fb60f2414446489fea02e5bcf69ff,

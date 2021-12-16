@@ -9263,6 +9263,8 @@ MonoBehaviour:
   stopClock: 0
   rim: {fileID: 388952195}
   rimAnim: {fileID: 259732395}
+  lives: 2
+  secondchance: 0
 --- !u!50 &2003665872
 Rigidbody2D:
   serializedVersion: 4
@@ -9349,6 +9351,7 @@ MonoBehaviour:
   missRightBar: {fileID: 2101293450}
   makeBar: {fileID: 1955444750}
   startgame: 0
+  shootingscript: {fileID: 2003665871}
 --- !u!61 &2003665875
 BoxCollider2D:
   m_ObjectHideFlags: 0

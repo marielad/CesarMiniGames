@@ -19,6 +19,8 @@ public class PlayerBar : MonoBehaviour
 
     public bool startgame = false;
 
+    public ShotScript shootingscript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +90,7 @@ public class PlayerBar : MonoBehaviour
         missRightBar.SetActive(true);
         makeBar.SetActive(true);
         speed = 0;
+        StartCoroutine("CheckSecondChance");
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -111,5 +114,21 @@ public class PlayerBar : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         startgame = true;
+    }
+
+    public IEnumerator CheckSecondChance()
+    {
+        yield return new WaitForSeconds(2);
+
+        missLeftBar.SetActive(false);
+        missRightBar.SetActive(false);
+        makeBar.SetActive(false);
+
+        yield return new WaitForSeconds(2);
+
+        if (shootingscript.secondchance == true)
+        {
+            speed = 800;
+        }
     }
 }

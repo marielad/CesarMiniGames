@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level2OneShot
   m_EditorClassIdentifier: 
   LevelChallange: Don't miss!
-  duration: 10
+  duration: 20
   SceneName: OneShot Level 2 (Tommi)
   levelSong: {fileID: 0}

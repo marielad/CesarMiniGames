@@ -18,6 +18,9 @@ public class ShotScript : MonoBehaviour
     public GameObject rim;
     public GameObject rimAnim;
 
+    public int lives = 2;
+    public bool secondchance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +40,19 @@ public class ShotScript : MonoBehaviour
             ballLeft.SetActive(true);
             Debug.Log("missed left");
             stopClock = true;
-
+            lives -= 1;
             StartCoroutine("ActivateParticlesLeft");
-            StartCoroutine("Lose");
+            if (lives > 0)
+            {
+                secondchance = true;
+            }
+
+            if (lives == 0)
+            {
+                StartCoroutine("Lose");
+                secondchance = false;
+            }
+            
 
         }
         if (collision.gameObject.CompareTag("BallMissRight"))
@@ -47,16 +60,24 @@ public class ShotScript : MonoBehaviour
             ballRight.SetActive(true);
             Debug.Log("missed right");
             stopClock = true;
-
+            lives -= 1;
             StartCoroutine("ActivateParticlesRight");
-            StartCoroutine("Lose");
+            if (lives > 0)
+            {
+                secondchance = true;
+            }
+            if (lives == 0)
+            {
+                StartCoroutine("Lose");
+                secondchance = false;
+            }
         }
         if (collision.gameObject.CompareTag("BallGoIn"))
         {
             ballIn.SetActive(true);
             Debug.Log("made shot");
             stopClock = true;
-
+            secondchance = false;
             rim.SetActive(false);
             rimAnim.SetActive(true);
 
@@ -70,6 +91,12 @@ public class ShotScript : MonoBehaviour
         yield return new WaitForSeconds(.9f);
 
         particlesLeft.SetActive(true);
+
+        yield return new WaitForSeconds(4);
+
+        particlesLeft.SetActive(false);
+
+        ballLeft.SetActive(false);
     }
 
     public IEnumerator ActivateParticlesRight()
@@ -77,6 +104,12 @@ public class ShotScript : MonoBehaviour
         yield return new WaitForSeconds(.9f);
 
         particlesRight.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+        particlesRight.SetActive(false);
+
+        ballRight.SetActive(false);
     }
 
     public IEnumerator ActivateParticlesIn()
@@ -86,6 +119,10 @@ public class ShotScript : MonoBehaviour
         particlesIn.SetActive(true);
 
         startAnimation = true;
+
+        yield return new WaitForSeconds(3);
+
+        particlesIn.SetActive(false);
     }
 
     public IEnumerator Win()
