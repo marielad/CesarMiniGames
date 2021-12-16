@@ -39,6 +39,7 @@ public class ShotScript : MonoBehaviour
             stopClock = true;
 
             StartCoroutine("ActivateParticlesLeft");
+            StartCoroutine("Lose");
 
         }
         if (collision.gameObject.CompareTag("BallMissRight"))
@@ -48,6 +49,7 @@ public class ShotScript : MonoBehaviour
             stopClock = true;
 
             StartCoroutine("ActivateParticlesRight");
+            StartCoroutine("Lose");
         }
         if (collision.gameObject.CompareTag("BallGoIn"))
         {
@@ -59,6 +61,7 @@ public class ShotScript : MonoBehaviour
             rimAnim.SetActive(true);
 
             StartCoroutine("ActivateParticlesIn");
+            StartCoroutine("Win");
         }
     }
 
@@ -83,6 +86,20 @@ public class ShotScript : MonoBehaviour
         particlesIn.SetActive(true);
 
         startAnimation = true;
+    }
+
+    public IEnumerator Win()
+    {
+        yield return new WaitForSeconds(3.5f);
+
+        StartCoroutine(GameController.instance.MiniGameSuceeded());
+    }
+
+    public IEnumerator Lose()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        StartCoroutine(GameController.instance.FailMiniGame());
     }
 }
 
