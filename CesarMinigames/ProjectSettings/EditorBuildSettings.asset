@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OneShot Level1 (Tommi).unity
     guid: 68db2fc658473ee4c85a93983dfc98ce
+  - enabled: 1
+    path: Assets/Scenes/OneShot Level 2 (Tommi).unity
+    guid: 349ca5a5880ff474aa591ce4db965171
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6e037d81e9f81b84e9baf2c8928e7607,
       type: 2}

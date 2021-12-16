@@ -1084,6 +1084,7 @@ MonoBehaviour:
   missLeftBar: {fileID: 1134945895}
   missRightBar: {fileID: 457123911}
   makeBar: {fileID: 1707855854}
+  startgame: 0
 --- !u!114 &187360172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1366,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1220565, y: -0.0064019114}
+  m_Offset: {x: -11.55787, y: -0.0064018965}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1376,7 +1377,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.3871365, y: 1.0128038}
+  m_Size: {x: 32.746986, y: 1.0128038}
   m_EdgeRadius: 0
 --- !u!50 &236726759
 Rigidbody2D:
@@ -1552,7 +1553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.63, y: -168.13}
+  m_AnchoredPosition: {x: -152.4, y: -168.13}
   m_SizeDelta: {x: 4.2, y: 44.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246315253
@@ -3001,7 +3002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170.3, y: -117.3}
+  m_AnchoredPosition: {x: -179.8, y: -117.3}
   m_SizeDelta: {x: 9.35, y: 29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &627483603
@@ -3706,7 +3707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170.85, y: -116.2}
+  m_AnchoredPosition: {x: 179.5, y: -116.2}
   m_SizeDelta: {x: 9.5, y: 25.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &760578517
@@ -3966,7 +3967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143.7, y: -105.6}
+  m_AnchoredPosition: {x: 152.5, y: -105.6}
   m_SizeDelta: {x: 5.1, y: 44.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830225784
@@ -4917,7 +4918,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.93147063, y: -0.0064018965}
+  m_Offset: {x: 13.202366, y: -0.0064018965}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4928,7 +4929,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.768309, y: 1.0128038}
+  m_Size: {x: 32.310097, y: 1.0128038}
   m_EdgeRadius: 0
 --- !u!50 &1049029251
 Rigidbody2D:
@@ -5200,6 +5201,7 @@ MonoBehaviour:
   timerFloat: 10
   timerText: {fileID: 1112512352}
   script: {fileID: 187360172}
+  starttimer: 0
 --- !u!1 &1118528779
 GameObject:
   m_ObjectHideFlags: 0
@@ -5801,7 +5803,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -136.86}
-  m_SizeDelta: {x: 350, y: 67.07}
+  m_SizeDelta: {x: 369.31, y: 67.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196744535
 MonoBehaviour:
@@ -6493,7 +6495,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.2, y: -105.27}
+  m_AnchoredPosition: {x: -152.5, y: -105.27}
   m_SizeDelta: {x: 5.1, y: 44.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346444652
@@ -8654,7 +8656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170.25, y: -155.2}
+  m_AnchoredPosition: {x: -179.8, y: -155.2}
   m_SizeDelta: {x: 9.71, y: 30.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939922503
@@ -8730,7 +8732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170.7, y: -155.6}
+  m_AnchoredPosition: {x: 179.5, y: -155.6}
   m_SizeDelta: {x: 9.35, y: 29.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954275818
@@ -8806,7 +8808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143.8, y: -168.1}
+  m_AnchoredPosition: {x: 152.4, y: -168.1}
   m_SizeDelta: {x: 4.8, y: 44.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965141384

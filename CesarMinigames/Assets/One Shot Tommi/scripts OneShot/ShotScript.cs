@@ -13,7 +13,7 @@ public class ShotScript : MonoBehaviour
     public GameObject particlesIn;
 
     public bool startAnimation = false;
-    public bool stopClock;
+    public bool stopClock = false;
 
     public GameObject rim;
     public GameObject rimAnim;

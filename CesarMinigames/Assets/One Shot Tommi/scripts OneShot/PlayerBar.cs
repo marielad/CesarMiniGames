@@ -16,41 +16,49 @@ public class PlayerBar : MonoBehaviour
     public GameObject makeBar;
 
     private SpriteRenderer spriteRenderer;
+
+    public bool startgame = false;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        StartCoroutine("StartGame");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (switc)
+        if (startgame == true)
         {
-            moveBarRight();
+            if (switc)
+            {
+                moveBarRight();
 
+            }
+            if (!switc)
+            {
+                moveBarLeft();
+            }
+            if (transform.position.x >= 645f)
+            {
+                //switc = false;
+                //spriteRenderer.flipX = true;
+            }
+            if (transform.position.x <= 275f)
+            {
+                //switc = true;
+                //spriteRenderer.flipX = true;
+            }
+            /*if (Input.GetKeyDown(KeyCode.Space))
+            {
+                missLeftBar.SetActive(true);
+                missRightBar.SetActive(true);
+                makeBar.SetActive(true);
+                speed = 0;
+            }*/
         }
-        if (!switc)
-        {
-            moveBarLeft();
-        }
-        if (transform.position.x >= 645f)
-        {
-            //switc = false;
-            //spriteRenderer.flipX = true;
-        }
-        if (transform.position.x <= 275f)
-        {
-            //switc = true;
-            //spriteRenderer.flipX = true;
-        }
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            missLeftBar.SetActive(true);
-            missRightBar.SetActive(true);
-            makeBar.SetActive(true);
-            speed = 0;
-        }*/
+
     }
 
     void moveBarRight()
@@ -95,5 +103,13 @@ public class PlayerBar : MonoBehaviour
             spriteRenderer.flipX = true;
             Debug.Log("rightborder");
         }
+    }
+
+    public IEnumerator StartGame()
+    {
+
+        yield return new WaitForSeconds(2);
+
+        startgame = true;
     }
 }

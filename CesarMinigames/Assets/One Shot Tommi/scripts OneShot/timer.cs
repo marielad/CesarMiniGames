@@ -11,24 +11,40 @@ public class timer : MonoBehaviour
 
     public ShotScript script;
 
+
+    public bool starttimer = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine("StartCounter");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (script.stopClock == false)
+        if (starttimer == true)
         {
-            timerFloat -= Time.deltaTime;
-            timerText.text = timerFloat.ToString("00");
-        }
-        else
-        {
+            if (script.stopClock == false)
+            {
+                timerFloat -= Time.deltaTime;
+                timerText.text = timerFloat.ToString("00");
+            }
+            else
+            {
+
+            }
 
         }
+        
        
+    }
+
+    public IEnumerator StartCounter()
+    {
+
+        yield return new WaitForSeconds(2);
+
+        starttimer = true;
     }
 }
