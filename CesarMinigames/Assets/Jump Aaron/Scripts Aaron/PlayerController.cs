@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         jump = new Vector2(0.0f, 2.0f);
         isGrounded = true;
 
-        timeValue = 15f; //Hacer un isPlaying para que el Update se haga una sola vez
+        timeValue = 15f; 
     }
 
     void Update()
