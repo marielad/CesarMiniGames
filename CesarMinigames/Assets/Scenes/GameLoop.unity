@@ -725,14 +725,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac66078974db71142b6ad9d6c513e560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMusic: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
   remainingTimeInLevel: 5
   currentLifes: 3
   avaliableLifes: 3
   nEasyLevels: 3
   miniGamesList:
-  - {fileID: 11400000, guid: 111c32f70e44bec49a1f8ef3bdc56ac8, type: 2}
+  - {fileID: 11400000, guid: 32d2e0eb84ac2b54ebfa83360ad62d8f, type: 2}
+  - {fileID: 11400000, guid: 32d2e0eb84ac2b54ebfa83360ad62d8f, type: 2}
   miniGamesListHard:
-  - {fileID: 11400000, guid: 111c32f70e44bec49a1f8ef3bdc56ac8, type: 2}
+  - {fileID: 11400000, guid: e213544b1c27a8d44bc76cbc91a9019b, type: 2}
+  - {fileID: 11400000, guid: e213544b1c27a8d44bc76cbc91a9019b, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771
@@ -1376,8 +1379,8 @@ RectTransform:
   m_Children:
   - {fileID: 960448680}
   - {fileID: 365380165}
-  - {fileID: 1043263235}
   - {fileID: 1360319513}
+  - {fileID: 1043263235}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1698,7 +1701,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 902714312}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1756,7 +1759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.53333336}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.84313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1813,7 +1816,7 @@ RectTransform:
   - {fileID: 1109312633}
   - {fileID: 1567072193}
   m_Father: {fileID: 902714312}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1835,6 +1838,7 @@ MonoBehaviour:
   timeShowed: 0
   durationShowed: 1
   crossIcon: {fileID: 1567072192}
+  _cameraShake: {x: 40, y: 40}
 --- !u!1 &1396480033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,6 +2271,7 @@ GameObject:
   - component: {fileID: 1727468166}
   - component: {fileID: 1727468165}
   - component: {fileID: 1727468167}
+  - component: {fileID: 1727468168}
   m_Layer: 0
   m_Name: MusicSource
   m_TagString: Untagged
@@ -2284,7 +2289,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2397,6 +2402,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4c24b1505ce374c836a1989528cd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1727468168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727468164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780eac89349ddaa46ae28c8a8f3ae8e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSource: {fileID: 0}
+  newSong: {fileID: 0}
+  changingSong: 0
+  speedVolume: 0.99
 --- !u!1 &1890683691
 GameObject:
   m_ObjectHideFlags: 0

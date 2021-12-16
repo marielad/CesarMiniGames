@@ -14,7 +14,6 @@ public class JumpPlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.sortingLayerID = 1;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,7 +29,7 @@ public class JumpPlayerControl : MonoBehaviour
         if (delay >= 0.25)
         {
             rb.AddForce(jump * jumpforce, ForceMode2D.Impulse);
-            delay = 0;
+            delay = 0f;
             StartCoroutine("CambiarASalto");
         }
     }

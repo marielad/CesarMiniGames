@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isMoving;
 
     //Dificultad
-    public float speed = 2f;
+    public float speed;
     public float levelFactor = 1f;
     public float timeInLevel = 0;
 
@@ -45,7 +45,7 @@ public class EnemyBehaviour : MonoBehaviour
                 reverse = true;
                 isMoving = false;
                 enemigos[enemyIndex].transform.Rotate(180, 0, 180);
-                Debug.Log("Enemigo >" + enemyIndex + " va hacia atras");
+                //Debug.Log("Enemigo >" + enemyIndex + " va hacia atras"); xxxxxxx
             }
         }
 
@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour
                 (enemigos[enemyIndex].transform.position.x >= originPosition && targetDirection == -1))
             {
                 reverse = false;
-                Debug.Log("Enemigo >" + enemyIndex + " se para");
+                //Debug.Log("Enemigo >" + enemyIndex + " se para"); xxxxxxxx
                 enemigos[enemyIndex].transform.Rotate(0, 0, 0);
                 enemigos[enemyIndex].transform.Rotate(180, 0, 180);
             }
@@ -76,7 +76,23 @@ public class EnemyBehaviour : MonoBehaviour
         targetDirection = originPosition < 0 ? 1 : -1;
         isMoving = true;
         //enemigos[enemyIndex].transform.Rotate(180, 0, 180);
-        Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");
+        //Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");    xxxxxxxxx
+        //CheckPosition();
+        /*if(enemigos[enemyIndex] = 6 || 7)
+        {
+            Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
+            rb.MovePosition(rb.position + new Vector2(targetDirection, 0) * (speed *2) * Time.fixedDeltaTime);
+        }*/
     }
+
+    /*public void CheckPosition()
+    {
+        if ((enemigos[enemyIndex].transform.position != originPosition))
+        {
+            enemigos[enemyIndex].transform.position = originPosition;
+            Debug.Log("Se ha corregido la posición de un enemigo");
+        }
+        
+    }*/
 }
 

@@ -135,9 +135,7 @@ GameObject:
   - component: {fileID: 15256892}
   - component: {fileID: 15256891}
   - component: {fileID: 15256890}
-  - component: {fileID: 15256889}
   - component: {fileID: 15256888}
-  - component: {fileID: 15256887}
   m_Layer: 5
   m_Name: jugador4
   m_TagString: Untagged
@@ -165,53 +163,6 @@ RectTransform:
   m_AnchoredPosition: {x: -811, y: -116}
   m_SizeDelta: {x: 2.48, y: 3.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &15256887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15256885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2ec8c79b899fe414facac572b4187a37,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 15256888}
-        m_TargetAssemblyTypeName: MovimientoEnemigos, Assembly-CSharp
-        m_MethodName: PressedButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
-    m_ActionName: Control/Button[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Control
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &15256888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,26 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bc5c1d3f785e74b8762c678fa0e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &15256889
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15256885}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61d604f388fb2a941b878facdd1104ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  temporizador: 0.1
+  correr: 0
+  speed: 30
+  empuje: 4.8
 --- !u!65 &15256890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -506,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cebfbdaf5599af46a33b16737f12e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0.9
+  jumpForce: 0.7
 --- !u!1 &161193673
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,9 +614,7 @@ GameObject:
   - component: {fileID: 252441063}
   - component: {fileID: 252441062}
   - component: {fileID: 252441061}
-  - component: {fileID: 252441064}
   - component: {fileID: 252441066}
-  - component: {fileID: 252441065}
   m_Layer: 5
   m_Name: jugador2
   m_TagString: Untagged
@@ -790,73 +723,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &252441064
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252441057}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 55df009842daf214ebd2864cc70367e3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &252441065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252441057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2ec8c79b899fe414facac572b4187a37,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 252441066}
-        m_TargetAssemblyTypeName: MovimientoEnemigos, Assembly-CSharp
-        m_MethodName: PressedButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
-    m_ActionName: Control/Button[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Control
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &252441066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +735,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bc5c1d3f785e74b8762c678fa0e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temporizador: 0.1
+  correr: 0
+  speed: 30
+  empuje: 6
 --- !u!1 &470491021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,9 +1289,7 @@ GameObject:
   - component: {fileID: 1340675500}
   - component: {fileID: 1340675499}
   - component: {fileID: 1340675498}
-  - component: {fileID: 1340675497}
   - component: {fileID: 1340675496}
-  - component: {fileID: 1340675495}
   m_Layer: 5
   m_Name: jugador3
   m_TagString: Untagged
@@ -1449,53 +1317,6 @@ RectTransform:
   m_AnchoredPosition: {x: -808.52, y: 286}
   m_SizeDelta: {x: 2.48, y: 3.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1340675495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340675493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2ec8c79b899fe414facac572b4187a37,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1340675496}
-        m_TargetAssemblyTypeName: MovimientoEnemigos, Assembly-CSharp
-        m_MethodName: PressedButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
-    m_ActionName: Control/Button[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Control
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1340675496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1508,26 +1329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bc5c1d3f785e74b8762c678fa0e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1340675497
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340675493}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 23d13d1b8e22f2c4dbfed25cee704642, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  temporizador: 0.1
+  correr: 0
+  speed: 30
+  empuje: 5
 --- !u!65 &1340675498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1555,7 +1360,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 100
   m_CollisionDetection: 0
 --- !u!212 &1340675500
 SpriteRenderer:
@@ -1621,9 +1426,7 @@ GameObject:
   - component: {fileID: 1701365892}
   - component: {fileID: 1701365891}
   - component: {fileID: 1701365890}
-  - component: {fileID: 1701365889}
   - component: {fileID: 1701365888}
-  - component: {fileID: 1701365887}
   m_Layer: 5
   m_Name: jugador5
   m_TagString: Untagged
@@ -1651,53 +1454,6 @@ RectTransform:
   m_AnchoredPosition: {x: -808.52, y: -244}
   m_SizeDelta: {x: 2.48, y: 3.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1701365887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701365885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2ec8c79b899fe414facac572b4187a37,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1701365888}
-        m_TargetAssemblyTypeName: MovimientoEnemigos, Assembly-CSharp
-        m_MethodName: PressedButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
-    m_ActionName: Control/Button[/Keyboard/space]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Control
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1701365888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1710,26 +1466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bc5c1d3f785e74b8762c678fa0e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1701365889
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701365885}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: afd326ee93c6cc0419245b7f80c9da86, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  temporizador: 0.1
+  correr: 0
+  speed: 30
+  empuje: 5.2
 --- !u!65 &1701365890
 BoxCollider:
   m_ObjectHideFlags: 0

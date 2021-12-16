@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         jumpDirection = new Vector3(1, 1, 0);
         jumping = false;
         timeJumping = 0f;
-        timeJumpingLimit = 1f;
+        timeJumpingLimit = 0.7f;
     }
 
     // Update is called once per frame
@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
             
         }
+        if (collision.gameObject.CompareTag("Fuego"))
+        {
+            GameController.instance.FailMiniGame();
+        }
     }
     public void OnCollisionExit2D(Collision2D collision)
     {
@@ -62,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             
             Debug.Log("Jumping....");
             rigidbody.AddForce(Vector3.up * jumpForce);
-            rigidbody.AddForce(Vector3.right * jumpForce/4);
+            rigidbody.AddForce(Vector3.right * jumpForce/3);
             //isGrounded = false;
 
     }

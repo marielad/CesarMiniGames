@@ -10,7 +10,7 @@ public class BreakItAll : MonoBehaviour
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
-        if (callback.performed && GameController.instance.isPlaying)
+        if ((callback.performed && callback.duration != 0.0f)&& GameController.instance.isPlaying)
         {
             cube.SetActive(false);
             cube1.SetActive(true);
@@ -21,6 +21,7 @@ public class BreakItAll : MonoBehaviour
             cube2.GetComponent<Rigidbody>().AddForce(Vector3.up * 10f, ForceMode.Impulse);
             cube3.GetComponent<Rigidbody>().AddForce(Vector3.up * 10f, ForceMode.Impulse);
             cube4.GetComponent<Rigidbody>().AddForce(Vector3.up * 10f, ForceMode.Impulse);
+            Debug.Log("Tiempo presionado " + callback.duration);
 
             StartCoroutine(GameController.instance.MiniGameSuceeded());
         }

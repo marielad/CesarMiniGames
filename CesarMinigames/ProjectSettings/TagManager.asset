@@ -7,6 +7,7 @@ TagManager:
   - Enemigos
   - Obstaculo
   - Suelo
+  - Fuego
   layers:
   - Default
   - TransparentFX
