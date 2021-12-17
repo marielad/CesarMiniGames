@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemigos"))
+        if (collision.gameObject.CompareTag("Enemigos") && GameController.instance.isPlaying)
         {
             Debug.Log("Choque con un enemigo");
             StartCoroutine(GameController.instance.FailMiniGame()); //Función de derrota
