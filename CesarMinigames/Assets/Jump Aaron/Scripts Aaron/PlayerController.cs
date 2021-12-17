@@ -14,28 +14,19 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public Rigidbody2D rb;
 
-    public TextMeshProUGUI timer;
-    public float timeValue = 0f;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         jump = new Vector2(0.0f, 2.0f);
         isGrounded = true;
 
-        timeValue = 15f; 
     }
 
     void Update()
     {
-        
-        timeValue -= Time.deltaTime;
-        timer.text = "" + timeValue.ToString("F0");
-
-
-        if (timeValue <= 0f)
+        if (GameController.instance.remainingTimeInLevel <= 0.2f)
         {
-            timeValue = 0;
+            StartCoroutine(GameController.instance.MiniGameSuceeded());
         }
         
     }
@@ -51,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerJump()//(InputAction.CallbackContext callback)
     {
-        //if(isGrounded)
+        if(GameController.instance.isPlaying)
         {
             Debug.Log("Salto");
             rb.AddForce(Vector2.up * jumpForce);

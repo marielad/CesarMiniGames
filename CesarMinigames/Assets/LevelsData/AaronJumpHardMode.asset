@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
-  m_Name: AaronJumpEasy
+  m_Name: AaronJumpHardMode
   m_EditorClassIdentifier: 
-  LevelChallange: "\xA1Sobrevive!"
-  duration: 10
-  SceneName: Jump Aaron Easy
+  LevelChallange: "\xA1SOBREVIVE!"
+  duration: 15
+  SceneName: Jump Aaron Hard Mode
   levelSong: {fileID: 0}
