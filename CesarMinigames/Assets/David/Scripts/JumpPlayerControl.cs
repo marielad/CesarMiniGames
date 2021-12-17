@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class JumpPlayerControl : MonoBehaviour
 {
@@ -11,9 +12,15 @@ public class JumpPlayerControl : MonoBehaviour
     public Sprite spriteReposo;
     public Sprite spriteSalto;
     public SpriteRenderer spriteRenderer;
+    public ParticleSystem tierra;
+
+    AudioSource sonidos;
+    public AudioClip salto, choque, caida;
+
     // Start is called before the first frame update
     void Start()
     {
+        sonidos = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -23,15 +30,19 @@ public class JumpPlayerControl : MonoBehaviour
         delay += Time.deltaTime;
     }
 
-    public void Jump()
+    public void Jump(InputAction.CallbackContext callback)
     {
         Vector2 jump = new Vector2(0.0f, jumpforce);
-        if (delay >= 0.25)
+        if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
-            rb.AddForce(jump * jumpforce, ForceMode2D.Impulse);
-            delay = 0f;
-            StartCoroutine("CambiarASalto");
-        }
+            sonidos.PlayOneShot(salto);
+            if (delay >= 0.2)
+            {
+                rb.AddForce(jump * jumpforce, ForceMode2D.Impulse);
+                delay = 0f;
+                StartCoroutine("CambiarASalto");
+            }
+         }
     }
 
     IEnumerator CambiarASalto()
@@ -39,5 +50,17 @@ public class JumpPlayerControl : MonoBehaviour
         spriteRenderer.sprite = spriteSalto;
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.sprite = spriteReposo;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Suelo"))
+        {
+            sonidos.PlayOneShot(caida);
+            tierra.Play();
+        }
+        if (collision.gameObject.CompareTag("Obstaculo"))
+        {
+            sonidos.PlayOneShot(choque);
+        }
     }
 }
