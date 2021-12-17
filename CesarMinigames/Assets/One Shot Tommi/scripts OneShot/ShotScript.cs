@@ -21,6 +21,9 @@ public class ShotScript : MonoBehaviour
     public int lives = 2;
     public bool secondchance;
 
+    public AudioSource rimSound;
+    public AudioSource netSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +94,7 @@ public class ShotScript : MonoBehaviour
         yield return new WaitForSeconds(.9f);
 
         particlesLeft.SetActive(true);
+        rimSound.Play();
 
         yield return new WaitForSeconds(4);
 
@@ -102,6 +106,7 @@ public class ShotScript : MonoBehaviour
     public IEnumerator ActivateParticlesRight()
     {
         yield return new WaitForSeconds(.9f);
+        rimSound.Play();
 
         particlesRight.SetActive(true);
 
@@ -117,6 +122,8 @@ public class ShotScript : MonoBehaviour
         yield return new WaitForSeconds(1.05f);
 
         particlesIn.SetActive(true);
+
+        netSound.Play();
 
         startAnimation = true;
 

@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLoop.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/StopTrain/Scene/StopTrainGame.unity
+    guid: e34280f8ce9f6f74c927fb015edc8ae6
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 66032e8074e22734c8f39b502a7ea9c9
   - enabled: 1
     path: Assets/Scenes/CarreraBold.unity
     guid: 457d5ae776bcd524094c1adbb5cbf075
+  - enabled: 1
+    path: Assets/Scenes/PushTheRopeHard.unity
+    guid: a12416e765467c8489da18a53127d836
   - enabled: 1
     path: Assets/Scenes/Level2Hard.unity
     guid: 444a147605a21154786ab10484e6c89e
@@ -21,11 +27,44 @@ EditorBuildSettings:
     path: Assets/Scenes/OneShot Level1 (Tommi).unity
     guid: 68db2fc658473ee4c85a93983dfc98ce
   - enabled: 1
+    path: Assets/Scenes/DavidJump!Level1.unity
+    guid: e0e1f4946778f194c893c6c23e3196e9
+  - enabled: 1
+    path: Assets/Scenes/GimnasioEspacio.unity
+    guid: becda719c0dc0ad4c8a9600a22db62b4
+  - enabled: 1
+    path: Assets/Scenes/GimnasioEspacioHard.unity
+    guid: ea3dec900abbba64e849213c96752d6d
+  - enabled: 1
+    path: Assets/Scenes/Globo Infinito.unity
+    guid: 66f5efc69ddb42447a77db1390f9916f
+  - enabled: 1
+    path: Assets/Scenes/Jump Aaron Hard Mode.unity
+    guid: a545cbdaa2e7c324e82a2892e73f5e91
+  - enabled: 1
+    path: Assets/Scenes/Jump Aaron.unity
+    guid: d6fc849914f1480468d86ce865233b2c
+  - enabled: 1
+    path: Assets/Scenes/Level1BringDeLeche.unity
+    guid: b6ab672c336e0fc49994e73ffee865df
+  - enabled: 1
+    path: "Assets/Scenes/Pi\xF1ataL1Morelia.unity"
+    guid: d16418fb85147c540b22a62e76992240
+  - enabled: 1
+    path: "Assets/Scenes/Pi\xF1ataL2Morelia.unity"
+    guid: bb669ec67f3a71e4eb6fac59a85353b4
+  - enabled: 1
+    path: Assets/Scenes/SimonSmash2.unity
+    guid: c77c315c21640d743b961899c75f9272
+  - enabled: 1
     path: Assets/Scenes/OneShot Level 2 (Tommi).unity
     guid: 349ca5a5880ff474aa591ce4db965171
   - enabled: 1
     path: "Assets/Scenes/DinoSaltar\xEDnDificil.unity"
     guid: c22fb271a98257b4c9909e48ec20780b
+  - enabled: 1
+    path: Assets/Scenes/PushTheRopeEasy.unity
+    guid: 962561bb23f1b7646bf8b3f191d58c90
   - enabled: 1
     path: "Assets/Scenes/DinoSaltar\xEDnFacil.unity"
     guid: 17fb988c7923ecc47aefcba28c88f31c

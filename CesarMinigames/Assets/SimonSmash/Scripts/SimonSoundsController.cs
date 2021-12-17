@@ -15,7 +15,7 @@ public class SimonSoundsController : MonoBehaviour
 
     public AudioSource m_Background;
 
-    public float m_StereoPan;
+    private float m_StereoPan;
 
     public void PlayBackground()
     {
@@ -24,18 +24,16 @@ public class SimonSoundsController : MonoBehaviour
 
     public void PlayRandomExplosion(int BulbPosition)
     {
-
-        if(BulbPosition == -3)
+        //En el SimonGameController, la funcion "CheckWhereIsBulb()" detecta donde se encuentra la bombilla que corresponde romper, y segun si esta mas a la izquierda, centrada, o mas a la dercha
+        //devuelve un numero entre -2 y 2, siendo menos -2 las pos mas a la izquierda y 2 las mas a la derecha, para asi poder cambiar el stereo pan del audio source para que suene mas por el respectivo lado
+        
+        if (BulbPosition == -2)
         {
             m_StereoPan = -1f;
         }
-        else if(BulbPosition == -2)
+        else if(BulbPosition == -1)
         {
-            m_StereoPan = -0.66f;
-        }
-        else if (BulbPosition == -1)
-        {
-            m_StereoPan = -0.33f;
+            m_StereoPan = -0.5f;
         }
         else if (BulbPosition == 0)
         {
@@ -43,16 +41,13 @@ public class SimonSoundsController : MonoBehaviour
         }
         else if (BulbPosition == 1)
         {
-            m_StereoPan = 0.33f;
+            m_StereoPan = 0.5f;
         }
         else if (BulbPosition == 2)
         {
-            m_StereoPan = 0.66f;
-        }
-        else if (BulbPosition == 3)
-        {
             m_StereoPan = 1f;
         }
+ 
 
 
         int random = Random.Range(0, 4);

@@ -48,6 +48,12 @@ public class SimonGameController : MonoBehaviour
     [Header("Sounds")]
     public SimonSoundsController m_SoundController;
 
+    public float m_MaxXLeftPos;
+    public float m_MaxXRightPos;
+
+    private int m_BulbPos;
+
+
 
     public void Start()
     {
@@ -168,7 +174,9 @@ public class SimonGameController : MonoBehaviour
 
         m_PrincipalLight.intensity = m_LightIntensity;
 
+
         m_SoundController.PlayBackground();
+
 
         TurnOffExternalLights();
 
@@ -203,12 +211,14 @@ public class SimonGameController : MonoBehaviour
         m_BulbsObj.RemoveAt(m_RandomBulb);
 
         m_BulbsBrokenObj[m_RandomBulb].SetActive(true);
+        m_SoundController.PlayRandomExplosion(CheckWhereIsBulb());
         m_BulbsBrokenObj.RemoveAt(m_RandomBulb);
+
 
         m_LightBulbs[m_RandomBulb].color = Color.white;
         m_LightBulbs[m_RandomBulb].intensity = m_LightIntensity * 5f;
 
-        m_SoundController.PlayRandomExplosion(Random.Range(-3, 4));
+
 
         yield return new WaitForSeconds(m_BrokenFlashTime);
 
@@ -230,8 +240,10 @@ public class SimonGameController : MonoBehaviour
         m_PrincipalLight.color = Color.white;
         m_PrincipalLight.intensity = m_LightIntensity * 5f;
 
-        m_SoundController.PlayRandomExplosion(Random.Range(-3, 4));
+
+        m_SoundController.PlayRandomExplosion(0); //0 porque al ser la bombilla principal, queremos que el sonido este centrado
         m_SoundController.PlayGameOver();
+
 
         yield return new WaitForSeconds(m_BrokenFlashTime);
 
@@ -257,9 +269,11 @@ public class SimonGameController : MonoBehaviour
         TurnOnExternalLights();
 
 
-        yield return new WaitForSeconds(m_TimeToGameOver);
+        yield return new WaitForSeconds(m_TimeToGameOver/2f);
 
         //SceneManager.LoadScene(0);   Cuando pierdes partida
+
+        StartCoroutine(GameController.instance.FailMiniGame());
 
     }
 
@@ -271,9 +285,11 @@ public class SimonGameController : MonoBehaviour
 
             TurnOnExternalLights();
 
+            StartCoroutine(GameController.instance.MiniGameSuceeded()); //Cuando ganes partida
+
+
             yield return new WaitForSeconds(m_TimeToGameOver);
 
-            //StartCoroutine(GameController.instance.MiniGameSuceeded()); Cuando ganes partida
         }
         else
         {
@@ -306,6 +322,42 @@ public class SimonGameController : MonoBehaviour
         {
             light.SetActive(true);
         }
+    }
+
+
+    public int CheckWhereIsBulb() //Para poder cambiar el stereo pan cuando estalla una bombilla (suene mas por un lado segun en que lado este)
+    {
+        float moreToLeft = (m_MaxXLeftPos * 75f) / 100f;  //Pos del 75% desde el centro a la maxima pos izquierda
+        float moreToRight = (m_MaxXRightPos * 75f) / 100f; //Pos del 75% desde el centro a la maxima pos derecha
+
+        float moreToCenterLeft = (m_MaxXLeftPos * 25f) / 100f; //Pos del 25% desde el centro a la maxima pos izquierda
+        float moreToCenterRight = (m_MaxXRightPos * 25f) / 100f; //Pos del 75% desde el centro a la maxima pos derecha
+
+
+        if (m_BulbsBrokenObj[m_RandomBulb].transform.position.x <= moreToLeft) //Si esta mas  a la izquierda que el 75% desde el centro a la max pos izquierda, suena solo por la izquierda (pos -2 para "PlayRandomExplosion" de SimonSoundsController)
+        {
+            m_BulbPos = -2;  //Solo suena por la izquierda
+        }
+        else if (m_BulbsBrokenObj[m_RandomBulb].transform.position.x > moreToLeft && m_BulbsBrokenObj[m_RandomBulb].transform.position.x <= moreToCenterLeft) //Si esta entre la pos de la izq del 75% desde el centro y la pos de la izq del 25% desde el centro, suena mas hacia la izquierda (pos -1 para "PlayRandomExplosion" de SimonSoundsController)
+        {
+            m_BulbPos = -1;  //Suena mas hacia la izquierda
+        }
+        else if(m_BulbsBrokenObj[m_RandomBulb].transform.position.x > moreToCenterLeft && m_BulbsBrokenObj[m_RandomBulb].transform.position.x <= moreToCenterRight)
+        {
+            m_BulbPos = 0;   //Suena centrado
+        }
+        else if (m_BulbsBrokenObj[m_RandomBulb].transform.position.x > moreToCenterRight && m_BulbsBrokenObj[m_RandomBulb].transform.position.x < moreToRight)
+        {
+            m_BulbPos = 1;  //Suena mas hacia la derecha
+        }
+        else if (m_BulbsBrokenObj[m_RandomBulb].transform.position.x >= moreToRight)
+        {
+            m_BulbPos = 2;  //Solo suena por la derecha
+        }
+
+
+
+        return m_BulbPos;
     }
 
 }

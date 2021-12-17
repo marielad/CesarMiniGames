@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,16 +22,21 @@ public class Moving : MonoBehaviour
 
     float originPosition;
 
+    bool gameInitialized = false;
+    public GameObject pajaroPos;
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(1);
         SelectEnemy();
+        pajaroPos.transform.position = new Vector3(-7f, -3.5f, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        SelectEnemy();
         timeInLevel += Time.deltaTime;
 
         if(isMoving)
@@ -67,12 +72,17 @@ public class Moving : MonoBehaviour
 
     private void SelectEnemy()
     {
-        enemyIndex = Random.Range(0, enemigos.Length);
-        originPosition = enemigos[enemyIndex].transform.position.x;
-        targetDirection = originPosition < 0 ? 1 : -1;
-        isMoving = true;
+        if(GameController.instance.isPlaying && gameInitialized == false) // O yield return new WaitForSeconds(1); en el start
+        {
+            enemyIndex = Random.Range(0, enemigos.Length);
+            originPosition = enemigos[enemyIndex].transform.position.x;
+            targetDirection = originPosition < 0 ? 1 : -1;
+            isMoving = true;
 
-        Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");
+            Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");
+            gameInitialized = true;
+        }
+
     }
 
 
@@ -82,3 +92,4 @@ public class Moving : MonoBehaviour
         return speed * levelFactor + (speed * timeInLevel * 0.5f);
     }
 }
+*/

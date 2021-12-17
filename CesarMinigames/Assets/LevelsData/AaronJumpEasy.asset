@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: AaronJumpEasy
   m_EditorClassIdentifier: 
   LevelChallange: "\xA1Sobrevive!"
-  duration: 15
-  SceneName: Jump Aaron
+  duration: 10
+  SceneName: Jump Aaron Easy
+  levelSong: {fileID: 0}

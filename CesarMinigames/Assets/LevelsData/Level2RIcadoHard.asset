@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
   m_Name: Level2RIcadoHard
   m_EditorClassIdentifier: 
-  LevelChallange: Salta con todas tus fuerzas
-  duration: 3
-  SceneName: Level2Hard
+  LevelChallange: '"Gana la carrera"'
+  duration: 7
+  SceneName: CarreraBoldHard
+  levelSong: {fileID: 0}
