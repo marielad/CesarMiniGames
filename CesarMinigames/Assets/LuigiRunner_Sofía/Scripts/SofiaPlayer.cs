@@ -12,17 +12,29 @@ public class SofiaPlayer : MonoBehaviour
 
     public int vidas = 3;
 
+    public Animator animator;
+
+    public Vector2 startPos;
+
+    public Animator fondo;
+    public Animator plataformas;
+    public Animator obstaculos;
+    public Animator final;
+    public Animator suelo;
+
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
     }
+
 
     public void PressedButton(InputAction.CallbackContext callback)
     {
-        if (callback.performed)
+        if (callback.performed && GameController.instance.isPlaying)
         {
             rb2D.AddForce(Vector3.up * jump, ForceMode2D.Impulse);
-        }
+        }   
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -32,12 +44,14 @@ public class SofiaPlayer : MonoBehaviour
             Debug.Log("Choqué con un obstáculo");
             vidas -= 1;
             //Pos Inicial del personaje y del escenario 
+            Reset();
             GameOver();
         }
 
         if(collision.gameObject.CompareTag("Moneda"))
         {
             Debug.Log("Gané");
+            StartCoroutine(GameController.instance.MiniGameSuceeded());    
         }
     }
 
@@ -47,6 +61,19 @@ public class SofiaPlayer : MonoBehaviour
         {
             Debug.Log("Morí :'c");
             //GameOver
+            StartCoroutine(GameController.instance.FailMiniGame());
         }
+    }
+
+    // Resetea pos personaje 
+    public void Reset()
+    {
+        Debug.Log("Reseteo");
+        transform.position = startPos;
+        fondo.SetTrigger("Reset");
+        plataformas.SetTrigger("Reset");
+        obstaculos.SetTrigger("Reset");
+        final.SetTrigger("Reset");
+        suelo.SetTrigger("Reset");
     }
 }
