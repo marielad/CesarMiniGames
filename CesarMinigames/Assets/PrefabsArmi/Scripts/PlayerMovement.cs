@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -13,7 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public bool jumping;
     public float timeJumping;
     public float timeJumpingLimit;
-  
+    public AudioClip jumpSound, loseSound, winSound;
+    public AudioSource audioSource;
+    public ParticleSystem confettiParticle;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -21,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         jumping = false;
         timeJumping = 0f;
         timeJumpingLimit = 0.7f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (jumping)
         {
+            
             timeJumping += Time.deltaTime;
             Jump();
            
@@ -54,25 +60,32 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Suelo"))
         {
             isGrounded = false;
-
+            audioSource.PlayOneShot(jumpSound, 1f);
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fuego"))
         {
+            audioSource.PlayOneShot(loseSound, 1f);
             StartCoroutine(GameController.instance.FailMiniGame());
+            
         }
         if (collision.gameObject.CompareTag("Meta"))
         {
+            audioSource.PlayOneShot(winSound, 1f);
+            confettiParticle.Play();
             StartCoroutine(GameController.instance.MiniGameSuceeded());
+           
         }
+        
     }
 
     public void Jump() 
     {
-            
-            Debug.Log("Jumping....");
+        
+        Debug.Log("Jumping....");
             rigidbody.AddForce(Vector3.up * jumpForce);
             rigidbody.AddForce(Vector3.right * jumpForce/3);
             //isGrounded = false;
@@ -82,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
+            
             jumping = true;
             
         }
@@ -91,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             timeJumping = 0f;
         }
     }
+
+
    
-
-
 }
