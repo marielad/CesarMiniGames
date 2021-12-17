@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
   m_Name: SimonSmash Lvl 2
   m_EditorClassIdentifier: 
-  LevelChallange: Estalla todas las bombillas que se pongan de tu color!
+  LevelChallange: Estalla todas las bombillas que se iluminen de tu color
   duration: 30
   SceneName: SimonSmash2
+  levelSong: {fileID: 8300000, guid: ef6322b92e62d3848ac23e93d7c6aef7, type: 3}
