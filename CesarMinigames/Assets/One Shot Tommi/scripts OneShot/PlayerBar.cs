@@ -10,9 +10,7 @@ public class PlayerBar : MonoBehaviour
     public bool switc = true;
 
     public GameObject missLeftBar;
-
     public GameObject missRightBar;
-
     public GameObject makeBar;
 
     private SpriteRenderer spriteRenderer;
@@ -21,11 +19,15 @@ public class PlayerBar : MonoBehaviour
 
     public ShotScript shootingscript;
 
+    public AudioSource whistleSound;
+    public AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine("StartGame");
+        //music.Play();
     }
 
     // Update is called once per frame
@@ -42,23 +44,7 @@ public class PlayerBar : MonoBehaviour
             {
                 moveBarLeft();
             }
-            if (transform.position.x >= 645f)
-            {
-                //switc = false;
-                //spriteRenderer.flipX = true;
-            }
-            if (transform.position.x <= 275f)
-            {
-                //switc = true;
-                //spriteRenderer.flipX = true;
-            }
-            /*if (Input.GetKeyDown(KeyCode.Space))
-            {
-                missLeftBar.SetActive(true);
-                missRightBar.SetActive(true);
-                makeBar.SetActive(true);
-                speed = 0;
-            }*/
+
         }
 
     }
@@ -72,17 +58,6 @@ public class PlayerBar : MonoBehaviour
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
     }
-        
-       /* public void PressedButton(InputAction.CallbackContext callback)
-        {
-            if (callback.performed)
-            {
-                missLeftBar.SetActive(true);
-                missRightBar.SetActive(true);
-                makeBar.SetActive(true);
-                speed = 0;
-            }
-        }*/
 
     public void StopPlayerBar()
     {
@@ -114,6 +89,7 @@ public class PlayerBar : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         startgame = true;
+        whistleSound.Play();
     }
 
     public IEnumerator CheckSecondChance()
@@ -129,6 +105,7 @@ public class PlayerBar : MonoBehaviour
         if (shootingscript.secondchance == true)
         {
             speed = 800;
+            whistleSound.Play();
         }
     }
 }

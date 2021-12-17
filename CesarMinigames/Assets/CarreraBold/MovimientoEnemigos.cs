@@ -14,6 +14,7 @@ public class MovimientoEnemigos : MonoBehaviour
     public float speed;
     public float empuje;
     public static MovimientoEnemigos intance;
+    public AudioSource derrota;
     void Awake()
     {
         rg = GetComponent<Rigidbody>();
@@ -35,6 +36,7 @@ public class MovimientoEnemigos : MonoBehaviour
             {
                 
                 transform.position = transform.position + new Vector3(empuje * speed * Time.deltaTime, 0, 0);
+                
                 transform.Rotate(0, 180, 0);
                 //transform.position = transform.position.x * speed * Time.deltaTime;
                 timer = temporizador;
@@ -63,11 +65,14 @@ public class MovimientoEnemigos : MonoBehaviour
     {
         if (other.gameObject.name.Equals("FinishLine"))
         {
+            derrota.Play();
             correr = false;
 
             StartCoroutine(GameController.instance.FailMiniGame());
-            
 
+            Level2ControllerRicardo.intance.paro = false;
+
+            
         }
     }
 }
