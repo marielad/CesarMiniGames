@@ -732,8 +732,25 @@ MonoBehaviour:
   nEasyLevels: 3
   miniGamesList:
   - {fileID: 11400000, guid: 17d9172905913f347a03863cb698be2e, type: 2}
+  - {fileID: 11400000, guid: c41182bf95ad32a4f8a3ae85cf570236, type: 2}
+  - {fileID: 11400000, guid: b81aa83bd6cc0324aa0b540da25640b6, type: 2}
+  - {fileID: 11400000, guid: 32d2e0eb84ac2b54ebfa83360ad62d8f, type: 2}
+  - {fileID: 11400000, guid: 4ee03526742011e439f3680ea0a20603, type: 2}
+  - {fileID: 11400000, guid: fff359c36fad37f458293c9460fe67d4, type: 2}
+  - {fileID: 11400000, guid: 48ae8c42a612ffb44858a1016fe18552, type: 2}
+  - {fileID: 11400000, guid: 21c7579fe36a01b41a2d93b5efbd19fc, type: 2}
+  - {fileID: 11400000, guid: 19f15d9459f81004a98f005a3fcb0c66, type: 2}
+  - {fileID: 11400000, guid: 5be22e39aa067264f83393f3c88f0baf, type: 2}
+  - {fileID: 11400000, guid: 60a8c6478a4043346819b5faa96e4900, type: 2}
+  - {fileID: 11400000, guid: c3dd995bc1707494b850d87d0bb84a21, type: 2}
+  - {fileID: 11400000, guid: c0952065b8332d0459adf2037e793926, type: 2}
+  - {fileID: 11400000, guid: 29da09112f4b5c24690fd6e4200e3258, type: 2}
   miniGamesListHard:
-  - {fileID: 11400000, guid: 17d9172905913f347a03863cb698be2e, type: 2}
+  - {fileID: 11400000, guid: e213544b1c27a8d44bc76cbc91a9019b, type: 2}
+  - {fileID: 11400000, guid: 7e23fb480f666144c894493508579546, type: 2}
+  - {fileID: 11400000, guid: e96195f458a552b4b939caf40b3cb975, type: 2}
+  - {fileID: 11400000, guid: 76490e49326920847be2df2501f8233f, type: 2}
+  - {fileID: 11400000, guid: 025094580b04d674bb8219a33a28b6d1, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771
