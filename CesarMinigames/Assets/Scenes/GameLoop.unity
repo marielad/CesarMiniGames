@@ -731,6 +731,7 @@ MonoBehaviour:
   avaliableLifes: 3
   nEasyLevels: 3
   miniGamesList:
+  - {fileID: 11400000, guid: 390d50e35de24b6468d7f2bbc6f02c2e, type: 2}
   - {fileID: 11400000, guid: 17d9172905913f347a03863cb698be2e, type: 2}
   - {fileID: 11400000, guid: c41182bf95ad32a4f8a3ae85cf570236, type: 2}
   - {fileID: 11400000, guid: b81aa83bd6cc0324aa0b540da25640b6, type: 2}
@@ -746,6 +747,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0952065b8332d0459adf2037e793926, type: 2}
   - {fileID: 11400000, guid: 29da09112f4b5c24690fd6e4200e3258, type: 2}
   miniGamesListHard:
+  - {fileID: 11400000, guid: 650d3d92196bcc44ebfcb2d19422070c, type: 2}
   - {fileID: 11400000, guid: e213544b1c27a8d44bc76cbc91a9019b, type: 2}
   - {fileID: 11400000, guid: 7e23fb480f666144c894493508579546, type: 2}
   - {fileID: 11400000, guid: e96195f458a552b4b939caf40b3cb975, type: 2}
