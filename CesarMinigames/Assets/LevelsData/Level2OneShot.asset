@@ -15,4 +15,4 @@ MonoBehaviour:
   LevelChallange: Don't miss!
   duration: 20
   SceneName: OneShot Level 2 (Tommi)
-  levelSong: {fileID: 0}
+  levelSong: {fileID: 8300000, guid: 4bd9ed5a646308c47a0764ccccfbc408, type: 3}

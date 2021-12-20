@@ -18,14 +18,19 @@ public class EnemyBehaviour : MonoBehaviour
     public float screenSpeed = 0;
 
     private float targetDirection;
-    int enemyIndex;
+    int enemyIndex = 0;
 
-    float originPosition;
+    float originPosition = 1;
+
+    bool gameInitialized;
+    //public GameObject pajaroPosition;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //yield return new WaitForSeconds(1);
+
         SelectEnemy(); //Inicia el movimiento de los enemigos
         //enemigos = GameObject.FindGameObjectsWithTag("Enemigos");
     }
@@ -33,48 +38,52 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeInLevel += Time.deltaTime; //Contador de tiempo, posibilidad de basar la dificultad en base al tiempo que haya pasado en la partida
-
-        if (isMoving)
+        if (GameController.instance.isPlaying)
         {
-            Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
-            rb.MovePosition(rb.position + new Vector2(targetDirection, 0) * speed * Time.fixedDeltaTime);
-            if ((enemigos[enemyIndex].transform.position.x >= 0 && targetDirection == 1) || //Determina hacia que dirección se mueven los enemigos en función de su posición inicial.
-                (enemigos[enemyIndex].transform.position.x <= 0 && targetDirection == -1))
+            if (isMoving)
             {
-                reverse = true;
-                isMoving = false;
-                enemigos[enemyIndex].transform.Rotate(180, 0, 180);
-                //Debug.Log("Enemigo >" + enemyIndex + " va hacia atras"); xxxxxxx
+                Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
+                rb.MovePosition(rb.position + new Vector2(targetDirection, 0) * speed * Time.fixedDeltaTime);
+                if ((enemigos[enemyIndex].transform.position.x >= 0 && targetDirection == 1) || //Determina hacia que dirección se mueven los enemigos en función de su posición inicial.
+                    (enemigos[enemyIndex].transform.position.x <= 0 && targetDirection == -1))
+                {
+                    reverse = true;
+                    isMoving = false;
+                    enemigos[enemyIndex].transform.Rotate(180, 0, 180);
+                    //Debug.Log("Enemigo >" + enemyIndex + " va hacia atras"); xxxxxxx
+                }
             }
-        }
-
-        else if (reverse)
-        {
-            Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
-            rb.MovePosition(rb.position + new Vector2(-1 * targetDirection, 0) * speed * Time.fixedDeltaTime);
-            if ((enemigos[enemyIndex].transform.position.x <= originPosition && targetDirection == 1) ||
-                (enemigos[enemyIndex].transform.position.x >= originPosition && targetDirection == -1))
+            else if (reverse)
             {
-                reverse = false;
-                //Debug.Log("Enemigo >" + enemyIndex + " se para"); xxxxxxxx
-                enemigos[enemyIndex].transform.Rotate(0, 0, 0);
-                enemigos[enemyIndex].transform.Rotate(180, 0, 180);
+                Rigidbody2D rb = enemigos[enemyIndex].GetComponent<Rigidbody2D>();
+                rb.MovePosition(rb.position + new Vector2(-1 * targetDirection, 0) * speed * Time.fixedDeltaTime);
+                if ((enemigos[enemyIndex].transform.position.x <= originPosition && targetDirection == 1) ||
+                    (enemigos[enemyIndex].transform.position.x >= originPosition && targetDirection == -1))
+                {
+                    reverse = false;
+                    //Debug.Log("Enemigo >" + enemyIndex + " se para"); xxxxxxxx
+                    enemigos[enemyIndex].transform.Rotate(0, 0, 0);
+                    enemigos[enemyIndex].transform.Rotate(180, 0, 180);
+                }
             }
-        }
-        else
-        {
-            enemigos[enemyIndex].transform.position = new Vector3(originPosition, enemigos[enemyIndex].transform.position.y, enemigos[enemyIndex].transform.position.z);
-            SelectEnemy();
-        }
+            else
+            {
+               //enemigos[enemyIndex].transform.position = new Vector3(originPosition, enemigos[enemyIndex].transform.position.y, enemigos[enemyIndex].transform.position.z);
+                SelectEnemy();
+            }
+        }   
     }
 
     private void SelectEnemy()
     {
-        enemyIndex = Random.Range(0, enemigos.Length);
-        originPosition = enemigos[enemyIndex].transform.position.x;
-        targetDirection = originPosition < 0 ? 1 : -1;
-        isMoving = true;
+        if (GameController.instance.isPlaying)// && gameInitialized == false)
+        {
+            enemyIndex = Random.Range(0, enemigos.Length);
+            originPosition = enemigos[enemyIndex].transform.position.x;
+            targetDirection = originPosition < 0 ? 1 : -1;
+            isMoving = true;
+        }
+       
         //enemigos[enemyIndex].transform.Rotate(180, 0, 180);
         //Debug.Log("Enemigo >" + enemyIndex + " va hacia delante");    xxxxxxxxx
         //CheckPosition();

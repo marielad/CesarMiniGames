@@ -31,6 +31,10 @@ public class GameController : MonoBehaviour
 
     public bool win = false;
     public bool fail = false;
+
+    public delegate void TimesUpEvent();
+    public static event TimesUpEvent onTimesUp;
+    public MiniGameInfo CurrentMiniGame { get { return actualMiniGame;  } }
     public bool isPlaying { get { return gameState == GameStates.inGame; } }
     public enum GameStates
     { 
@@ -141,6 +145,10 @@ public class GameController : MonoBehaviour
             remainingTimeInLevel -= Time.deltaTime;
             if (remainingTimeInLevel <= 0.0f)
             {
+                if (onTimesUp != null)
+                {
+                    onTimesUp();
+                }
                StartCoroutine(FailMiniGame());
             }
             else

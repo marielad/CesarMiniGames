@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AgoneyGlobo
   m_EditorClassIdentifier: 
   LevelChallange: Infla
-  duration: 7
+  duration: 50
   SceneName: Globo Infinito
   levelSong: {fileID: 0}

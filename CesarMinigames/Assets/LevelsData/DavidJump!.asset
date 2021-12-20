@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
   m_Name: DavidJump!
   m_EditorClassIdentifier: 
-  LevelChallange: No te caigas
-  duration: 5
-  SceneName: Level1
+  LevelChallange: "\xA1SALTA!"
+  duration: 15
+  SceneName: DavidJump!Level1
+  levelSong: {fileID: 0}

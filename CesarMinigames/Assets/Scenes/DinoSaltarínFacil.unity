@@ -453,7 +453,7 @@ PrefabInstance:
     - target: {fileID: 4337725874801885004, guid: 934f7e8f2eaa7f34eae573df6244c0c4,
         type: 3}
       propertyPath: m_TagString
-      value: Suelo
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5921869152692578795, guid: 934f7e8f2eaa7f34eae573df6244c0c4,
         type: 3}
@@ -774,6 +774,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "Obst\xE1culo (5)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337725874801885004, guid: 934f7e8f2eaa7f34eae573df6244c0c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 934f7e8f2eaa7f34eae573df6244c0c4, type: 3}
@@ -1322,6 +1327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200646928843081455, guid: 1c07c45aa3aac194cb8938b18bdb2251,
+        type: 3}
+      propertyPath: jumpForce
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3503320617018973638, guid: 1c07c45aa3aac194cb8938b18bdb2251,
         type: 3}

@@ -13,6 +13,16 @@ TagManager:
   - SpawnMilk
   - MilkLimitError
   - MilkLimitEnough
+  - Meta
+  - Jugador
+  - BorderLeft
+  - BorderRight
+  - BallMissLeft
+  - BallGoIn
+  - PlayerMeter
+  - BallMissRight
+  - Comba
+  - Ground
   layers:
   - Default
   - TransparentFX

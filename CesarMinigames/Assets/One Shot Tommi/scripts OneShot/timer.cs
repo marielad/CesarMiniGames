@@ -18,6 +18,7 @@ public class timer : MonoBehaviour
     void Start()
     {
         StartCoroutine("StartCounter");
+
     }
 
     // Update is called once per frame
@@ -25,15 +26,15 @@ public class timer : MonoBehaviour
     {
         if (starttimer == true)
         {
-            if (script.stopClock == false)
-            {
+            //if (script.stopClock == false)
+            //{
                 timerFloat -= Time.deltaTime;
                 timerText.text = timerFloat.ToString("00");
-            }
-            else
+            //}
+           /* else
             {
 
-            }
+            }*/
 
         }
         
