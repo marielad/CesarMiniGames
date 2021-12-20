@@ -15,6 +15,7 @@ public class GameManagerAgoney : MonoBehaviour
     public GameObject inflador_object;
     public GameObject globo_object;
     public GameObject gameManager;
+    public GameObject explosion;
 
     private Image globo;
     private Image inflador;
@@ -36,8 +37,8 @@ public class GameManagerAgoney : MonoBehaviour
         if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             soundmanager.SeleccionAudio(1, 5f);
-            globo_object.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
-            globo_object.transform.position += new Vector3(0, 0.18f, 0);
+            globo_object.transform.localScale += new Vector3(0.13f, 0.13f, 0.13f);
+            globo_object.transform.position += new Vector3(0, 0.115f, 0);
             StartCoroutine("CambiarInflador");
 
             if (globo_object.transform.localScale.y >= 2.2f)
@@ -64,6 +65,7 @@ public class GameManagerAgoney : MonoBehaviour
             {
                 StartCoroutine(GameController.instance.MiniGameSuceeded());
                 soundmanager.SeleccionAudio(0, 5f);
+                explosion.SetActive(true);
                 Destroy(globo_object);
             }
         }
