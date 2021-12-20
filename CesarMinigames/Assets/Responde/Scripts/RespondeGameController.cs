@@ -51,7 +51,7 @@ public class RespondeGameController : MonoBehaviour
             {
                 //Ganaste si respondiste correctamente y coincide la respuesta de la cuadrícula con el resultado de la operación
                 Debug.Log("YOU WIN");
-
+                StartCoroutine(GameController.instance.MiniGameSuceeded());
                 luces[nluz].SetActive(false);
                 lighon = false;
                 nluz = 0;
@@ -71,6 +71,7 @@ public class RespondeGameController : MonoBehaviour
             {
                 //Fallaste, no acertaste correctamente
                 Debug.Log("YOU LOST");
+                StartCoroutine(GameController.instance.FailMiniGame());
             }
 
         }
