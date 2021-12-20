@@ -9,7 +9,6 @@ public class MiniGameController : MonoBehaviour
     public float espacioCantidad;
     public float currentBarraCantidad;
     public float maxBarraCapacidad;
-    public float perdidas;
 
     public Sprite mus1;
     public Sprite mus2;
@@ -92,11 +91,6 @@ public class MiniGameController : MonoBehaviour
             tempo2 = 0.5f;
             bot.sprite = nopres;
             sec1 = true;
-        }
-
-        if (currentBarraCantidad > 1f)
-        {
-            currentBarraCantidad = currentBarraCantidad - perdidas;
         }
     }
 

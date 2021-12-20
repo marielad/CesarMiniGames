@@ -46,7 +46,6 @@ public class PiñataGame : MonoBehaviour
 
         StartCoroutine(StartTimer());
 
-       // AudioController.instance.PlayBackgroundMusic();
     }
 
     void Update()
