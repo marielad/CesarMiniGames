@@ -65,14 +65,12 @@ public class PushTheRopeController : MonoBehaviour
         {
             if (collision.gameObject.name.Equals("Enemy"))
             {
-                Debug.Log("Player Wins");
                 playerRope.connectedBody = null;
                 playerRope.gameObject.SetActive(false);
                 StartCoroutine(GameController.instance.MiniGameSuceeded());
             }
             else if (collision.gameObject.name.Equals("Player"))
             {
-                Debug.Log("Enemy Wins");
                 enemy.GetComponent<HingeJoint2D>().connectedBody = null;
                 StartCoroutine(GameController.instance.FailMiniGame());
             }
