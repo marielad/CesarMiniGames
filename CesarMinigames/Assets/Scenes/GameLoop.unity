@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac66078974db71142b6ad9d6c513e560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMusic: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
+  defaultMusic: {fileID: 8300000, guid: 14361621a18d0974a8a096af824851d2, type: 3}
   remainingTimeInLevel: 5
   currentLifes: 3
   avaliableLifes: 3
@@ -756,6 +756,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e96195f458a552b4b939caf40b3cb975, type: 2}
   - {fileID: 11400000, guid: 025094580b04d674bb8219a33a28b6d1, type: 2}
   - {fileID: 11400000, guid: affeaf415336c2441a1c9e0dfdc90fcf, type: 2}
+  - {fileID: 11400000, guid: 57f3ea93fcd422845a9fa41d62578565, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771
@@ -1725,7 +1726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 49.83}
+  m_AnchoredPosition: {x: 0, y: 49.829956}
   m_SizeDelta: {x: 451.052, y: 107.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1109312632
@@ -2324,7 +2325,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 14361621a18d0974a8a096af824851d2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
