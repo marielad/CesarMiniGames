@@ -8,6 +8,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     Rigidbody rb;
     public GameObject player;
+    public GameObject comba;
 
     public bool gameEnd;
     public float timer;
@@ -43,7 +44,7 @@ public class PlayerInteractions : MonoBehaviour
     public void Jump(InputAction.CallbackContext callback)
     {
 
-        if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying && isGrounded)
+        if ((callback.performed) && GameController.instance.isPlaying && isGrounded)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
       
@@ -85,10 +86,12 @@ public class PlayerInteractions : MonoBehaviour
         {
             cantidadVidas -= 1;
             vidas.text = cantidadVidas.ToString();
+            FindObjectOfType<AudioManager>().Play("ChoqueComba");
         }
 
         if (cantidadVidas <= 0)
         {
+            Destroy(comba);
             StartCoroutine(GameController.instance.FailMiniGame());
         }
     }

@@ -1051,7 +1051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98.7, y: -122.9}
+  m_AnchoredPosition: {x: 104.4, y: -100}
   m_SizeDelta: {x: 43.2867, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433677888
@@ -1831,7 +1831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50.7, y: -122.9}
+  m_AnchoredPosition: {x: -91.9, y: -100}
   m_SizeDelta: {x: 105.2067, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730196786
@@ -1964,7 +1964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 852577675}
-  bgMusic: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
   win: {fileID: 8300000, guid: ac42aeceb0a24404093bafe52c883c72, type: 3}
   swoosh: {fileID: 8300000, guid: a87ad22987150db4b9590afd383d589c, type: 3}
   lost: {fileID: 8300000, guid: 9b465adf5865dea45bcbf88a0e0b0290, type: 3}
@@ -1981,7 +1980,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a87ad22987150db4b9590afd383d589c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3338,7 +3337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60.9, y: -122.9}
+  m_AnchoredPosition: {x: 68.8, y: -100}
   m_SizeDelta: {x: 43.2867, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046282324
@@ -3507,7 +3506,7 @@ Canvas:
   m_GameObject: {fileID: 2123364505}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1251999393}
   m_PlaneDistance: 54.76
   m_PixelPerfect: 0

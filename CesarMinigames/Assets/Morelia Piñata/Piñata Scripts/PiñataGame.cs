@@ -46,7 +46,6 @@ public class PiñataGame : MonoBehaviour
 
         StartCoroutine(StartTimer());
 
-       // AudioController.instance.PlayBackgroundMusic();
     }
 
     void Update()
@@ -91,6 +90,7 @@ public class PiñataGame : MonoBehaviour
         gameOverScreen.SetActive(true);
         winnerWindow.SetActive(true);
         AudioController.instance.WinSound();
+        StartCoroutine(GameController.instance.MiniGameSuceeded());
     }
     public void RomperPiñata()
     {

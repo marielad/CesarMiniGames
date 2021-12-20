@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     public AudioSource source;
-    public AudioClip bgMusic;
+
     public AudioClip win;
     public AudioClip swoosh;
     public AudioClip lost;
@@ -35,10 +35,7 @@ public class AudioController : MonoBehaviour
         source.PlayOneShot(lost, volume);
     }
 
-    public void PlayBackgroundMusic()
-    {
-        source.PlayOneShot(bgMusic, volumeForBg);
-    }
+
 
     public void PlayWhistle()
     {

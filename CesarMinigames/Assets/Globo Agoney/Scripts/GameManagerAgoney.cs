@@ -14,12 +14,12 @@ public class GameManagerAgoney : MonoBehaviour
 
     public GameObject inflador_object;
     public GameObject globo_object;
+    public GameObject gameManager;
 
     private Image globo;
     private Image inflador;
 
     private SoundManagerAgoney soundmanager;
-
 
     public void Awake()
     {
@@ -35,7 +35,7 @@ public class GameManagerAgoney : MonoBehaviour
     {
         if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
-            soundmanager.SeleccionAudio(0, 0.5f);
+            soundmanager.SeleccionAudio(1, 5f);
             globo_object.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
             globo_object.transform.position += new Vector3(0, 0.18f, 0);
             StartCoroutine("CambiarInflador");
@@ -49,18 +49,23 @@ public class GameManagerAgoney : MonoBehaviour
 
     public void Update()
     {
-        globo_object.transform.localScale -= new Vector3(0.0002f, 0.0002f, 0.0002f);
-        globo_object.transform.position -= new Vector3(0, 0.00018f, 0);
-
-        if (globo_object.transform.localScale.y < 2.2f)
+        if (globo_object != null)
         {
-            globo.sprite = globoTriste;
-        }
+            globo_object.transform.localScale -= new Vector3(0.0002f, 0.0002f, 0.0002f);
+            globo_object.transform.position -= new Vector3(0, 0.00018f, 0);
+        
+        
+            if (globo_object.transform.localScale.y < 2.2f)
+            {
+                globo.sprite = globoTriste;
+            }
 
-        if (globo_object.transform.localScale.y >= 4f)
-        {
-            StartCoroutine(GameController.instance.MiniGameSuceeded());
-            Destroy(globo_object);
+            if (globo_object.transform.localScale.y >= 4f)
+            {
+                StartCoroutine(GameController.instance.MiniGameSuceeded());
+                soundmanager.SeleccionAudio(0, 5f);
+                Destroy(globo_object);
+            }
         }
     }
     IEnumerator CambiarInflador()
