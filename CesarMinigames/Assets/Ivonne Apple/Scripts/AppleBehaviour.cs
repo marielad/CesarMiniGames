@@ -29,7 +29,7 @@ public class AppleBehaviour : MonoBehaviour
     public int goalApples;
     public TextMeshProUGUI pointsApplesText;
 
-    private float gameTimer = 10f; 
+    private float gameTimer = 15f; 
 
     
 
