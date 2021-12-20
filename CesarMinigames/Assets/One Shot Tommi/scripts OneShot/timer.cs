@@ -5,7 +5,7 @@ using TMPro;
 
 public class timer : MonoBehaviour
 {
-    public float timerFloat = 20;
+    public float timerFloat;
 
     public TextMeshProUGUI timerText;
 
@@ -28,7 +28,8 @@ public class timer : MonoBehaviour
         {
             //if (script.stopClock == false)
             //{
-                timerFloat -= Time.deltaTime;
+            timerFloat = GameController.instance.remainingTimeInLevel;
+                //timerFloat -= Time.deltaTime;
                 timerText.text = timerFloat.ToString("00");
             //}
            /* else
