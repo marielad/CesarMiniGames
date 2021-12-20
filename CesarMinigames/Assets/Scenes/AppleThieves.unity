@@ -1081,7 +1081,7 @@ MonoBehaviour:
   openHand: {fileID: 2000882866}
   closedHand: {fileID: 607084014}
   hands: {fileID: 2044993585}
-  goalApples: 4
+  goalApples: 3
   pointsApplesText: {fileID: 2109772991}
 --- !u!212 &1898374673
 SpriteRenderer:
@@ -1229,6 +1229,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
     m_ActionName: Control/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4903516d-7578-4e1d-bf0f-506d0b4dab70
+    m_ActionName: Control/PressedButtom[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control
