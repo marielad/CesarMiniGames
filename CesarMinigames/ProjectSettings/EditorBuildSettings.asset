@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 66032e8074e22734c8f39b502a7ea9c9
   - enabled: 1
+    path: "Assets/LuigiRunner_Sof\xEDa/Scenes/LR_Level1_Sofia.unity"
+    guid: 91f17097bcb14204fb023ead3a1537b2
+  - enabled: 1
     path: Assets/Scenes/CarreraBold.unity
     guid: 457d5ae776bcd524094c1adbb5cbf075
   - enabled: 1
@@ -68,6 +71,12 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/DinoSaltar\xEDnFacil.unity"
     guid: 17fb988c7923ecc47aefcba28c88f31c
+  - enabled: 1
+    path: Assets/Scenes/Comba Remolona.unity
+    guid: f7a3bf51ad2c9874a967db033be21fc6
+  - enabled: 1
+    path: Assets/Scenes/Comba Remolona - Dificil.unity
+    guid: 0bf3d4cc5f67eba4b9b574dd0a706554
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6e037d81e9f81b84e9baf2c8928e7607,
       type: 2}

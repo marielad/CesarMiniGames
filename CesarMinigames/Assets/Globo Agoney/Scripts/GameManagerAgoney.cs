@@ -11,23 +11,56 @@ public class GameManagerAgoney : MonoBehaviour
     public Sprite globoTriste;
     public Sprite infladorArriba;
     public Sprite infladorAbajo;
+
     public GameObject inflador_object;
     public GameObject globo_object;
+
     private Image globo;
     private Image inflador;
 
-    //public Transform a;
+    private SoundManagerAgoney soundmanager;
+
+
+    public void Awake()
+    {
+        soundmanager = FindObjectOfType<SoundManagerAgoney>();
+    }
     void Start()
     {
         globo = globo_object.GetComponent<Image>();
         inflador = inflador_object.GetComponent<Image>();
-
+        globo.sprite = globoTriste;
     }
     public void PressedButton(InputAction.CallbackContext callback)
     {
         if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
+            soundmanager.SeleccionAudio(0, 0.5f);
+            globo_object.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+            globo_object.transform.position += new Vector3(0, 0.18f, 0);
             StartCoroutine("CambiarInflador");
+
+            if (globo_object.transform.localScale.y >= 2.2f)
+            {
+                   globo.sprite = globoContento;
+            }
+        }
+    }
+
+    public void Update()
+    {
+        globo_object.transform.localScale -= new Vector3(0.0002f, 0.0002f, 0.0002f);
+        globo_object.transform.position -= new Vector3(0, 0.00018f, 0);
+
+        if (globo_object.transform.localScale.y < 2.2f)
+        {
+            globo.sprite = globoTriste;
+        }
+
+        if (globo_object.transform.localScale.y >= 4f)
+        {
+            StartCoroutine(GameController.instance.MiniGameSuceeded());
+            Destroy(globo_object);
         }
     }
     IEnumerator CambiarInflador()
