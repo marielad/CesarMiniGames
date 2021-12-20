@@ -98,6 +98,8 @@ public class MiniGameController : MonoBehaviour
         {
             currentBarraCantidad = currentBarraCantidad - perdidasion;
         }
+        
+        barra.value = currentBarraCantidad;
     }
 
     public void PressedButton(InputAction.CallbackContext callback)
@@ -105,7 +107,6 @@ public class MiniGameController : MonoBehaviour
         if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             currentBarraCantidad = currentBarraCantidad + espacioCantidad;
-            barra.value = currentBarraCantidad;
             GimnasioSFX.instance.GimnasioToque();
             pesas.Play("Levantamiento");
         }
