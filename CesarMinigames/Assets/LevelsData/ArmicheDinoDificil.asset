@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ArmicheDinoDificil
   m_EditorClassIdentifier: 
   LevelChallange: Pulsa para saltar y avanzar!
-  duration: 50
+  duration: 20
   SceneName: "DinoSaltar\xEDnDificil"
   levelSong: {fileID: 0}
