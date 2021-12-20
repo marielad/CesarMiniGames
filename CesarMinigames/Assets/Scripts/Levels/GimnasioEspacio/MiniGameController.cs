@@ -94,7 +94,7 @@ public class MiniGameController : MonoBehaviour
             sec1 = true;
         }
 
-        if(currentBarraCantidad > 1f)
+        if(currentBarraCantidad > 1f && currentBarraCantidad < 40f)
         {
             currentBarraCantidad = currentBarraCantidad - perdidasion;
         }
