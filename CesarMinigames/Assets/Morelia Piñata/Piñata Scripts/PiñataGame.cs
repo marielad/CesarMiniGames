@@ -53,7 +53,7 @@ public class PiñataGame : MonoBehaviour
     {
         timerpaEmpezar -= Time.deltaTime;
         UIAnimation.instance.Open();
-        cuentaPaEmpezar.text = "We start in " + timerpaEmpezar.ToString("f0");
+        cuentaPaEmpezar.text = "Dale Duro! " + timerpaEmpezar.ToString("f0");
         
         if (startTimer == true)
         {
@@ -108,7 +108,7 @@ public class PiñataGame : MonoBehaviour
             pinataImage.sprite = pinataRota;
         }
     }
-    public void OnJump(InputValue input)
+    public void OnPressedButtom(InputValue input)
     {
         if (isPlaying == true) 
         {

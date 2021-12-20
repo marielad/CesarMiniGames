@@ -15,3 +15,4 @@ MonoBehaviour:
   LevelChallange: "Pi\xF1ata!"
   duration: 21
   SceneName: "Pi\xF1ataL2Morelia"
+  levelSong: {fileID: 8300000, guid: 6a7889208bb90f44bb4225de6a067930, type: 3}
