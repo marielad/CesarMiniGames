@@ -14,9 +14,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public Rigidbody2D rb;
 
+    public AudioClip flapSound;
+    AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
         jump = new Vector2(0.0f, 2.0f);
         isGrounded = true;
 
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if(GameController.instance.isPlaying)
         {
+            audioSource.PlayOneShot(flapSound, 0.7F);
             Debug.Log("Salto");
             rb.AddForce(Vector2.up * jumpForce);
             isGrounded = false;
