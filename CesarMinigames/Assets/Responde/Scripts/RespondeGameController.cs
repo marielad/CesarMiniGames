@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class RespondeGameController : MonoBehaviour
@@ -38,24 +39,9 @@ public class RespondeGameController : MonoBehaviour
         Operaciones();
     }
 
-    void Update()
+    public void PressedButton(InputAction.CallbackContext callback)
     {
-        timer = timer - Time.deltaTime;
-
-        if(timer < 0f && lighon == true)
-        {            
-            luces[nluz].SetActive(false);
-            nluz = nluz + 1;
-            if(nluz >= luces.Length)
-            {
-                nluz = 0;
-            }
-            luces[nluz].SetActive(true);
-            timer = 0.9f;
-
-        }
-        //Al pulsar espacio se parará el timer y la luz, indicando si acertaste o fallaste
-        if (Input.GetKeyDown(KeyCode.Space))
+        if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             lighon = false;
             int nrespuesta;
@@ -78,7 +64,7 @@ public class RespondeGameController : MonoBehaviour
                 }
                 luces[nluz].SetActive(true);
                 timer = 0.9f;
-                
+
                 Operaciones();
             }
             else
@@ -87,7 +73,23 @@ public class RespondeGameController : MonoBehaviour
                 Debug.Log("YOU LOST");
             }
 
+        }
+    }
 
+    void Update()
+    {
+        timer = timer - Time.deltaTime;
+
+        if(timer < 0f && lighon == true)
+        {            
+            luces[nluz].SetActive(false);
+            nluz = nluz + 1;
+            if(nluz >= luces.Length)
+            {
+                nluz = 0;
+            }
+            luces[nluz].SetActive(true);
+            timer = 0.9f;
 
         }
     }  

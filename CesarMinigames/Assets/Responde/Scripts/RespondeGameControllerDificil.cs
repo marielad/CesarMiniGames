@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class RespondeGameControllerDificil : MonoBehaviour
@@ -24,16 +25,13 @@ public class RespondeGameControllerDificil : MonoBehaviour
     private bool lighon;
 
     //Timer cambio luces y GameObject Luz
-    private float timer = 0.2f;
+    private float timer = 0.3f;
     public GameObject[] luces;
     private int nluz;
 
-
-    //Timer al fallar y apagar luces
-    private float timerfail = 3f;
     // Start is called before the first frame update
     void Start()
-    {        
+    {
         lighon = true;
         nluz = 0;
         luces[nluz].SetActive(true);
@@ -41,25 +39,9 @@ public class RespondeGameControllerDificil : MonoBehaviour
         Operaciones();
     }
 
-    void Update()
+    public void PressedButton(InputAction.CallbackContext callback)
     {
-        timer = timer - Time.deltaTime;
-        timerfail = 3f;
-
-        if (timer < 0f && lighon == true)
-        {
-            luces[nluz].SetActive(false);
-            nluz = nluz + 1;
-            if (nluz >= luces.Length)
-            {
-                nluz = 0;
-            }
-            luces[nluz].SetActive(true);
-            timer = 0.2f;
-
-        }
-        //Al pulsar espacio se parará el timer y la luz, indicando si acertaste o fallaste
-        if (Input.GetKeyDown(KeyCode.Space))
+        if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             lighon = false;
             int nrespuesta;
@@ -81,17 +63,33 @@ public class RespondeGameControllerDificil : MonoBehaviour
                     nluz = 0;
                 }
                 luces[nluz].SetActive(true);
-                timer = 1.3f;
+                timer = 0.3f;
 
                 Operaciones();
             }
             else
             {
                 //Fallaste, no acertaste correctamente
-                Debug.Log("YOU LOST");                
+                Debug.Log("YOU LOST");
             }
 
+        }
+    }
 
+    void Update()
+    {
+        timer = timer - Time.deltaTime;
+
+        if (timer < 0f && lighon == true)
+        {
+            luces[nluz].SetActive(false);
+            nluz = nluz + 1;
+            if (nluz >= luces.Length)
+            {
+                nluz = 0;
+            }
+            luces[nluz].SetActive(true);
+            timer = 0.3f;
 
         }
     }
@@ -123,5 +121,5 @@ public class RespondeGameControllerDificil : MonoBehaviour
         }
 
     }
-   
+
 }
