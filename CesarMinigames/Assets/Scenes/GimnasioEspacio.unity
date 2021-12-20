@@ -464,6 +464,7 @@ MonoBehaviour:
   espacioCantidad: 2
   currentBarraCantidad: 0
   maxBarraCapacidad: 40
+  perdidasion: 0.001
   mus1: {fileID: 21300000, guid: 8efe6ce24f0bb204e93a881cd0c4becc, type: 3}
   mus2: {fileID: 21300000, guid: feed4befdb586bc4082cebb34cb39691, type: 3}
   mus3: {fileID: 21300000, guid: 34bc2462b41943748a9ecb2bb92f1cc8, type: 3}
