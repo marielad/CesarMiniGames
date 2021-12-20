@@ -28,9 +28,9 @@ public class timer : MonoBehaviour
         {
             //if (script.stopClock == false)
             //{
-            timerFloat = GameController.instance.remainingTimeInLevel;
+            //timerFloat = GameController.instance.remainingTimeInLevel;
                 //timerFloat -= Time.deltaTime;
-                timerText.text = timerFloat.ToString("00");
+                timerText.text = GameController.instance.remainingTimeInLevel.ToString("00");
             //}
            /* else
             {
