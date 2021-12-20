@@ -9,6 +9,7 @@ public class MiniGameController : MonoBehaviour
     public float espacioCantidad;
     public float currentBarraCantidad;
     public float maxBarraCapacidad;
+    public float perdidasion;
 
     public Sprite mus1;
     public Sprite mus2;
@@ -92,6 +93,13 @@ public class MiniGameController : MonoBehaviour
             bot.sprite = nopres;
             sec1 = true;
         }
+
+        if(currentBarraCantidad > 1f)
+        {
+            currentBarraCantidad = currentBarraCantidad - perdidasion;
+        }
+        
+        barra.value = currentBarraCantidad;
     }
 
     public void PressedButton(InputAction.CallbackContext callback)
@@ -99,7 +107,6 @@ public class MiniGameController : MonoBehaviour
         if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             currentBarraCantidad = currentBarraCantidad + espacioCantidad;
-            barra.value = currentBarraCantidad;
             GimnasioSFX.instance.GimnasioToque();
             pesas.Play("Levantamiento");
         }

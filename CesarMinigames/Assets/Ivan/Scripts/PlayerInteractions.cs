@@ -44,7 +44,7 @@ public class PlayerInteractions : MonoBehaviour
     public void Jump(InputAction.CallbackContext callback)
     {
 
-        if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying && isGrounded)
+        if ((callback.performed) && GameController.instance.isPlaying && isGrounded)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
       

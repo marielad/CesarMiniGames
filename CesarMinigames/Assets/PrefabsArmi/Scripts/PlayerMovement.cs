@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
         if (jumping)
@@ -86,8 +86,8 @@ public class PlayerMovement : MonoBehaviour
     {
         
         Debug.Log("Jumping....");
-            rigidbody.AddForce(Vector3.up * jumpForce);
-            rigidbody.AddForce(Vector3.right * jumpForce/3);
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            rigidbody.AddForce(Vector3.right * jumpForce/3, ForceMode2D.Impulse);
             //isGrounded = false;
 
     }

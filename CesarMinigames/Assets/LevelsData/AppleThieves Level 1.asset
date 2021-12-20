@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AppleThieves Level 1
   m_EditorClassIdentifier: 
   LevelChallange: "\xA1Encesta las manzanas!"
-  duration: 10
+  duration: 15
   SceneName: AppleThieves
   levelSong: {fileID: 0}
