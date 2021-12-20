@@ -43,6 +43,13 @@ public class MilkController : MonoBehaviour
     public GameObject luzMilkOn;
     public GameObject luzSobrecalentamiento;
 
+    public MilkSource scriptMilkSource;
+
+    public Color colorOriginal;
+
+    public GameObject textoCartelMilk01;
+    public GameObject textoCartelMilk02;
+
     void Start()
     {
         MilkOn = false;
@@ -61,7 +68,11 @@ public class MilkController : MonoBehaviour
 
         milkImage.fillAmount = 0.01f;
         temperatureImage.fillAmount = 0.01f;
-        //limitLine.transform.localPosition.y = new Vector3(0, limitPoints, 0);
+        temperatureImage.color = colorOriginal;
+       
+        colorOriginal = new Color(1f, 0.49f, 0f, 0.4f);
+        textoCartelMilk01.SetActive(false);
+        textoCartelMilk02.SetActive(true);
     }
 
     // Update is called once per frame
@@ -96,12 +107,36 @@ public class MilkController : MonoBehaviour
         {
             StartCoroutine(Sobrecalentamiento());
         }
+
+        if (temperatureImage.fillAmount >= 0.51f)
+        {
+            temperatureImage.color = new Color(1f, 0f, 0f, 0.4f);
+        }
+        
+        if (temperatureImage.fillAmount >= 0.9f)
+        {
+            temperatureImage.color = new Color(1f, 0f, 0f, 1f);
+            scriptMilkSource.SobrecalentamientoSound();
+            textoCartelMilk01.SetActive(true);
+            textoCartelMilk02.SetActive(false);
+        }
+        
+        if (temperatureImage.fillAmount <= 0.5f)
+        {
+            temperatureImage.color = colorOriginal;
+            textoCartelMilk01.SetActive(false);
+            textoCartelMilk02.SetActive(true);
+        }
+
+        /*if(scriptCameraMilk.speed == 0f)
+        {
+            scriptMilkSource.SobrecalentamientoSound();
+        }*/
     }
 
     public void Timer()
     {
         timerMilk -= Time.deltaTime;
-        //timerMilkText.text = timerMilk.ToString("00");
 
         if (timerMilk <= 0f)
         {
@@ -110,47 +145,32 @@ public class MilkController : MonoBehaviour
     }
     public void PressButton(InputAction.CallbackContext callback)
     {
-        /*if (callback.started)
-        {
-            QuieroLeche();
-            scriptCameraMilk.IrLejos();
-        }
-        else if(callback.performed)
-        {
-            StopLeche();
-        }*/
-
         if(callback.performed && callback.duration > 0.1)
         {
             if(MilkOn == false && SobrecalentamientoOFF == true)
-            { 
+            {
+                scriptMilkSource.MilkOnSound();
                 QuieroLeche();
             }
             else if (MilkOn == true)
             {
+                scriptMilkSource.MilkOnSoundStop();
                 StopLeche();
             }
 
             Debug.Log("Tiempo presionado " + callback.duration);
         }
-
     }
 
     public void QuieroLeche()
     {
         MilkOn = true;
         particleLiquid.Play(); //Si las particulas funcionan, ocurre el Update() y este codigo
-        //scriptCameraMilk.IrLejos();
     }
 
     public void StopLeche()
     {
         MilkOn = false;
-
-        /*if(thermometerMOVE == true)
-        {
-            scriptCameraMilk.IrCerca();
-        }*/
         particleLiquid.Stop(); //Si las particulas no funcionan, el Update() dejaria de tener utilidad y funciona este codigo
     }
     
@@ -160,10 +180,7 @@ public class MilkController : MonoBehaviour
         SobrecalentamientoOFF = false;
         cameraMilk.position = scriptCameraMilk.target1.position;
         luzSobrecalentamiento.SetActive(true);
-        /*while(cameraMilk.position != scriptCameraMilk.target1.position)
-        {
-            yield return null;
-        }*/
+        scriptMilkSource.SobrecalentamientoSound();
         scriptCameraMilk.speed = 0f;
         yield return new WaitForSeconds(3);
         SobrecalentamientoOFF = true;
