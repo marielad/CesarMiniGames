@@ -355,6 +355,12 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     mixer: {fileID: 24300002, guid: 551d2a4593d9ec844a4ef9617c06cfb6, type: 2}
+  - name: ChoqueComba
+    clip: {fileID: 8300000, guid: 7a1e2de4cc49f994a8c88644b56bd144, type: 3}
+    volume: 1
+    source: {fileID: 0}
+    loop: 0
+    mixer: {fileID: 24300002, guid: 551d2a4593d9ec844a4ef9617c06cfb6, type: 2}
   mixer: {fileID: 24100000, guid: 551d2a4593d9ec844a4ef9617c06cfb6, type: 2}
 --- !u!4 &150332817
 Transform:
@@ -1285,6 +1291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6566655978152613119}
+  comba: {fileID: 605167796230083440}
   gameEnd: 0
   timer: 10
   jump: {x: 0, y: 0, z: 0}
@@ -1337,6 +1344,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
     m_ActionName: Control/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4903516d-7578-4e1d-bf0f-506d0b4dab70
+    m_ActionName: Control/PressedButtom[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control

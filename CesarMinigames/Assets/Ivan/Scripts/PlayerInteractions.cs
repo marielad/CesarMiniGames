@@ -8,6 +8,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     Rigidbody rb;
     public GameObject player;
+    public GameObject comba;
 
     public bool gameEnd;
     public float timer;
@@ -85,10 +86,12 @@ public class PlayerInteractions : MonoBehaviour
         {
             cantidadVidas -= 1;
             vidas.text = cantidadVidas.ToString();
+            FindObjectOfType<AudioManager>().Play("ChoqueComba");
         }
 
         if (cantidadVidas <= 0)
         {
+            Destroy(comba);
             StartCoroutine(GameController.instance.FailMiniGame());
         }
     }

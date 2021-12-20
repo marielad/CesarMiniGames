@@ -81,7 +81,8 @@ public class AppleBehaviour : MonoBehaviour
         if(pointsApples >= goalApples)
         {
             Debug.Log("game won");
-            
+            StartCoroutine(GameController.instance.MiniGameSuceeded());
+
         }
         if(gameTimer <= 0)
         {
