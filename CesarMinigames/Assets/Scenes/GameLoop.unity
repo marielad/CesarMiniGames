@@ -731,9 +731,29 @@ MonoBehaviour:
   avaliableLifes: 3
   nEasyLevels: 3
   miniGamesList:
-  - {fileID: 11400000, guid: 84eb23c8401492147b57ef621e3e24e7, type: 2}
+  - {fileID: 11400000, guid: 17d9172905913f347a03863cb698be2e, type: 2}
+  - {fileID: 11400000, guid: b81aa83bd6cc0324aa0b540da25640b6, type: 2}
+  - {fileID: 11400000, guid: 32d2e0eb84ac2b54ebfa83360ad62d8f, type: 2}
+  - {fileID: 11400000, guid: 390d50e35de24b6468d7f2bbc6f02c2e, type: 2}
+  - {fileID: 11400000, guid: fff359c36fad37f458293c9460fe67d4, type: 2}
+  - {fileID: 11400000, guid: 48ae8c42a612ffb44858a1016fe18552, type: 2}
+  - {fileID: 11400000, guid: 21c7579fe36a01b41a2d93b5efbd19fc, type: 2}
+  - {fileID: 11400000, guid: 19f15d9459f81004a98f005a3fcb0c66, type: 2}
+  - {fileID: 11400000, guid: 5be22e39aa067264f83393f3c88f0baf, type: 2}
+  - {fileID: 11400000, guid: 60a8c6478a4043346819b5faa96e4900, type: 2}
+  - {fileID: 11400000, guid: c3dd995bc1707494b850d87d0bb84a21, type: 2}
+  - {fileID: 11400000, guid: c41182bf95ad32a4f8a3ae85cf570236, type: 2}
+  - {fileID: 11400000, guid: 0d14de2e41ddc884b98d45391c7188eb, type: 2}
+  - {fileID: 11400000, guid: c0952065b8332d0459adf2037e793926, type: 2}
+  - {fileID: 11400000, guid: 29da09112f4b5c24690fd6e4200e3258, type: 2}
   miniGamesListHard:
-  - {fileID: 11400000, guid: 84eb23c8401492147b57ef621e3e24e7, type: 2}
+  - {fileID: 11400000, guid: e213544b1c27a8d44bc76cbc91a9019b, type: 2}
+  - {fileID: 11400000, guid: 650d3d92196bcc44ebfcb2d19422070c, type: 2}
+  - {fileID: 11400000, guid: 4ccac9a8c28ea22409a3c10ffbf73752, type: 2}
+  - {fileID: 11400000, guid: 7e23fb480f666144c894493508579546, type: 2}
+  - {fileID: 11400000, guid: 76490e49326920847be2df2501f8233f, type: 2}
+  - {fileID: 11400000, guid: e96195f458a552b4b939caf40b3cb975, type: 2}
+  - {fileID: 11400000, guid: 025094580b04d674bb8219a33a28b6d1, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771
@@ -1848,6 +1868,7 @@ GameObject:
   - component: {fileID: 1396480035}
   - component: {fileID: 1396480034}
   - component: {fileID: 1396480036}
+  - component: {fileID: 1396480037}
   m_Layer: 0
   m_Name: SFXSource
   m_TagString: Untagged
@@ -1978,6 +1999,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4c24b1505ce374c836a1989528cd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1396480037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396480033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b46976f1da20942b1cd2fa654821d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winAudio: {fileID: 8300000, guid: 2ed1d22a41a36f0449ecd98352457a8f, type: 3}
+  failAudio: {fileID: 8300000, guid: 27bc4ad6fa5513e4381265df6f73541f, type: 3}
 --- !u!1 &1403158519
 GameObject:
   m_ObjectHideFlags: 0

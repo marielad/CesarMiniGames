@@ -18,11 +18,41 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2Hard.unity
     guid: 444a147605a21154786ab10484e6c89e
   - enabled: 1
+    path: Assets/Scenes/CarreraBoldHard.unity
+    guid: 757b1c13c2c5e27478f7b76409cb6ecb
+  - enabled: 1
+    path: Assets/Scenes/Comba Remolona - Dificil.unity
+    guid: 0bf3d4cc5f67eba4b9b574dd0a706554
+  - enabled: 1
+    path: Assets/Scenes/Comba Remolona.unity
+    guid: f7a3bf51ad2c9874a967db033be21fc6
+  - enabled: 1
+    path: Assets/Scenes/Jump Aaron Easy.unity
+    guid: 7b365677051247141bee3bbcf322890a
+  - enabled: 1
+    path: Assets/Scenes/RespondeDificil.unity
+    guid: b93dc1d0f5027d149aba73cf8a166978
+  - enabled: 1
+    path: Assets/Scenes/RespondeFacil.unity
+    guid: 049100450499e8a4ca40138534e5ef05
+  - enabled: 1
+    path: Assets/Scenes/SimonSmash1.unity
+    guid: 9d036e467b0f39242aa94a9e585e28f6
+  - enabled: 1
     path: Assets/Scenes/OneShot Level1 (Tommi).unity
     guid: 68db2fc658473ee4c85a93983dfc98ce
   - enabled: 1
     path: Assets/Scenes/OneShot Level 2 (Tommi).unity
     guid: 349ca5a5880ff474aa591ce4db965171
+  - enabled: 1
+    path: Assets/StopTrain/Scene/StopTrainGame.unity
+    guid: e34280f8ce9f6f74c927fb015edc8ae6
+  - enabled: 1
+    path: Assets/Scenes/PushTheRopeHard.unity
+    guid: a12416e765467c8489da18a53127d836
+  - enabled: 1
+    path: Assets/Scenes/PushTheRopeEasy.unity
+    guid: 962561bb23f1b7646bf8b3f191d58c90
   - enabled: 1
     path: Assets/Scenes/Level1BringDeLeche.unity
     guid: b6ab672c336e0fc49994e73ffee865df
@@ -42,11 +72,20 @@ EditorBuildSettings:
     path: "Assets/Scenes/Pi\xF1ataL2Morelia.unity"
     guid: bb669ec67f3a71e4eb6fac59a85353b4
   - enabled: 1
-    path: "Assets/Scenes/DinoSaltar\xF3nDificil.unity"
+    path: "Assets/LuigiRunner_Sof\xEDa/Scenes/LR_Level1_Sofia.unity"
+    guid: 91f17097bcb14204fb023ead3a1537b2
+  - enabled: 1
+    path: "Assets/Scenes/DinoSaltar\xEDnDificil.unity"
     guid: c22fb271a98257b4c9909e48ec20780b
   - enabled: 1
     path: Assets/Scenes/GimnasioEspacioHard.unity
     guid: ea3dec900abbba64e849213c96752d6d
+  - enabled: 1
+    path: Assets/Scenes/Scenes/RespondeDificil.unity
+    guid: 2e1a3b2382fd7014fa50de22b731b880
+  - enabled: 1
+    path: Assets/Scenes/Scenes/RespondeFacil.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Globo Infinito.unity
     guid: 66f5efc69ddb42447a77db1390f9916f
