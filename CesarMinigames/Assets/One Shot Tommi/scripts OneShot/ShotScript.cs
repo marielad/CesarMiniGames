@@ -134,7 +134,7 @@ public class ShotScript : MonoBehaviour
 
     public IEnumerator Win()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(2f);
 
         StartCoroutine(GameController.instance.MiniGameSuceeded());
     }
