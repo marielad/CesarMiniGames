@@ -1000,7 +1000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.84, y: -136.86}
+  m_AnchoredPosition: {x: -153.31, y: -136.86}
   m_SizeDelta: {x: 12.12, y: 55.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187360168
@@ -1208,6 +1208,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
     m_ActionName: Control/Button[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4903516d-7578-4e1d-bf0f-506d0b4dab70
+    m_ActionName: Control/PressedButtom[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control
