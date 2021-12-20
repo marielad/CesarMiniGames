@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b557985826bdb40b16690d512d99f9, type: 3}
   m_Name: LuigiRunner1
   m_EditorClassIdentifier: 
-  LevelChallange: Saltaa
+  LevelChallange: Saltaa!
   duration: 15
   SceneName: LR_Level1_Sofia
   levelSong: {fileID: 0}
