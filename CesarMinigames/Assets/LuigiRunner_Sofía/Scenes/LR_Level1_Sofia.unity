@@ -1928,10 +1928,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 226547059}
-  jump: 5
+  jump: 4
   vidas: 3
-  animator: {fileID: 226547062}
   startPos: {x: -6.36, y: -2.833}
+  animator: {fileID: 226547062}
   fondo: {fileID: 2116845503}
   plataformas: {fileID: 1245500640}
   obstaculos: {fileID: 1438487023}

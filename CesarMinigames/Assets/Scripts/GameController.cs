@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
     {
         if (gameState == GameStates.inGame)
         {
+            SFXSource.instance.PlayWinAudio();
             gameState = GameStates.pauseGame;
             currentLevel++;
             IntroLevel.instance.UpdateLevelText(currentLevel);
@@ -83,6 +84,7 @@ public class GameController : MonoBehaviour
     public IEnumerator FailMiniGame()
     {
         //Dead
+        SFXSource.instance.PlayFailAudio();
         gameState = GameStates.introLevel;
         currentLifes--;
         GameplayHUD.instance.ShowFailedScreen();

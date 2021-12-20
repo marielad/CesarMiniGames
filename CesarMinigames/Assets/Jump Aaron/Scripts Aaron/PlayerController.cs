@@ -14,9 +14,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public Rigidbody2D rb;
 
+    public AudioClip flapSound;
+    AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
         jump = new Vector2(0.0f, 2.0f);
         isGrounded = true;
 
@@ -33,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemigos"))
+        if (collision.gameObject.CompareTag("Enemigos") && GameController.instance.isPlaying)
         {
             Debug.Log("Choque con un enemigo");
             StartCoroutine(GameController.instance.FailMiniGame()); //Función de derrota
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if(GameController.instance.isPlaying)
         {
+            audioSource.PlayOneShot(flapSound, 0.7F);
             Debug.Log("Salto");
             rb.AddForce(Vector2.up * jumpForce);
             isGrounded = false;

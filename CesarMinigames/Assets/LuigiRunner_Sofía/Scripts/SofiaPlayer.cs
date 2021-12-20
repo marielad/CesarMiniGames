@@ -12,15 +12,16 @@ public class SofiaPlayer : MonoBehaviour
 
     public int vidas = 3;
 
-    public Animator animator;
-
     public Vector2 startPos;
+
+    public Animator animator;
 
     public Animator fondo;
     public Animator plataformas;
     public Animator obstaculos;
     public Animator final;
     public Animator suelo;
+
 
     void Start()
     {
@@ -65,7 +66,7 @@ public class SofiaPlayer : MonoBehaviour
         }
     }
 
-    // Resetea pos personaje 
+    // Resetea pos personaje y pos del escenario
     public void Reset()
     {
         Debug.Log("Reseteo");
