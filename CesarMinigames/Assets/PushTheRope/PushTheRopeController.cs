@@ -22,6 +22,7 @@ public class PushTheRopeController : MonoBehaviour
 
     void FinishGame()
     {
+        GameController.onTimesUp -= FinishGame;
         if (enemy != null && enemy.GetComponent<Rigidbody2D>() != null)
         {
             enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemyForce * 4, ForceMode2D.Impulse);
@@ -31,7 +32,7 @@ public class PushTheRopeController : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         }
-        GameController.onTimesUp -= FinishGame;
+        
 
     }
     // Update is called once per frame
@@ -65,14 +66,12 @@ public class PushTheRopeController : MonoBehaviour
         {
             if (collision.gameObject.name.Equals("Enemy"))
             {
-                Debug.Log("Player Wins");
                 playerRope.connectedBody = null;
                 playerRope.gameObject.SetActive(false);
                 StartCoroutine(GameController.instance.MiniGameSuceeded());
             }
             else if (collision.gameObject.name.Equals("Player"))
             {
-                Debug.Log("Enemy Wins");
                 enemy.GetComponent<HingeJoint2D>().connectedBody = null;
                 StartCoroutine(GameController.instance.FailMiniGame());
             }
