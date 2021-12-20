@@ -45,7 +45,7 @@ public class timer : MonoBehaviour
     public IEnumerator StartCounter()
     {
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0);
 
         starttimer = true;
     }

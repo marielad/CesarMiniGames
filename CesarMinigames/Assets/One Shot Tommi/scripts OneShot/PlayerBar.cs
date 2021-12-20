@@ -86,7 +86,7 @@ public class PlayerBar : MonoBehaviour
     public IEnumerator StartGame()
     {
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0);
 
         startgame = true;
         whistleSound.Play();
