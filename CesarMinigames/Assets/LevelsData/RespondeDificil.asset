@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RespondeDificil
   m_EditorClassIdentifier: 
   LevelChallange: Responde!
-  duration: 40
+  duration: 5
   SceneName: RespondeDificil
   levelSong: {fileID: 0}
