@@ -29,9 +29,12 @@ public class AppleBehaviour : MonoBehaviour
     public int goalApples;
     public TextMeshProUGUI pointsApplesText;
 
-    private float gameTimer = 15f; 
+    private float gameTimer = 15f;
 
-    
+    public AudioClip appleIn;
+    private AudioSource audioSource;
+
+
 
     void Start()
     {
@@ -40,10 +43,11 @@ public class AppleBehaviour : MonoBehaviour
         startPos = transform.position;
         appleTopPos = new Vector2(-0.31f, 4.7f);
         appleReady = true;
+
         pointsApples = 0;
-        
         pointsApplesText.SetText(pointsApples + "/" + goalApples);
 
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -113,6 +117,7 @@ public class AppleBehaviour : MonoBehaviour
             ResetApple();
             pointsApples += 1;
             pointsApplesText.SetText(pointsApples + "/" + goalApples);
+            audioSource.PlayOneShot(appleIn);
         }
         if (other.gameObject.tag.Equals("Out"))
         {
