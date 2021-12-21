@@ -23,14 +23,9 @@ public class PushTheRopeController : MonoBehaviour
     void FinishGame()
     {
         GameController.onTimesUp -= FinishGame;
-        if (enemy != null && enemy.GetComponent<Rigidbody2D>() != null)
+        if (player != null)
         {
-            enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemyForce * 4, ForceMode2D.Impulse);
-        }
-        if (gameObject != null && gameObject.GetComponent<BoxCollider2D>() != null)
-        {
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
+            player.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemyForce * 10.0f, ForceMode2D.Impulse);
         }
         
 
