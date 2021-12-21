@@ -35,9 +35,9 @@ public class GameplayHUD : MonoBehaviour
 
     public void RemoveAllHearts()
     {
-        while (heartsContainer.transform.childCount != 0)
+        foreach (Transform child in heartsContainer.transform)
         {
-            Destroy(heartsContainer.transform.GetChild(0));
+            GameObject.Destroy(child.gameObject);
         }
     }
 

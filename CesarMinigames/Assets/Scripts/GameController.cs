@@ -98,6 +98,7 @@ public class GameController : MonoBehaviour
         {
             gameState = GameStates.introGame;
             currentLifes = avaliableLifes;
+            GameplayHUD.instance.RemoveAllHearts();
             GameplayHUD.instance.InstantiateHearts(currentLifes);
             currentLevel = 0;
             IntroGame.instance.AnimateScreen();
