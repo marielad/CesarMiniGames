@@ -443,6 +443,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5cbdb14c-25d5-4089-9a88-196a9800418e
     m_ActionName: Control/Button[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4903516d-7578-4e1d-bf0f-506d0b4dab70
+    m_ActionName: Control/PressedButtom[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control
@@ -498,7 +502,7 @@ MonoBehaviour:
   scriptMilkSource: {fileID: 786260300}
   colorOriginal: {r: 0, g: 0, b: 0, a: 0}
   textoCartelMilk01: {fileID: 972057545}
-  textoCartelMilk02: {fileID: 0}
+  textoCartelMilk02: {fileID: 460968432}
 --- !u!4 &55317476
 Transform:
   m_ObjectHideFlags: 0
