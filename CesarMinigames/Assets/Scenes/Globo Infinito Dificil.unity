@@ -5007,7 +5007,7 @@ GameObject:
   - component: {fileID: 159970514}
   - component: {fileID: 159970513}
   m_Layer: 5
-  m_Name: background
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5768,7 +5768,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2020802663}
         m_TargetAssemblyTypeName: GameManagerAgoney, Assembly-CSharp
         m_MethodName: PressedButton
         m_Mode: 0
@@ -5936,14 +5936,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2020802660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bca494278a3d0414d817e314f47facb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 595e7cfbb2e2e8b449fc46c8a9a4ae76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globoContento2: {fileID: 21300000, guid: ea0e8bb6f4fad7e45b132cdc0e5a93b8, type: 3}
-  globoTriste2: {fileID: 21300000, guid: 9716c64fe6ba1a449a78502a9b251e6b, type: 3}
-  infladorArriba2: {fileID: 21300000, guid: 1d86e82df9cd8be4db6bb0b47f8a1ec8, type: 3}
-  infladorAbajo2: {fileID: 21300000, guid: 7450107db2929d9409f6cf6750eee47c, type: 3}
-  inflador_object2: {fileID: 732604284}
-  globo_object2: {fileID: 1687215008}
-  gameManager2: {fileID: 2020802660}
-  explosion2: {fileID: 1009985033}
+  globoContento: {fileID: 21300000, guid: ea0e8bb6f4fad7e45b132cdc0e5a93b8, type: 3}
+  globoTriste: {fileID: 21300000, guid: 9716c64fe6ba1a449a78502a9b251e6b, type: 3}
+  infladorArriba: {fileID: 21300000, guid: 1d86e82df9cd8be4db6bb0b47f8a1ec8, type: 3}
+  infladorAbajo: {fileID: 21300000, guid: 7450107db2929d9409f6cf6750eee47c, type: 3}
+  inflador_object: {fileID: 732604284}
+  globo_object: {fileID: 1687215008}
+  gameManager: {fileID: 2020802660}
+  explosion: {fileID: 1009985033}
+  scaleX: 0.07
+  scaleY: 0.07
+  positionY: 0.06

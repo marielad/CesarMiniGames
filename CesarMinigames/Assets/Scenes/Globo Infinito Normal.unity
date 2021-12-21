@@ -5932,6 +5932,9 @@ MonoBehaviour:
   globo_object: {fileID: 1687215008}
   gameManager: {fileID: 2020802660}
   explosion: {fileID: 1009985033}
+  scaleX: 0.13
+  scaleY: 0.13
+  positionY: 0.115
 --- !u!4 &2020802662
 Transform:
   m_ObjectHideFlags: 0

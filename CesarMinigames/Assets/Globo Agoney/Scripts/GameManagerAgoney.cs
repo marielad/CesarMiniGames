@@ -20,6 +20,10 @@ public class GameManagerAgoney : MonoBehaviour
     private Image globo;
     private Image inflador;
 
+    public float scaleX;
+    public float scaleY;
+    public float positionY;
+
     private SoundManagerAgoney soundmanager;
 
     public void Awake()
@@ -37,8 +41,8 @@ public class GameManagerAgoney : MonoBehaviour
         if ((callback.performed && callback.duration != 0.0f) && GameController.instance.isPlaying)
         {
             soundmanager.SeleccionAudio(1, 5f);
-            globo_object.transform.localScale += new Vector3(0.13f, 0.13f, 0.13f);
-            globo_object.transform.position += new Vector3(0, 0.115f, 0);
+            globo_object.transform.localScale += new Vector3(scaleX, scaleY, 0);
+            globo_object.transform.position += new Vector3(0, positionY, 0);
             StartCoroutine("CambiarInflador");
 
             if (globo_object.transform.localScale.y >= 2.2f)
