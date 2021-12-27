@@ -34,9 +34,8 @@ public class AppleBehaviour : MonoBehaviour
     public AudioClip appleIn;
     private AudioSource audioSource;
 
-    private bool failedGame;
-    private bool wonGame;
-    private bool calledEnding = false;
+
+
     void Start()
     {
         openHandStartPos = new Vector2(0.05f, 3.94f);
@@ -85,19 +84,13 @@ public class AppleBehaviour : MonoBehaviour
 
         if(pointsApples >= goalApples)
         {
-            if(!calledEnding)
-            {
-                Victory();
-                calledEnding = true;
-            }
+            Debug.Log("game won");
+            StartCoroutine(GameController.instance.MiniGameSuceeded());
+
         }
         if(gameTimer <= 0)
         {
-            if (!calledEnding)
-            {
-                Defeat();
-                calledEnding = true;
-            }
+            StartCoroutine(GameController.instance.FailMiniGame());
         }
     }
 
@@ -110,6 +103,8 @@ public class AppleBehaviour : MonoBehaviour
             falling = true;
             handsUp = true;
         }
+        
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -130,18 +125,6 @@ public class AppleBehaviour : MonoBehaviour
             Debug.Log("out");
             ResetApple();           
         }
-    }
-
-    public void Victory()
-    {
-            Debug.Log("game won");
-            StartCoroutine(GameController.instance.MiniGameSuceeded());
-    }
-
-    public void Defeat()
-    {       
-            StartCoroutine(GameController.instance.FailMiniGame());
-            gameTimer = 10.0f;
     }
 
 
