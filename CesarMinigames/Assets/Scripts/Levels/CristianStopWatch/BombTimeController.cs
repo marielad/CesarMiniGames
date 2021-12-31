@@ -10,6 +10,7 @@ public class BombTimeController : MonoBehaviour
     public GameObject segundosBombGameObject;
     public TextMeshProUGUI segundosBombText;
     public float segundosBomb;
+    public float realtimeBomb = 1f;
 
     public TextMeshProUGUI numAleatorioText;
     public float numAleatorio;
@@ -45,7 +46,7 @@ public class BombTimeController : MonoBehaviour
     {
         if(SegundosON == true)
         {
-            segundosBomb += Time.deltaTime;
+            segundosBomb += Time.deltaTime * realtimeBomb;
 
             scriptAudioBomb.BombActiveSound();
         }

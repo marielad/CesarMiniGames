@@ -734,8 +734,10 @@ MonoBehaviour:
   avaliableLifes: 3
   nEasyLevels: 3
   miniGamesList:
+  - {fileID: 11400000, guid: cc4163a631cb81547acf1e4287b4807e, type: 2}
   - {fileID: 11400000, guid: 17d9172905913f347a03863cb698be2e, type: 2}
   - {fileID: 11400000, guid: b81aa83bd6cc0324aa0b540da25640b6, type: 2}
+  - {fileID: 11400000, guid: 6220337c210a61740b138d73de9dfc82, type: 2}
   - {fileID: 11400000, guid: 32d2e0eb84ac2b54ebfa83360ad62d8f, type: 2}
   - {fileID: 11400000, guid: 390d50e35de24b6468d7f2bbc6f02c2e, type: 2}
   - {fileID: 11400000, guid: fff359c36fad37f458293c9460fe67d4, type: 2}
@@ -749,7 +751,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d14de2e41ddc884b98d45391c7188eb, type: 2}
   - {fileID: 11400000, guid: c0952065b8332d0459adf2037e793926, type: 2}
   - {fileID: 11400000, guid: 29da09112f4b5c24690fd6e4200e3258, type: 2}
-  - {fileID: 11400000, guid: 6220337c210a61740b138d73de9dfc82, type: 2}
   miniGamesListHard:
   - {fileID: 11400000, guid: e213544b1c27a8d44bc76cbc91a9019b, type: 2}
   - {fileID: 11400000, guid: 650d3d92196bcc44ebfcb2d19422070c, type: 2}
@@ -762,6 +763,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57f3ea93fcd422845a9fa41d62578565, type: 2}
   - {fileID: 11400000, guid: 4703eb1dfb098f741976e5fcf5a9a676, type: 2}
   - {fileID: 11400000, guid: 84eb23c8401492147b57ef621e3e24e7, type: 2}
+  - {fileID: 11400000, guid: cf0788d981c05be4a912b085e3f58735, type: 2}
   win: 0
   fail: 0
 --- !u!850595691 &454244771

@@ -10434,6 +10434,7 @@ MonoBehaviour:
   segundosBombGameObject: {fileID: 1508220935}
   segundosBombText: {fileID: 1309401024}
   segundosBomb: 0
+  realtimeBomb: 1.75
   numAleatorioText: {fileID: 23712016}
   numAleatorio: 0
   offsetSegundosBomb: 0.49

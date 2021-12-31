@@ -57,11 +57,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1BringDeLeche.unity
     guid: b6ab672c336e0fc49994e73ffee865df
   - enabled: 1
+    path: Assets/Scenes/Level2BringDeLeche.unity
+    guid: fe4d24edd3e3de549b0e4e546a549b83
+  - enabled: 1
+    path: Assets/Scenes/CristianStopWatch.unity
+    guid: 59fe80b60fe1f7247ab2e4092e6b4225
+  - enabled: 1
     path: "Assets/Scenes/Pi\xF1ataL1Morelia.unity"
     guid: d16418fb85147c540b22a62e76992240
-  - enabled: 1
-    path: Assets/Scenes/Level2BringDeLeche.unity
-    guid: bc6b67a03bed1b7449926d10d4cbbafd
   - enabled: 1
     path: Assets/Scenes/DavidJump!Level1.unity
     guid: e0e1f4946778f194c893c6c23e3196e9
