@@ -38,8 +38,30 @@
                 },
                 {
                     "name": "",
+                    "id": "4bc18bd9-ef51-48d6-af83-01b32846866c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b7e515c3-8ce3-4a6e-9f09-d33c0da81d2d",
                     "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressedButtom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3572379-63f8-4e69-ae0e-9cd3d256350d",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
