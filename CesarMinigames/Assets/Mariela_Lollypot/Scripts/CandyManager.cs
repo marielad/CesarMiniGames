@@ -7,9 +7,8 @@ public class CandyManager : MonoBehaviour
     
     private Coroutine a;
     private Vector3 newPos;
-    private bool isStopped;
 
-    public float speed = 0.05f;
+    private float speed = 0.05f;
 
 
     private void Start()
@@ -33,14 +32,16 @@ public class CandyManager : MonoBehaviour
     }
 
     public string StopCandy() {
-        isStopped = true;
         StopCoroutine(a);
         StopCoroutine(CandyRotation());
         return CorrectPosition();
     }
 
     public void ChangeSpeed() {
-        speed += 0.05f;
+        if (speed <= 0.15f)
+        {
+            speed += 0.05f;
+        }
     }
 
     public string CorrectPosition()
@@ -90,47 +91,44 @@ public class CandyManager : MonoBehaviour
             Debug.Log("TACA: " + transform.localPosition.y);
         }
 
-        //transform.position = new Vector3(newPos.x, newPos.y);
-        //image = "palo";
-        //newPos = new Vector3(transform.localPosition.x, 1.77f);
         transform.localPosition = new Vector3(newPos.x, newPos.y);
         return image;
     }
 
-    public string CheckPosition() {
-        string image = "";
-        StartCoroutine(CorrectPosition());
-        switch (transform.position.y)
-        {
-            case -1.8f:
-                image = "palo";
-                break;
-            case -1.3f:
-                image = "rueda";
-                break;
-            case -0.8f:
-                image = "tubo";
-                break;
-            case -0.3f:
-                image = "caramelo";
-                break;
-            case 0.2f:
-                image = "judias";
-                break;
-            case 0.7f:
-                image = "piruleta";
-                break;
-            case 1.2f:
-                image = "huevo";
-                break;
-            case 1.77f:
-                image = "palo";
-                break;
-            default:
+    //public string CheckPosition() {
+    //    string image = "";
+    //    StartCoroutine(CorrectPosition());
+    //    switch (transform.position.y)
+    //    {
+    //        case -1.8f:
+    //            image = "palo";
+    //            break;
+    //        case -1.3f:
+    //            image = "rueda";
+    //            break;
+    //        case -0.8f:
+    //            image = "tubo";
+    //            break;
+    //        case -0.3f:
+    //            image = "caramelo";
+    //            break;
+    //        case 0.2f:
+    //            image = "judias";
+    //            break;
+    //        case 0.7f:
+    //            image = "piruleta";
+    //            break;
+    //        case 1.2f:
+    //            image = "huevo";
+    //            break;
+    //        case 1.77f:
+    //            image = "palo";
+    //            break;
+    //        default:
                 
-                break;
-        }
-        return image;
-    }
+    //            break;
+    //    }
+    //    return image;
+    //}
 
 }

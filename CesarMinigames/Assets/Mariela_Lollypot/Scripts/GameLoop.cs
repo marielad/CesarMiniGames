@@ -16,7 +16,6 @@ public class GameLoop : MonoBehaviour
     private bool winCondition;
     private bool animationCorroutineIsRunning;
     private AudioSource audioSource;
-    private string candy = "";
 
     List<string> candyNameList = new List<string>();
 
@@ -94,7 +93,7 @@ public class GameLoop : MonoBehaviour
     {
         if (candyNameList.TrueForAll(i => i.Equals(candyNameList[0])))
         {
-            winCondition = true;
+                winCondition = true;
         }
         else {
             winCondition = false;

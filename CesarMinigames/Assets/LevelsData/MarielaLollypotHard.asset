@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelChallange: "\xA1Tira de la palanca!"
   duration: 8
-  SceneName: LollypotEasy
+  SceneName: LollypotHard
   levelSong: {fileID: 8300000, guid: cad1b775ccc36924c84f78a524cab9c7, type: 3}
