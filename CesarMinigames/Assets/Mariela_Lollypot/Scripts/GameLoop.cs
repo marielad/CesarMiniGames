@@ -15,13 +15,16 @@ public class GameLoop : MonoBehaviour
     private int lastRowStopped = 0;
     private bool winCondition;
     private bool animationCorroutineIsRunning;
-    private AudioSource AudioSource;
+    private AudioSource audioSource;
     private string candy = "";
+
+    List<string> candyNameList = new List<string>();
+
 
     void Start()
     {
         ResetGame();
-        AudioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnPressedButton(InputAction.CallbackContext value) {
@@ -36,7 +39,11 @@ public class GameLoop : MonoBehaviour
         if (isPlaying && lastRowStopped <= columns.Length) 
         {
             StartCoroutine(AnimacionPalanca());
-            columns[lastRowStopped].StopCandy();
+            candyNameList.Add(columns[lastRowStopped].StopCandy());
+            for (int i = 0; i < columns.Length; i++)
+            {
+                columns[i].ChangeSpeed();
+            }
             lastRowStopped++;
             Debug.Log("Ultima columna: "+lastRowStopped);
             if (lastRowStopped == columns.Length)
@@ -78,32 +85,21 @@ public class GameLoop : MonoBehaviour
 
     IEnumerator PlayLeverSound()
     {
-        AudioSource.PlayOneShot(leverSound);
+        audioSource.PlayOneShot(leverSound);
         yield return new WaitForSeconds(1f);
-        AudioSource.Stop();
+        audioSource.Stop();
     }
 
     public void CheckResults()
     {
-        List<string> candyNameList = new List<string>();
-
-        foreach (var column in columns)
+        if (candyNameList.TrueForAll(i => i.Equals(candyNameList[0])))
         {
-            candyNameList.Add(column.CorrectPosition());
+            winCondition = true;
         }
-
-        foreach (var candyName in candyNameList)
-        {
-            if (candy.Equals(candyName))
-            {
-                winCondition = true;
-                Debug.Log("Candy es " + candy + " y CandyName es " + candyName);
-            }
-            else {
-                winCondition = false;
-            }
-            candy = candyName;
+        else {
+            winCondition = false;
         }
+       
 
         if (winCondition)
         {
